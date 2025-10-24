@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:persons xmlns:ms="http://www.microsoft.com" xmlns:w3="http://www.w3schools.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.microsoft.com family2.xsd http://www.w3schools.com attribute.xsd">
+	<ms:person w3:gender="female">
+		<ms:firstname>Hege</ms:firstname>
+		<ms:lastname>Refsnes</ms:lastname>
+	</ms:person>
+	<ms:person>
+		<ms:firstname>Stale</ms:firstname>
+		<ms:lastname>Refsnes</ms:lastname>
+	</ms:person>
+</ms:persons> 

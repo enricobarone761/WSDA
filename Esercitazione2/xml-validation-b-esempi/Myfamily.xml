@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:persons xmlns:ms="http://www.microsoft.com" xmlns:w3="http://www.w3schools.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.microsoft.com family.xsd http://www.w3schools.com children.xsd">
+	<ms:person>
+		<ms:firstname>Hege</ms:firstname>
+		<ms:lastname>Refsnes</ms:lastname>
+		<w3:children>
+			<w3:firstname>Cecilie</w3:firstname>
+			<w3:firstname>Mary</w3:firstname>
+			<w3:firstname>John</w3:firstname>
+		</w3:children>
+	</ms:person>
+	<ms:person>
+		<ms:firstname>Stale</ms:firstname>
+		<ms:lastname>Refsnes</ms:lastname>
+	</ms:person>
+</ms:persons>

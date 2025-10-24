@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<calendario>
+    <evento id="1">
+        <data>2024-03-12</data>
+        <ora_inizio>09:00:00</ora_inizio>
+        <ora_fine>10:30:00</ora_fine>
+        <descrizione>Esami</descrizione>
+        <luogo>F110</luogo>
+    </evento>
+    <evento id="2">
+        <data>2024-03-14</data>
+        <ora_inizio>15:00:00</ora_inizio>
+        <ora_fine>18:00:00</ora_fine>
+        <descrizione>Esercitazione</descrizione>
+        <luogo>F180</luogo>
+    </evento>
+</calendario>

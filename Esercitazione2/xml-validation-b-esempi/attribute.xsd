@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3schools.com" xmlns="http://www.w3schools.com"
+	elementFormDefault="qualified">
+<xs:attribute name="gender">
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="male|female" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:attribute>
+<xs:attribute name="gender2">
+	<xs:simpleType>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="male|female" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:attribute>
+</xs:schema>

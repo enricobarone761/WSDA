@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<giornata id="26A">
+    <partita>
+        <data>2024-03-08</data>
+        <ora>20:45:00</ora>
+        <luogo>Diego Armando Maradona</luogo>
+        <squadra_casa>napoli</squadra_casa>
+        <squadra_trasferta>torino</squadra_trasferta>
+        <goal_casa>1</goal_casa>
+        <goal_trasferta>1</goal_trasferta>
+        <goals>
+            <goal>
+                <minuto>61</minuto>
+                <marcatore>Kvaratskhelia</marcatore>
+                <tipo>g</tipo>
+            </goal>
+            <goal>
+                <minuto>64</minuto>
+                <marcatore>sanabria</marcatore>
+                <tipo>g</tipo>
+            </goal>
+        </goals>
+        <ammonizioni>
+            <ammonizione>
+                <ammonito>zapata</ammonito>
+                <minuto>32</minuto>
+                <squadra>torino</squadra>
+            </ammonizione>
+            <ammonizione>
+                <ammonito>osimhen</ammonito>
+                <minuto>36</minuto>
+                <squadra>napoli</squadra>
+            </ammonizione>
+            <ammonizione>
+                <ammonito>juan jesus</ammonito>
+                <minuto>39</minuto>
+                <squadra>napoli</squadra>
+            </ammonizione>
+        </ammonizioni>
+        <espulsioni>
+            <espulsione>
+                <espulso>zapata</espulso>
+                <minuto>75</minuto>
+                <squadra>torino</squadra>
+            </espulsione>
+        </espulsioni>
+    </partita>
+</giornata>
