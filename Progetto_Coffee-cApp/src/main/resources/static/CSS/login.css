@@ -20,33 +20,42 @@ body {
     gap: 20px; /* spazio interno tra colonne */
 }
 
+p{
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
 .sinistra {
     flex: 1;
     max-width: 400px;
-    padding: 30px;
+    padding: 20px;
     display: flex;      /* necessario per usare flex-direction */
     flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .destra {
 
     flex: 1;
     display: flex;
-    padding: 30px; /* necessario per usare flex-direction e align-items */
+    padding: 80px; /* necessario per usare flex-direction e align-items */
     flex-direction: column;
-    align-items: center;
     background-color: #2d2d2d;
     color: white;
     overflow: hidden;
+    justify-content: left;
 }
 
-h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
+h2{
     font-size: 60px;
 }
+
+
 .login-form input{
-    width: 100%;
+    font-size: 20px;
+    width: 350px;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -56,8 +65,9 @@ h2 {
 }
 
 button {
+    font-size: 20px;
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     border: none;
     border-radius: 25px;
     background-color: #f4f2ed;
