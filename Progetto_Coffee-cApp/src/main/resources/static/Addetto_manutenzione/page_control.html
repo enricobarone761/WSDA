@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controllo Distributore</title>
+    <link rel="stylesheet" href="page_control_style.css">
+</head>
+<body>
+<div class="contenitore">
+    <div class="intestazione">
+        <div class="info-utente">
+            <div class="etichetta-manutentore">Manutentore</div>
+            <div class="nome-utente">Enrico Barone</div>
+        </div>
+    </div>
+
+    <div class="contenuto">
+        <div class="sezione">
+            <h2 class="titolo-sezione">Carica Stato Distributore</h2>
+            <form>
+                <div class="gruppo-form">
+                    <label for="id-distributore">ID Distributore</label>
+                    <input type="text" id="id-distributore" placeholder="Inserisci l'ID del distributore" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Carica Stato</button>
+            </form>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Livelli Forniture</h2>
+            <div class="forniture-grid">
+                <div class="forniture-card">
+                    <div class="forniture-nome">Caffè</div>
+                    <div class="forniture-livello">75%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 75%; background-color: #4caf50;"></div>
+                    </div>
+                </div>
+
+                <div class="forniture-card">
+                    <div class="forniture-nome">Latte</div>
+                    <div class="forniture-livello">45%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 45%; background-color: #ff9800;"></div>
+                    </div>
+                </div>
+
+                <div class="forniture-card">
+                    <div class="forniture-nome">Zucchero</div>
+                    <div class="forniture-livello">20%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 20%; background-color: #f44336;"></div>
+                    </div>
+                </div>
+
+                <div class="forniture-card">
+                    <div class="forniture-nome">Tè</div>
+                    <div class="forniture-livello">90%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 90%; background-color: #4caf50;"></div>
+                    </div>
+                </div>
+
+                <div class="forniture-card">
+                    <div class="forniture-nome">Cioccolato</div>
+                    <div class="forniture-livello">60%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 60%; background-color: #4caf50;"></div>
+                    </div>
+                </div>
+
+                <div class="forniture-card">
+                    <div class="forniture-nome">Bicchieri</div>
+                    <div class="forniture-livello">35%</div>
+                    <div class="barra-progresso">
+                        <div class="barra-riempimento" style="width: 35%; background-color: #ff9800;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Stato Guasti</h2>
+            <div class="guasti-grid">
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Pompa Acqua</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+
+                <div class="guasto-card guasto-errore">
+                    <div class="guasto-icona">✗</div>
+                    <div class="guasto-nome">Riscaldatore</div>
+                    <div class="guasto-stato">Guasto</div>
+                </div>
+
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Erogatore</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Sensori</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+
+                <div class="guasto-card guasto-warning">
+                    <div class="guasto-icona">!</div>
+                    <div class="guasto-nome">Sistema Pulizia</div>
+                    <div class="guasto-stato">Manutenzione</div>
+                </div>
+
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Display</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Gettoniera</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+
+                <div class="guasto-card guasto-ok">
+                    <div class="guasto-icona">✓</div>
+                    <div class="guasto-nome">Macina Caffè</div>
+                    <div class="guasto-stato">OK</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
