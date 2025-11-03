@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #2d2d2d;
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.user-info {
+    position: relative;
+}
+
+.user-label {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.username {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.credit {
+    font-size: 48px;
+    font-weight: 600;
+    color: #f4f2ed;
+}
+
+.content {
+    padding: 40px;
+    background-color: #ffffff;
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 25px;
+}
+
+.bevande-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.bevanda-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.bevanda-card:hover {
+    background-color: #e8e8e8;
+}
+
+.bevanda-nome {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 8px;
+}
+
+.bevanda-prezzo {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.btn-bevanda {
+    font-size: 16px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: #FFB63D;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-bevanda:hover {
+    background-color: #dcd9d4;
+}
+
+.zucchero-controls {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 5px;
+}
+
+.btn-zucchero {
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #2d2d2d;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #2d2d2d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-zucchero:hover {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+.btn-conferma {
+    font-size: 20px;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 25px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-conferma:hover {
+    background-color: #1a1a1a;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 35px 0;
+}

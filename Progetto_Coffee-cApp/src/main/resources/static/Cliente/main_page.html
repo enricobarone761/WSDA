@@ -7,48 +7,53 @@
     <link rel="stylesheet" href="main_page.css">
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <div class="user-info">
-            <div class="credit-label">Credito Disponibile</div>
-            <div class="credit">€ 25,50</div>
-            <div class="username">Enrico Barone</div>
+<div class="contenitore">
+    <div class="intestazione">
+        <div class="info-utente">
+            <div class="etichetta-credito">Credito Disponibile</div>
+            <div class="credito">€ 25,50</div>
+            <div class="nome-utente">Enrico Barone</div>
         </div>
         <img src="../CSS/coffee_bean.png" height="100" alt="Chicco"/>
     </div>
 
-    <div class="content">
-        <div class="section">
-            <h2 class="section-title">Connessione</h2>
-            <div class="status status-disconnected">
+    <div class="contenuto">
+        <div class="sezione">
+            <h2 class="titolo-sezione">Connessione</h2>
+            <div class="stato stato-disconnesso">
                 Nessun distributore connesso
             </div>
             <form>
-                <div class="form-group">
-                    <label for="distributor-id">ID Distributore</label>
-                    <input type="text" id="distributor-id" placeholder="Inserisci ID" required>
+                <div class="gruppo-form">
+                    <label for="id-distributore">ID Distributore</label>
+                    <input type="text" id="id-distributore" placeholder="Inserisci ID" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Connetti</button>
+                <button type="submit" class="btn btn-primario">Connetti</button>
             </form>
         </div>
 
-        <div class="divider"></div>
+        <div class="divisore"></div>
 
-        <div class="section">
-            <h2 class="section-title">Disconnessione</h2>
-            <button type="button" class="btn btn-danger">Scollega Distributore</button>
+        <div class="sezione">
+            <h2 class="titolo-sezione">Disconnessione</h2>
+            <button type="button" class="btn btn-pericolo">
+                <span style="display:inline-flex; align-items:center;">
+                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/logout-rounded--v1.png" alt="logout" style="height:20px; width:20px;"/>
+                    <span style="margin-left:5px;">Scollega Distributore</span>
+                </span>
+            </button>
         </div>
 
-        <div class="divider"></div>
+        <div class="divisore"></div>
 
-        <div class="section">
-            <h2 class="section-title">Ricarica</h2>
+        <div class="sezione">
+            <h2 class="titolo-sezione">Ricarica</h2>
             <form>
-                <div class="form-group">
-                    <label for="amount">Importo (€)</label>
-                    <input type="number" id="amount" placeholder="0.00" min="5" step="0.50" required>
+                <div class="gruppo-form">
+                    <label for="importo">Importo (€)</label>
+                    <input type="number" id="importo" placeholder="0.00" min="5" step="0.50" required>
                 </div>
-                <button type="submit" class="btn btn-success">Effettua Ricarica</button>
+                <button type="submit" class="btn btn-successo">Effettua Ricarica</button>
             </form>
         </div>
     </div>

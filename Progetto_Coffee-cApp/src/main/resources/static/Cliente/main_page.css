@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-.container {
+.contenitore {
     width: 100%;
     max-width: 500px;
     background-color: #ffffff;
@@ -24,7 +24,7 @@ body {
     overflow: hidden;
 }
 
-.header {
+.intestazione {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,43 +34,43 @@ body {
     text-align: left;
 }
 
-.username {
+.nome-utente {
     font-size: 24px;
     font-weight: 400;
     margin-bottom: 15px;
     color: #ffffff;
 }
 
-.credit {
+.credito {
     font-size: 60px;
     font-weight: 600;
     color: #f4f2ed;
 }
 
-.credit-label {
+.etichetta-credito {
     font-size: 14px;
     color: #b0b0b0;
     margin-bottom: 10px;
     font-weight: 400;
 }
 
-.content {
+.contenuto {
     padding: 40px;
     background-color: #ffffff;
 }
 
-.section {
+.sezione {
     margin-bottom: 35px;
 }
 
-.section-title {
+.titolo-sezione {
     font-size: 24px;
     font-weight: 600;
     color: #2d2d2d;
     margin-bottom: 20px;
 }
 
-.form-group {
+.gruppo-form {
     margin-bottom: 20px;
 }
 
@@ -122,25 +122,37 @@ button:hover {
     background-color: #dcd9d4;
 }
 
-.btn-danger {
+.btn-pericolo {
     background-color: #2d2d2d;
     color: #ffffff;
 }
 
-.btn-danger:hover {
-    background-color: #1a1a1a;
+.btn-pericolo:hover {
+    background-color: darkred;
 }
 
-.btn-success {
+.btn-successo {
     background-color: #2d2d2d;
     color: #ffffff;
 }
 
-.btn-success:hover {
-    background-color: #1a1a1a;
+.btn-successo:hover {
+    background-color: green;
 }
 
-.status {
+.btn-primario {
+    background-color: #FFB63D;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primario:hover {
+    background-color: #dcd9d4;
+}
+
+.stato {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -149,17 +161,17 @@ button:hover {
     font-weight: 500;
 }
 
-.status-connected {
+.stato-connesso {
     background-color: #d4edda;
     color: #155724;
 }
 
-.status-disconnected {
+.stato-disconnesso {
     background-color: #f8d7da;
     color: #721c24;
 }
 
-.divider {
+.divisore {
     height: 1px;
     background-color: #e0e0e0;
     margin: 35px 0;
