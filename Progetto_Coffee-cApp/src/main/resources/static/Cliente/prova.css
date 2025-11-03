@@ -1,0 +1,141 @@
+/* Tema */
+:root {
+    --bg: #f5f5f5;
+    --text: #2d2d2d;
+    --muted: #6b7280;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --primary: #2d2d2d;
+    --primary-contrast: #ffffff;
+    --danger: #dc2626;
+    --ring: rgba(45,45,45,0.35);
+}
+
+
+body {
+    margin: 0;
+    padding: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Card/Sezioni */
+.contenitore,
+.Cliente,
+.Connessione {
+    background-color: var(--card);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+}
+
+.contenitore {
+    width: min(720px, 100%);
+    min-height: 70vh;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.Cliente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-radius: 14px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+}
+
+.Cliente p {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.Connessione {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+}
+
+.Connessione > button { width: 100%; }
+
+/* Button base */
+button {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .05s ease;
+    font: inherit;
+}
+
+button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Ricarica (outline) */
+.Ricarica {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+    background: var(--card);
+    border-color: var(--border);
+}
+
+.Ricarica:hover { background: #f3f4f6; }
+.Ricarica:active { transform: translateY(1px); }
+
+/* Primario (Connessione) */
+button.Connessione {
+    background: var(--primary);
+    color: var(--primary-contrast);
+    border-color: var(--primary);
+    padding: 18px 20px;
+    border-radius: 999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button.Connessione:hover {
+    background: #414141;
+    border-color: #414141;
+}
+
+button.Connessione:active { transform: translateY(1px); }
+
+.btn-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.btn-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+}
+
+/* Danger (Disconnetti) */
+.Disconnected {
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--danger);
+    border-color: rgba(220,38,38,0.35);
+}
+
+.Disconnected:hover {
+    background: rgba(220,38,38,0.08);
+    border-color: var(--danger);
+}
+
+
