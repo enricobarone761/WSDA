@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Dashboard Amministrazione</title>
+    <link rel="stylesheet" href="gestore_sistema_style.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <header class="dashboard-header">
+        <h1>Pannello Amministrazione</h1>
+    </header>
+    <main class="dashboard-main">
+
+        <!-- SEZIONE GESTIONE ADDETTI MANUTENZIONE -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Gestione Addetti Manutenzione</h2>
+
+            <!-- Form per aggiungere -->
+            <div class="form-section add-section">
+                <h3>Aggiungi Addetto</h3>
+                <form>
+                    <label for="addetto-nome">Nome e Cognome</label>
+                    <input type="text" id="addetto-nome" placeholder="Mario Rossi" required>
+                    <label for="addetto-email">Email</label>
+                    <input type="email" id="addetto-email" placeholder="mario@email.com" required>
+                    <button type="submit" class="btn btn-success">Aggiungi Addetto</button>
+                </form>
+            </div>
+
+            <!-- Lista manutentori -->
+            <div class="manutentori-list">
+                <div class="manutentore-card">
+                    <div class="manutentore-info">
+                        <div class="manutentore-nome">Mario Rossi</div>
+                        <div class="manutentore-email">mario.rossi@email.com</div>
+                    </div>
+                    <button class="btn-piccolo btn-danger">Rimuovi</button>
+                </div>
+
+                <div class="manutentore-card">
+                    <div class="manutentore-info">
+                        <div class="manutentore-nome">Luigi Bianchi</div>
+                        <div class="manutentore-email">luigi.bianchi@email.com</div>
+                    </div>
+                    <button class="btn-piccolo btn-danger">Rimuovi</button>
+                </div>
+
+                <div class="manutentore-card">
+                    <div class="manutentore-info">
+                        <div class="manutentore-nome">Anna Verdi</div>
+                        <div class="manutentore-email">anna.verdi@email.com</div>
+                    </div>
+                    <button class="btn-piccolo btn-danger">Rimuovi</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE GESTIONE DISTRIBUTORI -->
+        <section class="dashboard-section">
+            <h2 class="section-title">Gestione Distributori</h2>
+
+            <!-- Form per aggiungere distributore -->
+            <div class="form-section add-section">
+                <h3>Aggiungi Distributore</h3>
+                <form>
+                    <label for="add-distributore-id">ID</label>
+                    <input type="text" id="add-distributore-id" placeholder="CA005" required>
+                    <label for="add-distributore-posizione">Posizione</label>
+                    <input type="text" id="add-distributore-posizione" placeholder="Edificio X - Piano Y" required>
+                    <button type="submit" class="btn btn-success">Aggiungi Distributore</button>
+                </form>
+            </div>
+
+            <!-- Lista distributori -->
+            <div class="distributori-list">
+                <!-- Distributore 1 -->
+                <div class="distributore-card">
+                    <div class="distributore-header">
+                        <div>
+                            <span class="distributore-id">CA001</span>
+                            <span class="distributore-stato attivo">Attivo</span>
+                        </div>
+                        <div class="distributore-posizione">Edificio 9 - Piano 2</div>
+                    </div>
+
+                    <div class="forniture-section">
+                        <h4>Livelli Forniture</h4>
+                        <div class="fornitura-item">
+                            <span>Caffè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 85%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">85%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Latte</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 70%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">70%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Zucchero</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 90%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">90%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Thè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 60%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">60%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Cioccolato</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 75%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">75%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Bicchieri</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 80%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">80%</span>
+                        </div>
+                    </div>
+
+                    <div class="guasti-section">
+                        <h4>Stato Componenti</h4>
+                        <div class="guasti-grid">
+                            <div class="guasto-item ok">✓ Pompa</div>
+                            <div class="guasto-item ok">✓ Riscaldatore</div>
+                            <div class="guasto-item ok">✓ Erogatore</div>
+                            <div class="guasto-item ok">✓ Sensori</div>
+                        </div>
+                    </div>
+
+                    <div class="distributore-actions">
+                        <button class="btn-piccolo btn-disattiva">Disattiva</button>
+                        <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
+                    </div>
+                </div>
+
+                <!-- Distributore 2 -->
+                <div class="distributore-card">
+                    <div class="distributore-header">
+                        <div>
+                            <span class="distributore-id">CA002</span>
+                            <span class="distributore-stato inattivo">Inattivo</span>
+                        </div>
+                        <div class="distributore-posizione">Edificio 6 - Piano 1</div>
+                    </div>
+
+                    <div class="forniture-section">
+                        <h4>Livelli Forniture</h4>
+                        <div class="fornitura-item">
+                            <span>Caffè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 30%; background: #ff9800;"></div>
+                            </div>
+                            <span class="percentuale">30%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Latte</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 15%; background: #f44336;"></div>
+                            </div>
+                            <span class="percentuale">15%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Zucchero</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 40%; background: #ff9800;"></div>
+                            </div>
+                            <span class="percentuale">40%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Thè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 25%; background: #f44336;"></div>
+                            </div>
+                            <span class="percentuale">25%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Cioccolato</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 35%; background: #ff9800;"></div>
+                            </div>
+                            <span class="percentuale">35%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Bicchieri</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 20%; background: #f44336;"></div>
+                            </div>
+                            <span class="percentuale">20%</span>
+                        </div>
+                    </div>
+
+                    <div class="guasti-section">
+                        <h4>Stato Componenti</h4>
+                        <div class="guasti-grid">
+                            <div class="guasto-item ok">✓ Pompa</div>
+                            <div class="guasto-item ok">✓ Riscaldatore</div>
+                            <div class="guasto-item ok">✓ Erogatore</div>
+                            <div class="guasto-item ok">✓ Sensori</div>
+                        </div>
+                    </div>
+
+                    <div class="distributore-actions">
+                        <button class="btn-piccolo btn-attiva">Attiva</button>
+                        <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
+                    </div>
+                </div>
+
+                <!-- Distributore 3 -->
+                <div class="distributore-card">
+                    <div class="distributore-header">
+                        <div>
+                            <span class="distributore-id">CA003</span>
+                            <span class="distributore-stato attivo">Attivo</span>
+                        </div>
+                        <div class="distributore-posizione">Mensa - Piano 0</div>
+                    </div>
+
+                    <div class="forniture-section">
+                        <h4>Livelli Forniture</h4>
+                        <div class="fornitura-item">
+                            <span>Caffè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 65%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">65%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Latte</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 55%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">55%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Zucchero</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 70%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">70%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Thè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 50%; background: #ff9800;"></div>
+                            </div>
+                            <span class="percentuale">50%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Cioccolato</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 60%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">60%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Bicchieri</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 45%; background: #ff9800;"></div>
+                            </div>
+                            <span class="percentuale">45%</span>
+                        </div>
+                    </div>
+
+                    <div class="guasti-section">
+                        <h4>Stato Componenti</h4>
+                        <div class="guasti-grid">
+                            <div class="guasto-item errore">✗ Pompa</div>
+                            <div class="guasto-item ok">✓ Riscaldatore</div>
+                            <div class="guasto-item ok">✓ Erogatore</div>
+                            <div class="guasto-item ok">✓ Sensori</div>
+                        </div>
+                    </div>
+
+                    <div class="distributore-actions">
+                        <button class="btn-piccolo btn-disattiva">Disattiva</button>
+                        <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
+                    </div>
+                </div>
+
+                <!-- Distributore 4 -->
+                <div class="distributore-card">
+                    <div class="distributore-header">
+                        <div>
+                            <span class="distributore-id">CA004</span>
+                            <span class="distributore-stato attivo">Attivo</span>
+                        </div>
+                        <div class="distributore-posizione">Edificio 19 - Laboratorio</div>
+                    </div>
+
+                    <div class="forniture-section">
+                        <h4>Livelli Forniture</h4>
+                        <div class="fornitura-item">
+                            <span>Caffè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 92%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">92%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Latte</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 88%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">88%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Zucchero</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 95%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">95%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Thè</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 80%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">80%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Cioccolato</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 90%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">90%</span>
+                        </div>
+                        <div class="fornitura-item">
+                            <span>Bicchieri</span>
+                            <div class="barra-container">
+                                <div class="barra-progresso" style="width: 85%; background: #4caf50;"></div>
+                            </div>
+                            <span class="percentuale">85%</span>
+                        </div>
+                    </div>
+
+                    <div class="guasti-section">
+                        <h4>Stato Componenti</h4>
+                        <div class="guasti-grid">
+                            <div class="guasto-item ok">✓ Pompa</div>
+                            <div class="guasto-item ok">✓ Riscaldatore</div>
+                            <div class="guasto-item ok">✓ Erogatore</div>
+                            <div class="guasto-item ok">✓ Sensori</div>
+                        </div>
+                    </div>
+
+                    <div class="distributore-actions">
+                        <button class="btn-piccolo btn-disattiva">Disattiva</button>
+                        <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+</body>
+</html>
