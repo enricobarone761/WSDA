@@ -35,30 +35,30 @@
         </forniture>
 
         <guasti>
-            <guasto>
+            <componente>
                 <nome>Pompa Acqua</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Riscaldatore</nome>
                 <stato>Guasto</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Erogatore</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Display</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Gettoniera</nome>
                 <stato>Manutenzione</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Macina Caffè</nome>
                 <stato>OK</stato>
-            </guasto>
+            </componente>
         </guasti>
     </distributore>
 
@@ -97,30 +97,30 @@
         </forniture>
 
         <guasti>
-            <guasto>
+            <componente>
                 <nome>Pompa Acqua</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Riscaldatore</nome>
                 <stato>Guasto</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Erogatore</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Display</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Gettoniera</nome>
                 <stato>Manutenzione</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Macina Caffè</nome>
                 <stato>OK</stato>
-            </guasto>
+            </componente>
         </guasti>
     </distributore>
 
@@ -159,30 +159,30 @@
         </forniture>
 
         <guasti>
-            <guasto>
+            <componente>
                 <nome>Pompa Acqua</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Riscaldatore</nome>
                 <stato>Guasto</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Erogatore</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Display</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Gettoniera</nome>
                 <stato>Manutenzione</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Macina Caffè</nome>
                 <stato>OK</stato>
-            </guasto>
+            </componente>
         </guasti>
     </distributore>
 
@@ -221,30 +221,30 @@
         </forniture>
 
         <guasti>
-            <guasto>
+            <componente>
                 <nome>Pompa Acqua</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Riscaldatore</nome>
                 <stato>Guasto</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Erogatore</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Display</nome>
                 <stato>OK</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Gettoniera</nome>
                 <stato>Manutenzione</stato>
-            </guasto>
-            <guasto>
+            </componente>
+            <componente>
                 <nome>Macina Caffè</nome>
                 <stato>OK</stato>
-            </guasto>
+            </componente>
         </guasti>
     </distributore>
 </distributori>
