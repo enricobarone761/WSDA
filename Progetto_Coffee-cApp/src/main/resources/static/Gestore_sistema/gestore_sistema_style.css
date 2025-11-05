@@ -213,13 +213,6 @@ body {
     border-bottom: 2px solid #e0e0e0;
 }
 
-.distributore-header > div:first-child {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 6px;
-}
-
 .distributore-id {
     font-weight: 700;
     color: #2d2d2d;
@@ -267,11 +260,6 @@ body {
     gap: 10px;
     margin-bottom: 8px;
     font-size: 13px;
-}
-
-.fornitura-item span:first-child {
-    color: #2d2d2d;
-    font-weight: 500;
 }
 
 .barra-container {
