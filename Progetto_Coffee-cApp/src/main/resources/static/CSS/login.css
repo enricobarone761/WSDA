@@ -55,7 +55,7 @@ h2{
 
 .login-form input{
     font-size: 20px;
-    width: 350px;
+    width: 100%;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -75,6 +75,7 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
+    overflow: hidden;
 }
 
 button:hover {

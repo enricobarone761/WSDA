@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<distributori>
+    <distributore id="CA001">
+
+        <edificio>9</edificio>
+        <piano>2</piano>
+
+        <stato>Attivo</stato>
+
+        <forniture>
+            <fornitura>
+                <nome>Caffè</nome>
+                <livello>50</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Latte</nome>
+                <livello>45</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Zucchero</nome>
+                <livello>20</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Thè</nome>
+                <livello>90</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Cioccolato</nome>
+                <livello>60</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Bicchieri</nome>
+                <livello>35</livello>
+            </fornitura>
+        </forniture>
+
+        <guasti>
+            <guasto>
+                <nome>Pompa Acqua</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Riscaldatore</nome>
+                <stato>Guasto</stato>
+            </guasto>
+            <guasto>
+                <nome>Erogatore</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Display</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Gettoniera</nome>
+                <stato>Manutenzione</stato>
+            </guasto>
+            <guasto>
+                <nome>Macina Caffè</nome>
+                <stato>OK</stato>
+            </guasto>
+        </guasti>
+    </distributore>
+
+    <distributore id="CA002">
+
+        <edificio>6</edificio>
+        <piano>1</piano>
+
+        <stato>Inattivo</stato>
+
+        <forniture>
+            <fornitura>
+                <nome>Caffè</nome>
+                <livello>30</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Latte</nome>
+                <livello>15</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Zucchero</nome>
+                <livello>40</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Thè</nome>
+                <livello>25</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Cioccolato</nome>
+                <livello>35</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Bicchieri</nome>
+                <livello>20</livello>
+            </fornitura>
+        </forniture>
+
+        <guasti>
+            <guasto>
+                <nome>Pompa Acqua</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Riscaldatore</nome>
+                <stato>Guasto</stato>
+            </guasto>
+            <guasto>
+                <nome>Erogatore</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Display</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Gettoniera</nome>
+                <stato>Manutenzione</stato>
+            </guasto>
+            <guasto>
+                <nome>Macina Caffè</nome>
+                <stato>OK</stato>
+            </guasto>
+        </guasti>
+    </distributore>
+
+    <distributore id="CA003">
+
+        <edificio>mensa</edificio>
+        <piano>0</piano>
+
+        <stato>Attivo</stato>
+
+        <forniture>
+            <fornitura>
+                <nome>Caffè</nome>
+                <livello>65</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Latte</nome>
+                <livello>55</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Zucchero</nome>
+                <livello>70</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Thè</nome>
+                <livello>50</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Cioccolato</nome>
+                <livello>60</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Bicchieri</nome>
+                <livello>45</livello>
+            </fornitura>
+        </forniture>
+
+        <guasti>
+            <guasto>
+                <nome>Pompa Acqua</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Riscaldatore</nome>
+                <stato>Guasto</stato>
+            </guasto>
+            <guasto>
+                <nome>Erogatore</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Display</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Gettoniera</nome>
+                <stato>Manutenzione</stato>
+            </guasto>
+            <guasto>
+                <nome>Macina Caffè</nome>
+                <stato>OK</stato>
+            </guasto>
+        </guasti>
+    </distributore>
+
+    <distributore id="CA004">
+
+        <edificio>19</edificio>
+        <piano>Laboratorio</piano>
+
+        <stato>Attivo</stato>
+
+        <forniture>
+            <fornitura>
+                <nome>Caffè</nome>
+                <livello>92</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Latte</nome>
+                <livello>88</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Zucchero</nome>
+                <livello>95</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Thè</nome>
+                <livello>80</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Cioccolato</nome>
+                <livello>90</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Bicchieri</nome>
+                <livello>85</livello>
+            </fornitura>
+        </forniture>
+
+        <guasti>
+            <guasto>
+                <nome>Pompa Acqua</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Riscaldatore</nome>
+                <stato>Guasto</stato>
+            </guasto>
+            <guasto>
+                <nome>Erogatore</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Display</nome>
+                <stato>OK</stato>
+            </guasto>
+            <guasto>
+                <nome>Gettoniera</nome>
+                <stato>Manutenzione</stato>
+            </guasto>
+            <guasto>
+                <nome>Macina Caffè</nome>
+                <stato>OK</stato>
+            </guasto>
+        </guasti>
+    </distributore>
+</distributori>

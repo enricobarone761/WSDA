@@ -1,0 +1,67 @@
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="distributori">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="distributore" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="edificio"/>
+                            <xs:element type="xs:string" name="piano"/>
+                            <xs:element name="stato">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="attivo"/>
+                                        <xs:enumeration value="inattivo"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="forniture">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="fornitura" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:string" name="nome"/>
+                                                    <xs:element type="xs:unsignedByte" name="livello"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="guasti">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="guasto" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:string" name="nome"/>
+                                                    <xs:element name="stato">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="OK"/>
+                                                                <xs:enumeration value="Guasto"/>
+                                                                <xs:enumeration value="Manutenzione"/>
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="id" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="CA[0-9]{3}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
