@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<title>jQuery class</title>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#myTextarea').mouseover(function() {
+			$(this).addClass('myHover');
+		});
+		$('#myTextarea').mouseout(function() {
+			$(this).removeClass('myHover');
+		});
+	});
+</script>
+<style>
+.myHover {
+	background-color: #FFFACD;
+}
+</style>
+</head>
+<body>
+	<textarea id="myTextarea"></textarea>
+</body>
+</html>

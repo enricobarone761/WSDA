@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery CSS get/set</title>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("div").click(function() {
+			$("#out").html($(this).css("background-color"));
+		});
+		$("button#c").click(function() {
+			$("p#other").css("background-color", "yellow");
+		});
+		$("button#cf").click(function() {
+			$("p#other").css({
+				"background-color" : "red",
+				"font-size" : "200%"
+			});
+		});
+
+	});
+</script>
+</head>
+
+<body>
+	<div style="width: 100px; height: 100px; background: #ff0000"></div>
+	<div style="width: 100px; height: 100px; background: #ffff00"></div>
+	<p>Click in the box to return the background color.</p>
+	<p id="out">-</p>
+	<hr />
+	<p id="other">This is another paragraph.</p>
+	<button id="c">Change color</button>
+	<button id="cf">Change color &amp; font</button>
+</body>
+</html>
+

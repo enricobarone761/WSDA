@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button#h").click(function() {
+			$(".div1").height("200px");
+		});
+		$("button#w").click(function() {
+			$(".div1").width("200px");
+		});
+	});
+</script>
+</head>
+
+<body>
+	<div class="div1"
+		style="background: yellow; height: 100px; width: 100px">YELLOW</div>
+	<div style="background: red; height: 100px; width: 100px">RED</div>
+	<div class="div1"
+		style="background: green; height: 100px; width: 100px">GREEN</div>
+	<button id="h">Change height</button>
+	<button id="w">Change width</button>
+</body>
+</html>

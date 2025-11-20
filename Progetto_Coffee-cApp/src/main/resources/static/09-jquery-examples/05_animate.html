@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery animation</title>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("button#start").click(function() {
+			$("div").animate({
+				height : 300,
+				width : 300
+			}, "slow");
+			$("div").animate({
+				left : "100px"
+			}, "slow");
+			$("div").animate({
+				fontSize : "3em"
+			}, "slow");
+			$("div").animate({
+				left : "10px"
+			}, "slow");
+			$("div").animate({
+				height : 100
+			}, "slow");
+			$("div").animate({
+				fontSize : "1em"
+			}, "slow");
+			$("div").animate({
+				width : 100
+			}, "slow");
+		});
+		$("button#stop").click(function() {
+			$("div").stop(true, true);
+		});
+	});
+</script>
+</head>
+
+<body>
+	<button id="start">Start Animation</button>
+	<button id="stop">Stop Animation</button>
+	<br />
+	<br />
+	<div
+		style="background: #98bf21; height: 100px; width: 100px; position: relative">
+		HELLO!</div>
+</body>
+</html>

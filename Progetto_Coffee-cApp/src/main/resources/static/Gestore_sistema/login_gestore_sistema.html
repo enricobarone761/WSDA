@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>gestore_login</title>
     <link rel="stylesheet" href="../CSS-e-Icone/login.css">
+    <script src="gestore_sistema.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,9 +18,9 @@
             <p>Accedi al tuo account <strong>Coffee App</strong>: Gestore Sistema</p>
             <div class="login-form">
                 <form method="post">
-                    <label for="email"></label><input type="email" name="email" id="email" placeholder="Email"><br>
-                    <label for="password"></label><input type="password" name="password" id="password" placeholder="Password"><br><br>
-                    <button type="submit">Accedi</button>
+                    <label for="email"></label><input type="email" name="email" id="email" placeholder="Email" required><br>
+                    <label for="password"></label><input type="password" name="password" id="password" placeholder="Password" required><br><br>
+                    <button type="submit" onclick="MyFunction()">Accedi</button>
                 </form>
 
             </div>
