@@ -1,16 +1,19 @@
 // Controllo periodico dell'utente
 let utente = null
-let username_el = document.getElementsByClassName("username")[0].innerText;
-let credito_el = document.getElementsByClassName("credit")[0].innerText;
-let bevandaCard = document.querySelectorAll(".bevanda-card")
+let username_el = document.querySelector('.username')
+let credito_el = document.querySelector('.credit')
 
 function check_user() {
     fetch("utente.json")
         .then(res => res.json())
         .then(res => {
-            username_el = res.username;
-            credito_el = res.credit;
+            if (username_el && credito_el) {
+                username_el.textContent = res.username;
+                credito_el.textContent = "€ " + res.credit;
+            }
+        console.log('check')
         })
+
         .catch(error => {
             document.getElementsByClassName("user-label")[0].innerText = ""
             username_el = "Nessun Utente Connesso";
@@ -24,8 +27,5 @@ function check_user() {
         });
 }
 check_user()
-setInterval(check_user, 1000);
+//setInterval(check_user, 2000);
 
-document.querySelector('.btn-conferma').addEventListener('click', () => {
-    alert("1111");
-});
