@@ -17,9 +17,21 @@
             <p>Accedi al tuo account <strong>Coffee App</strong></p>
             <div class="login-form">
                 <form method="post">
-                    <label for="email"></label><input type="email" name="email" id="email" placeholder="Email"><br>
-                    <label for="password"></label><input type="password" name="password" id="password" placeholder="Password"><br><br>
-                    <button type="submit">Accedi</button>
+                    <label for="email"></label>
+                    <input type="email" name="email" id="email" placeholder="Email"><br>
+
+                    <label for="password"></label>
+                    <input type="password" name="password" id="password" placeholder="Password"><br><br>
+
+                    <button type="button" onclick="LoginSubmit()">Accedi</button>
+                    <script>
+                       function LoginSubmit() {
+                           const form = document.querySelector('.login-form form');
+                           if (form.reportValidity()){
+                               window.location.href = "connessione_distributore.html";
+                           }
+                       }
+                    </script>
                 </form>
 
             </div>

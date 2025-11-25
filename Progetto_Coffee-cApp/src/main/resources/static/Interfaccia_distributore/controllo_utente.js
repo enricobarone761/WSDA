@@ -1,17 +1,18 @@
-// Controllo periodico dell'utente
-let utente = null
 let username_el = document.querySelector('.username')
 let credito_el = document.querySelector('.credit')
 
+
+let intervallo = setInterval(check_user, 2000)
 function check_user() {
     fetch("utente.json")
         .then(res => res.json())
         .then(res => {
             if (username_el && credito_el) {
                 username_el.textContent = res.username;
-                credito_el.textContent = "€ " + res.credit;
+                credito_el.textContent = res.credit;
+                clearInterval(intervallo) // Interrompre il controllo dell'utente una volta connesso
             }
-        console.log('check')
+        console.log('Utente Connesso')
         })
 
         .catch(error => {
@@ -27,5 +28,4 @@ function check_user() {
         });
 }
 check_user()
-//setInterval(check_user, 2000);
 

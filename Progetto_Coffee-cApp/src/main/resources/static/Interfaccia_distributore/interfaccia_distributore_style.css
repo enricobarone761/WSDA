@@ -49,7 +49,8 @@ body {
     color: #ffffff;
 }
 
-.credit {
+.credit,
+.euro_simbolo{
     font-size: 48px;
     font-weight: 600;
     color: #f4f2ed;
