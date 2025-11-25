@@ -2,7 +2,7 @@ let input_id = null;
 let botton_connessione = document.querySelector('#conn');
 
 //CONNESSIONE
-document.querySelector('form').addEventListener('submit', (event) => {
+document.querySelector('form').addEventListener('click', (event) => {
     event.preventDefault(); // Temproaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina
 
     input_id = document.querySelector('#id-distributore').value;
