@@ -1,18 +1,46 @@
-let gestore_sistema = {'nome':'luca', 'password':505}
-for (let i = 0; i < 10; i++) {
-    console.log(gestore_sistema.nome + '\n' + gestore_sistema.password)
-    console.log(gestore_sistema.password + i)
+let xmlDoc = null;
+fetch('../XML/addetti_manutenzione.xml')
+    .then(response => response.text())
+    .then(str => {
+        xmlDoc = new DOMParser().parseFromString(str, "application/xml");
+    })
+    .then(carica_manutentori)
+    .catch(errore => console.log(errore));
+
+
+function costruttore_addetto(foo){
+    const addetto = {
+        'nome': foo.querySelector('nome').innerHTML,
+        'cognome': foo.querySelector('cognome').innerHTML,
+        'email': foo.querySelector('email').innerHTML
+    }
+
+    return addetto
 }
 
-let sum = function(x,y){return x+y;};
+function carica_manutentori(addetto){
 
-console.log(sum(85,5));
+    const nome = addetto.nome
 
-function MyFunction(){
-    console.log('ciao');
-    let j = 0;
-    for (let i = 0; i < 100; i++) {
-        j++
-        console.log(sum(i,j));
+    const div = document.createElement('div')
+    div.innerHTML =
+        `<div class="manutentore-card">
+            <div class="manutentore-info">
+                <div class="manutentore-nome">${nome} ${addetto[cognome]}</div>
+                <div class="manutentore-email">${addetto[email]}</div>
+            </div>
+            <button class="btn-piccolo btn-danger">Rimuovi</button>
+         </div>`;
+
+    document.querySelector('.manutentori-list').appendChild(div)
+    console.log(addetto)
+
+}
+
+function pippo(){
+    const addetti = xmlDoc.getElementsByTagName('addetto');
+
+    for( let addetto of addetti ) {
+        carica_manutentori( costruttore_addetto(addetto) )
     }
 }

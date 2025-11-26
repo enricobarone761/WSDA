@@ -15,6 +15,7 @@ function carica_forniture(id){
         const livello = fornitura.querySelector('livello').innerHTML
         const colore_barra = livello >= 50 ? '#4caf50' : livello >= 30 ? '#ff9800' : '#f44336';
 
+        //anziché modificare i dati sulla pagina creo direttamente l'html qui (singola fornitura)
         const div = document.createElement('div')
         div.innerHTML =
             `<div class="forniture-card">
@@ -58,14 +59,14 @@ function aggiornaID(id) {
 
 //PULSATE CARICA STATO
 document.querySelector('#load_state').addEventListener('click', (event) => {
-    event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina
+    event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina e la rimozione di tutti i dati
 
     // svuota le griglie prima ad ogni nuova pressione.
     document.querySelector('.forniture-grid').innerHTML = '';
     document.querySelector('.guasti-grid').innerHTML = '';
 
     const id_distributore = document.querySelector('#id-distributore').value;
-    if(xmlDoc.getElementById(id_distributore)){
+    if(xmlDoc.getElementById(id_distributore)){ //contrlla se esiste
         console.log(id_distributore)
 
         aggiornaID(id_distributore)

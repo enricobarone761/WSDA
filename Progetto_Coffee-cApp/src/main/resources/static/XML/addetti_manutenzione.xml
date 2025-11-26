@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <impiegati>
+
+        <addetto>
+            <nome>Mario</nome>
+            <cognome>Rossi</cognome>
+            <email>mario.rossi@gmail.com</email>
+        </addetto>
+
+        <addetto>
+            <nome>Luigi</nome>
+            <cognome>Bianchi</cognome>
+            <email>luigi.bianchi@example.com</email>
+        </addetto>
+
+        <addetto>
+            <nome>Giulia</nome>
+            <cognome>Verdi</cognome>
+            <email>giulia.verdi@example.com</email>
+        </addetto>
+
+        <addetto>
+            <nome>Francesca</nome>
+            <cognome>Neri</cognome>
+            <email>francesca.neri@example.com</email>
+        </addetto>
+
+        <addetto>
+            <nome>Lorenzo</nome>
+            <cognome>Moretti</cognome>
+            <email>lorenzo.moretti@example.com</email>
+        </addetto>
+
+        <addetto>
+            <nome>Sara</nome>
+            <cognome>Colombo</cognome>
+            <email>sara.colombo@example.com</email>
+        </addetto>
+
+</impiegati>

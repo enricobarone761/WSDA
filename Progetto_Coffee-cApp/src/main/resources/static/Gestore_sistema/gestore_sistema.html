@@ -5,6 +5,7 @@
     <meta name="viewport">
     <title>Dashboard Gestore Sistema</title>
     <link rel="stylesheet" href="gestore_sistema_style.css">
+    <script src="gestore_sistema.js" defer></script>
 </head>
 <body>
 <div class="dashboard-container">
@@ -20,10 +21,15 @@
             <div class="form-section add-section">
                 <h3>Aggiungi Addetto</h3>
                 <form>
-                    <label for="addetto-nome">Nome e Cognome</label>
-                    <input type="text" id="addetto-nome" placeholder="Mario Rossi" required>
+                    <label for="addetto-nome">Nome</label>
+                    <input type="text" id="addetto-nome" placeholder="Mario" required>
+
+                    <label for="addetto-cognome">Cognome</label>
+                    <input type="text" id="addetto-cognome" placeholder="Rossi" required>
+
                     <label for="addetto-email">Email</label>
                     <input type="email" id="addetto-email" placeholder="mario@email.com" required>
+
                     <button type="submit" class="btn btn-success">Aggiungi Addetto</button>
                 </form>
             </div>
