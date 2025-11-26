@@ -4,24 +4,26 @@ fetch('../XML/xml-distributori.xml')
     .then(str => {
         xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
     })
-    .then(carica_addetti)
+    .then(aggiungi_html_distributore)
     .catch(errore => console.log(errore));
 
 
 function aggiungi_html_distributore(id){
 
-const distributore = function(categoria, tipo) {
-                xmlDocDist.getElementById('CA001').querySelectorAll(categoria).forEach(e=>{
-                    if (e.querySelector('nome').textContent === tipo) {
-                        if(categoria === 'fornitura') {
-                            return e.querySelector('livello').innerHTML;
-                        }else{ // se componente
-                            return e.querySelector('stato').innerHTML;
-                        }
-                    }
-                })
-
-            };
+    const distributore = function(categoria, tipo) {
+             const elementi = xmlDocDist.getElementById('CA001').querySelectorAll(categoria);
+             let risultato = null;
+             elementi.forEach(e => {
+                 if (e.querySelector('nome').textContent === tipo) {
+                     if (categoria === 'fornitura') {
+                         risultato = e.querySelector('livello').innerHTML;
+                     } else { // se componente
+                         risultato = e.querySelector('stato').innerHTML;
+                     }
+                 }
+             });
+             return risultato;
+         };
 
     const div = document.createElement('div')
     div.classList.add('distributore-card')
@@ -97,13 +99,19 @@ const distributore = function(categoria, tipo) {
             <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
         </div>`;
 
-    //LOGICA PULSANTE RIMUOVI
+    //LOGICA PULSANTE RIMUOVI TODO
     div.querySelector('.rmv-addetto').addEventListener('click', listener => {
         alert('Hai rimosso ' + addetto.nome + ' ' + addetto.cognome)
         div.closest('.manutentore-card').remove();
     })
 
-    document.querySelector('.manutentori-list').appendChild(div)
+    //LOGICA PULSANTE ATTIVA/DISATTIVA TODO
+    div.querySelector('.rmv-addetto').addEventListener('click', listener => {
+        alert('Hai rimosso ' + addetto.nome + ' ' + addetto.cognome)
+        div.closest('.manutentore-card').remove();
+    })
+
+    document.querySelector('.distributori-list').appendChild(div)
     console.log(addetto)
 
 }
