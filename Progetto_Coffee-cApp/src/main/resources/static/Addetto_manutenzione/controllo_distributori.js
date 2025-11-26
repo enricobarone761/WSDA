@@ -7,13 +7,9 @@ fetch('../XML/xml-distributori.xml')
     })
     .catch(errore => console.log(errore));
 
-
-function recuperaFornitureDaID(id){
-    return xmlDoc.getElementById(id).querySelectorAll('fornitura');
-}
-
 function carica_forniture(id){
-    for( let fornitura of recuperaFornitureDaID(id) ) {
+    const forniture = xmlDoc.getElementById(id).querySelectorAll('fornitura');
+    for( let fornitura of forniture ) {
 
         const nome = fornitura.querySelector('nome').innerHTML
         const livello = fornitura.querySelector('livello').innerHTML
@@ -52,7 +48,7 @@ function carica_guasti(id){
             </div>`;
 
         document.querySelector('.guasti-grid').appendChild(div)
-        console.log(guasti)
+        console.log(componente)
     }
 }
 
@@ -60,13 +56,20 @@ function aggiornaID(id) {
     document.querySelector('#ID').innerHTML = 'Distributore: ' + id;
 }
 
+//PULSATE CARICA STATO
 document.querySelector('#load_state').addEventListener('click', (event) => {
     event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina
 
-    const id_distributore = document.querySelector('#id-distributore').value;
-    console.log(id_distributore)
+    // svuota le griglie prima ad ogni nuova pressione.
+    document.querySelector('.forniture-grid').innerHTML = '';
+    document.querySelector('.guasti-grid').innerHTML = '';
 
-    aggiornaID(id_distributore)
-    carica_forniture(id_distributore)
-    carica_guasti(id_distributore)
+    const id_distributore = document.querySelector('#id-distributore').value;
+    if(xmlDoc.getElementById(id_distributore)){
+        console.log(id_distributore)
+
+        aggiornaID(id_distributore)
+        carica_forniture(id_distributore)
+        carica_guasti(id_distributore)
+    }
 })
