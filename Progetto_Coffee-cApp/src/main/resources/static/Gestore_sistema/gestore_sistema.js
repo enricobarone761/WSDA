@@ -4,7 +4,7 @@ fetch('../XML/addetti_manutenzione.xml')
     .then(str => {
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");
     })
-    .then(carica_manutentori)
+    .then(pippo)
     .catch(errore => console.log(errore));
 
 
@@ -20,14 +20,12 @@ function costruttore_addetto(foo){
 
 function carica_manutentori(addetto){
 
-    const nome = addetto.nome
-
     const div = document.createElement('div')
     div.innerHTML =
         `<div class="manutentore-card">
             <div class="manutentore-info">
-                <div class="manutentore-nome">${nome} ${addetto[cognome]}</div>
-                <div class="manutentore-email">${addetto[email]}</div>
+                <div class="manutentore-nome">${addetto.nome} ${addetto.cognome}</div>
+                <div class="manutentore-email">${addetto.email}</div>
             </div>
             <button class="btn-piccolo btn-danger">Rimuovi</button>
          </div>`;
