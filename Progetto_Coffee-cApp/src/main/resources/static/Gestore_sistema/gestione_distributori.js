@@ -101,12 +101,12 @@ function aggiungi_html_distributore(id) {
         <div class="guasti-section">
             <h4>Stato Componenti</h4>
             <div class="guasti-grid">
-                <div class="guasto-item ${distributore('componente','Pompa Acqua').toLowerCase()}"> Pompa Acqua</div>
-                <div class="guasto-item ${distributore('componente','Riscaldatore').toLowerCase()}"> Riscaldatore</div>
-                <div class="guasto-item ${distributore('componente','Erogatore').toLowerCase()}"> Erogatore</div>
-                <div class="guasto-item ${distributore('componente','Display').toLowerCase()}"> Display</div>
-                <div class="guasto-item ${distributore('componente','Gettoniera').toLowerCase()}"> Gettoniera</div>
-                <div class="guasto-item ${distributore('componente','Macina Caffè').toLowerCase()}"> Macina Caffè</div>
+                <div class="guasto-item ${distributore('componente','Pompa Acqua').toLowerCase()}">Pompa Acqua</div>
+                <div class="guasto-item ${distributore('componente','Riscaldatore').toLowerCase()}">Riscaldatore</div>
+                <div class="guasto-item ${distributore('componente','Erogatore').toLowerCase()}">Erogatore</div>
+                <div class="guasto-item ${distributore('componente','Display').toLowerCase()}">Display</div>
+                <div class="guasto-item ${distributore('componente','Gettoniera').toLowerCase()}">Gettoniera</div>
+                <div class="guasto-item ${distributore('componente','Macina Caffè').toLowerCase()}">Macina Caffè</div>
             </div>
         </div>
 
@@ -134,9 +134,20 @@ function aggiungi_html_distributore(id) {
 }
 
 function carica_distributori(){
+    //qui estraggo soltanto la lista di ID su cui iterare, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
     const distributori =Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id)
 
     for( let distributore of distributori ) {
         aggiungi_html_distributore( distributore )
     }
 }
+
+//LOGICA PULSANTE AGGIUNGI DISTRIBUTORE TODO
+document.querySelector('#agg-add').addEventListener('click' , listener=>{
+    listener.preventDefault()
+
+    if(document.querySelector('form').reportValidity()){
+        aggiungi_html_addetto(nuovo_addetto)
+    }
+
+})

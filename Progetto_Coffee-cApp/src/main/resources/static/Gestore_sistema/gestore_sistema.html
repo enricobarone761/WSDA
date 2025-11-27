@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="gestore_sistema_style.css">
     <script src="gestione_manutentori.js" defer></script>
     <script src="gestione_distributori.js" defer></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('#add-dist-form').hide()
+            $("#add-dist-title").click(function() {
+                $("#add-dist-form").slideToggle(200);
+            });
+
+            $('#search-dist-form').hide()
+            $("#search-dist-title").click(function() {
+                $("#search-dist-form").slideToggle(200);
+            });
+
+        });
+    </script>
+
 </head>
 <body>
 <div class="dashboard-container">
@@ -43,19 +61,76 @@
 
         <!-- SEZIONE GESTIONE DISTRIBUTORI -->
         <section class="dashboard-section">
+            <script src="ricerca_distributori.js"></script>
             <h2 class="section-title">Gestione Distributori</h2>
 
             <!-- Form per aggiungere distributore -->
-            <div class="form-section add-section">
-                <h3>Aggiungi Distributore</h3>
-                <form>
-                    <label for="add-distributore-id">ID</label>
-                    <input type="text" id="add-distributore-id" placeholder="CA005" required>
-                    <label for="add-distributore-posizione">Posizione</label>
-                    <input type="text" id="add-distributore-posizione" placeholder="Edificio X - Piano Y" required>
-                    <button type="submit" class="btn btn-success">Aggiungi Distributore</button>
-                </form>
-            </div>
+        <div class="form-section add-section">
+            <button id="add-dist-title" type="button" class="toggle-btn">
+                <span class="toggle-text">Aggiungi Distributore</span>
+                <img src="../CSS-e-Icone/search-magnifying-glass-svgrepo-com.svg" alt="cerca" class="toggle-icon">
+            </button>
+             <form id="add-dist-form">
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="add-distributore-id">ID</label>
+                        <input type="text" id="add-distributore-id" placeholder="CA005" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="add-distributore-edificio">Edificio</label>
+                        <input type="text" id="add-distributore-edificio" placeholder="Edificio A" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="add-distributore-piano">Piano</label>
+                        <input type="text" id="add-distributore-piano" placeholder="Piano 2" required>
+                    </div>
+                </div>
+
+                <button id="add-dist-btn" type="submit" class="btn btn-success">Aggiungi Distributore</button>
+            </form>
+        </div>
+
+        <div class="form-section add-section">
+            <button id="search-dist-title" type="button" class="toggle-btn">
+                <span class="toggle-text">Ricerca Distributore</span>
+                <img src="../CSS-e-Icone/search-magnifying-glass-svgrepo-com.svg" alt="cerca" class="toggle-icon">
+            </button>
+             <form id="search-dist-form">
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="search-distributore-id">ID</label>
+                        <input type="text" id="search-distributore-id" placeholder="CA005">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="search-distributore-edificio">Edificio</label>
+                        <input type="text" id="search-distributore-edificio" placeholder="Edificio A">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="search-distributore-piano">Piano</label>
+                        <input type="text" id="search-distributore-piano" placeholder="Piano 2">
+                    </div>
+                </div>
+
+                <div class="input-row small-row">
+                    <div class="input-group">
+                        <label for="search-distributore-stato">Stato</label>
+                        <select id="search-distributore-stato">
+                            <option value="">-- qualsiasi --</option>
+                            <option value="attivo">Attivo</option>
+                            <option value="inattivo">Inattivo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="search-dist-btn" type="submit" class="btn btn-success">Cerca Distributore</button>
+            </form>
+        </div>
 
             <!-- Lista distributori -->
             <div class="distributori-list"><!-- dati inseriti con js --></div>
