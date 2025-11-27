@@ -113,13 +113,6 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="search-distributore-piano">Piano</label>
-                        <input type="text" id="search-distributore-piano" placeholder="Piano 2">
-                    </div>
-                </div>
-
-                <div class="input-row small-row">
-                    <div class="input-group">
                         <label for="search-distributore-stato">Stato</label>
                         <select id="search-distributore-stato">
                             <option value="">-- qualsiasi --</option>
@@ -127,6 +120,15 @@
                             <option value="inattivo">Inattivo</option>
                         </select>
                     </div>
+                </div>
+
+                <div class="filter-buttons-row">
+                    <button id="search-dist-low-stock-btn" type="button" class="btn btn-warning">
+                        Forniture Sotto 50%
+                    </button>
+                    <button id="search-dist-fault-btn" type="button" class="btn btn-danger">
+                        Distributori con Guasto
+                    </button>
                 </div>
 
                 <button id="search-dist-btn" type="submit" class="btn btn-success">Cerca Distributore</button>

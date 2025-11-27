@@ -252,6 +252,31 @@ body {
 .toggle-icon { width: 20px; height: 20px; display: inline-block; }
 .toggle-text { line-height: 1; }
 
+/* Riga bottoni filtro (forniture e guasti) */
+.filter-buttons-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+.filter-buttons-row .btn {
+    margin-top: 0;
+    border-radius: var(--radius-md);
+    background: var(--input-bg);
+    color: var(--accent);
+    border: 1px solid #e0e0e0;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.filter-buttons-row .btn:hover,
+.filter-buttons-row .btn:focus {
+    background: #ffe4cc;
+    border-color: #ffb366;
+    outline: none;
+}
+
 @media (max-width: 1200px) {
     .dashboard-main { flex-direction: column; }
     .dashboard-section { max-height: none; }
@@ -262,4 +287,5 @@ body {
     .dashboard-header h1 { font-size: 22px; padding-bottom: 8px; }
     .dashboard-main { padding: 20px; }
     .input-row { gap: 10px; }
+    .filter-buttons-row { grid-template-columns: 1fr; gap: 10px; }
 }

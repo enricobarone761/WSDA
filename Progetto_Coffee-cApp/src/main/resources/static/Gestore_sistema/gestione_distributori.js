@@ -150,7 +150,7 @@ function carica_distributori(){
     }
 }
 
-//LOGICA PULSANTE AGGIUNGI DISTRIBUTORE
+//LOGICA PULSANTE AGGIUNGI  TODO controllo unicità id
 document.querySelector('#add-dist-btn').addEventListener('click', listener => {
     listener.preventDefault() //Temporaneo per l'assignment
     console.log('adsdasda');
