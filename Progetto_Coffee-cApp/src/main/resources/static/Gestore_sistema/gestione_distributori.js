@@ -4,7 +4,7 @@ fetch('../XML/xml-distributori.xml')
     .then(str => {
         xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
     })
-    .then(()=>aggiungi_html_distributore("CA001"))
+    .then(carica_distributori)
     .catch(errore => console.log(errore));
 
 
@@ -131,6 +131,12 @@ function aggiungi_html_distributore(id) {
 
     document.querySelector('.distributori-list').appendChild(div)
     console.log(div)
+}
 
+function carica_distributori(){
+    const distributori =Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id)
 
+    for( let distributore of distributori ) {
+        aggiungi_html_distributore( distributore )
+    }
 }
