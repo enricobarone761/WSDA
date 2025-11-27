@@ -271,10 +271,16 @@ body {
 }
 
 .filter-buttons-row .btn:hover,
-.filter-buttons-row .btn:focus {
+.filter-buttons-row .btn:focus{
     background: #ffe4cc;
     border-color: #ffb366;
     outline: none;
+}
+
+/* Stile per pulsanti filtro attivi */
+.filter-buttons-row .btn.active {
+    background: #ffe4cc;
+    border-color: #ffb366;
 }
 
 @media (max-width: 1200px) {

@@ -13,7 +13,7 @@ fetch('../XML/xml-distributori.xml')
     .catch(errore => console.log(errore));
 
 
-function aggiungi_html_distributore(id, posizione) {
+function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disattiva
 
     //funzione forse superflua che mi aiuta per compilare in modo più leggibile l'HTML qui sotto
     //recupera lo stato di forniture/guasti da XML in modo pulito e semplice
@@ -150,7 +150,7 @@ function carica_distributori(){
     }
 }
 
-//LOGICA PULSANTE AGGIUNGI  TODO controllo unicità id
+//LOGICA PULSANTE AGGIUNGI
 document.querySelector('#add-dist-btn').addEventListener('click', listener => {
     listener.preventDefault() //Temporaneo per l'assignment
     console.log('adsdasda');

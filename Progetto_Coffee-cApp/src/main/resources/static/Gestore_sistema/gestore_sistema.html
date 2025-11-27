@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="gestore_sistema_style.css">
     <script src="gestione_manutentori.js" defer></script>
     <script src="gestione_distributori.js" defer></script>
+    <script src="ricerca_distributori.js" defer></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
@@ -17,7 +18,7 @@
                 $("#add-dist-form").slideToggle(200);
             });
 
-            $('#search-dist-form').hide()
+            //$('#search-dist-form').hide()
             $("#search-dist-title").click(function() {
                 $("#search-dist-form").slideToggle(200);
             });
@@ -61,7 +62,6 @@
 
         <!-- SEZIONE GESTIONE DISTRIBUTORI -->
         <section class="dashboard-section">
-            <script src="ricerca_distributori.js"></script>
             <h2 class="section-title">Gestione Distributori</h2>
 
             <!-- Form per aggiungere distributore -->
@@ -104,18 +104,18 @@
                 <div class="input-row">
                     <div class="input-group">
                         <label for="search-distributore-id">ID</label>
-                        <input type="text" id="search-distributore-id" placeholder="CA005">
+                        <input type="text" id="search-distributore-id" name="distributore-id" placeholder="CA005">
                     </div>
 
                     <div class="input-group">
                         <label for="search-distributore-edificio">Edificio</label>
-                        <input type="text" id="search-distributore-edificio" placeholder="Edificio A">
+                        <input type="text" id="search-distributore-edificio" name="distributore-edificio" placeholder="5">
                     </div>
 
                     <div class="input-group">
                         <label for="search-distributore-stato">Stato</label>
-                        <select id="search-distributore-stato">
-                            <option value="">-- qualsiasi --</option>
+                        <select id="search-distributore-stato" name="distributore-stato">
+                            <option value=""> </option>
                             <option value="attivo">Attivo</option>
                             <option value="inattivo">Inattivo</option>
                         </select>
@@ -124,7 +124,7 @@
 
                 <div class="filter-buttons-row">
                     <button id="search-dist-low-stock-btn" type="button" class="btn btn-warning">
-                        Forniture Sotto 50%
+                        Forniture <50%
                     </button>
                     <button id="search-dist-fault-btn" type="button" class="btn btn-danger">
                         Distributori con Guasto
