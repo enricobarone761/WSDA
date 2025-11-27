@@ -1,14 +1,19 @@
 let xmlDocDist = null;
+let lista_id_distributori = null
 fetch('../XML/xml-distributori.xml')
     .then(response => response.text())
     .then(str => {
+
         xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
-    })
+
+        //qui estraggo soltanto la lista di ID da xml su cui iterare. Quando serve, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
+        lista_id_distributori = Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id) })
+
     .then(carica_distributori)
     .catch(errore => console.log(errore));
 
 
-function aggiungi_html_distributore(id) {
+function aggiungi_html_distributore(id, posizione) {
 
     //funzione forse superflua che mi aiuta per compilare in modo più leggibile l'HTML qui sotto
     //recupera lo stato di forniture/guasti da XML in modo pulito e semplice
@@ -49,7 +54,10 @@ function aggiungi_html_distributore(id) {
                 <span class="distributore-id">${id}</span>
                 <span class="distributore-stato attivo">${xmlDocDist.getElementById(id).querySelector('stato').innerHTML}</span>
             </div>
-            <div class="distributore-posizione">Edificio ${xmlDocDist.getElementById(id).querySelector('edificio').innerHTML} - Piano ${xmlDocDist.getElementById(id).querySelector('piano').innerHTML} </div>
+            <div class="distributore-posizione">
+                Edificio ${xmlDocDist.getElementById(id)?.querySelector('edificio')?.innerHTML ?? posizione.edificio} - 
+                Piano ${xmlDocDist.getElementById(id)?.querySelector('piano')?.innerHTML ?? posizione.piano}
+            </div>
         </div>
 
         <div class="forniture-section">
@@ -134,20 +142,24 @@ function aggiungi_html_distributore(id) {
 }
 
 function carica_distributori(){
-    //qui estraggo soltanto la lista di ID su cui iterare, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
-    const distributori =Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id)
-
-    for( let distributore of distributori ) {
+    for( let distributore of lista_id_distributori ) {
         aggiungi_html_distributore( distributore )
     }
 }
 
 //LOGICA PULSANTE AGGIUNGI DISTRIBUTORE TODO
-document.querySelector('#agg-add').addEventListener('click' , listener=>{
+document.querySelector('#add-dist-btn').addEventListener('click' , listener=>{
     listener.preventDefault()
 
+    console.log('adsdasda')
+
+    const posizione = {
+        'edificio': 5,
+        'piano': 4
+    }
+
     if(document.querySelector('form').reportValidity()){
-        aggiungi_html_addetto(nuovo_addetto)
+        aggiungi_html_addetto(nuovo_id , posizione)
     }
 
 })
