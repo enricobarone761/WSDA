@@ -1,4 +1,4 @@
-//RECUPERIAMO I DATI DAL FORM TODO
+//RECUPERIAMO I DATI DAL FORM
 document.querySelector('#search-dist-btn').addEventListener('click', e=>{
     e.preventDefault();
 
@@ -6,21 +6,9 @@ document.querySelector('#search-dist-btn').addEventListener('click', e=>{
     const dati = Object.fromEntries(dati_grezzi_form.entries())
 
     // Aggiungi lo stato dei pulsanti filtro ai dati
-    const lowStockBtn = document.querySelector('#search-dist-low-stock-btn')
-    const faultBtn = document.querySelector('#search-dist-fault-btn')
-
-    dati.lowStock = lowStockBtn.classList.contains('active')
-    dati.hasFault = faultBtn.classList.contains('active')
-
+    dati.fornitura_50 = document.querySelector('#search-dist-low-stock-btn').classList.contains('active')
+    dati.guasto = document.querySelector('#search-dist-fault-btn').classList.contains('active')
     console.log(dati)
 })
 
-// Toggle per il pulsante forniture basse
-document.querySelector('#search-dist-low-stock-btn').addEventListener('click', e => {
-    e.currentTarget.classList.toggle('active')
-})
-
-// Toggle per il pulsante guasti
-document.querySelector('#search-dist-fault-btn').addEventListener('click', e => {
-    e.currentTarget.classList.toggle('active')
-})
+//LOGICA DI RICERCA TODO

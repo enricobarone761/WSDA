@@ -270,8 +270,7 @@ body {
     transition: background 0.2s, border-color 0.2s;
 }
 
-.filter-buttons-row .btn:hover,
-.filter-buttons-row .btn:focus{
+.filter-buttons-row .btn:hover{
     background: #ffe4cc;
     border-color: #ffb366;
     outline: none;
@@ -279,8 +278,8 @@ body {
 
 /* Stile per pulsanti filtro attivi */
 .filter-buttons-row .btn.active {
-    background: #ffe4cc;
-    border-color: #ffb366;
+    background: #ffc898;
+    border-color: #ffab4b;
 }
 
 @media (max-width: 1200px) {
