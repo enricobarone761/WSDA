@@ -311,12 +311,12 @@ body {
     color: #4caf50;
 }
 
-.guasto-item.errore {
+.guasto-item.guasto {
     background: #ffe3e3;
     color: #f44336;
 }
 
-.guasto-item.warning {
+.guasto-item.manutenzione {
     background: #fff2ce;
     color: #ff9800;
 }
