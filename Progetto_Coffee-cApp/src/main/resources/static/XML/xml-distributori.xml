@@ -318,7 +318,7 @@
         <edificio>12</edificio>
         <piano>1</piano>
 
-        <stato>In Manutenzione</stato>
+        <stato>Inattivo</stato>
 
         <forniture>
             <fornitura>
@@ -667,7 +667,7 @@
     </distributore>
 
     <distributore id="CA065">
-        <edificio>corridoio</edificio>
+        <edificio>11</edificio>
         <piano>0</piano>
         <stato>Attivo</stato>
         <forniture>
@@ -726,8 +726,8 @@
 
     <distributore id="CA066">
         <edificio>22</edificio>
-        <piano>Terreno</piano>
-        <stato>In Manutenzione</stato>
+        <piano>0</piano>
+        <stato>Inattivo</stato>
         <forniture>
             <fornitura>
                 <nome>Caffè</nome>
@@ -783,7 +783,7 @@
     </distributore>
 
     <distributore id="CA067">
-        <edificio>05</edificio>
+        <edificio>5</edificio>
         <piano>4</piano>
         <stato>Attivo</stato>
         <forniture>

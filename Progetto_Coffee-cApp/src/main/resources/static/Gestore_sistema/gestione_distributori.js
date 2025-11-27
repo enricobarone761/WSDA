@@ -18,17 +18,19 @@ function aggiungi_html_distributore(id, posizione) {
     //funzione forse superflua che mi aiuta per compilare in modo più leggibile l'HTML qui sotto
     //recupera lo stato di forniture/guasti da XML in modo pulito e semplice
     const distributore = function(categoria, tipo) {
-        const elementi = xmlDocDist.getElementById(id).querySelectorAll(categoria);
+        const elementi = xmlDocDist.getElementById(id)?.querySelectorAll(categoria);
         let risultato = null;
-        elementi.forEach(e => {
-            if(e.querySelector('nome').textContent === tipo) {
-                if(categoria === 'fornitura') {
-                    risultato = e.querySelector('livello').innerHTML;
-                } else { // se componente
-                    risultato = e.querySelector('stato').innerHTML;
+        if(elementi != null){
+            elementi.forEach(e => {
+                if (e.querySelector('nome').textContent === tipo) {
+                    if (categoria === 'fornitura') {
+                        risultato = e.querySelector('livello').innerHTML;
+                    } else { // se componente
+                        risultato = e.querySelector('stato').innerHTML;
+                    }
                 }
-            }
-        });
+            });
+        }
         return risultato;
     };
 
@@ -52,7 +54,7 @@ function aggiungi_html_distributore(id, posizione) {
         `<div class="distributore-header">
             <div>
                 <span class="distributore-id">${id}</span>
-                <span class="distributore-stato attivo">${xmlDocDist.getElementById(id).querySelector('stato').innerHTML}</span>
+                <span class="distributore-stato attivo">${xmlDocDist.getElementById(id)?.querySelector('stato')?.innerHTML}</span>
             </div>
             <div class="distributore-posizione">
                 Edificio ${xmlDocDist.getElementById(id)?.querySelector('edificio')?.innerHTML ?? posizione.edificio} - 
@@ -109,12 +111,12 @@ function aggiungi_html_distributore(id, posizione) {
         <div class="guasti-section">
             <h4>Stato Componenti</h4>
             <div class="guasti-grid">
-                <div class="guasto-item ${distributore('componente','Pompa Acqua').toLowerCase()}">Pompa Acqua</div>
-                <div class="guasto-item ${distributore('componente','Riscaldatore').toLowerCase()}">Riscaldatore</div>
-                <div class="guasto-item ${distributore('componente','Erogatore').toLowerCase()}">Erogatore</div>
-                <div class="guasto-item ${distributore('componente','Display').toLowerCase()}">Display</div>
-                <div class="guasto-item ${distributore('componente','Gettoniera').toLowerCase()}">Gettoniera</div>
-                <div class="guasto-item ${distributore('componente','Macina Caffè').toLowerCase()}">Macina Caffè</div>
+                <div class="guasto-item ${ (distributore('componente','Pompa Acqua') || '').toLowerCase() }">Pompa Acqua</div>
+                <div class="guasto-item ${ (distributore('componente','Riscaldatore') || '').toLowerCase() }">Riscaldatore</div>
+                <div class="guasto-item ${ (distributore('componente','Erogatore') || '').toLowerCase() }">Erogatore</div>
+                <div class="guasto-item ${ (distributore('componente','Display') || '').toLowerCase() }">Display</div>
+                <div class="guasto-item ${ (distributore('componente','Gettoniera') || '').toLowerCase() }">Gettoniera</div>
+                <div class="guasto-item ${ (distributore('componente','Macina Caffè') || '').toLowerCase() }">Macina Caffè</div>
             </div>
         </div>
 
@@ -137,7 +139,8 @@ function aggiungi_html_distributore(id, posizione) {
 
     })
 
-    document.querySelector('.distributori-list').appendChild(div)
+    //
+    document.querySelector('.distributori-list').prepend(div)
     console.log(div)
 }
 
@@ -147,19 +150,19 @@ function carica_distributori(){
     }
 }
 
-//LOGICA PULSANTE AGGIUNGI DISTRIBUTORE TODO
-document.querySelector('#add-dist-btn').addEventListener('click' , listener=>{
-    listener.preventDefault()
-
-    console.log('adsdasda')
+//LOGICA PULSANTE AGGIUNGI DISTRIBUTORE
+document.querySelector('#add-dist-btn').addEventListener('click', listener => {
+    listener.preventDefault() //Temporaneo per l'assignment
+    console.log('adsdasda');
 
     const posizione = {
-        'edificio': 5,
-        'piano': 4
-    }
+        'edificio': document.querySelector('#add-distributore-piano').value,
+        'piano': document.querySelector('#add-distributore-edificio').value
+    };
 
-    if(document.querySelector('form').reportValidity()){
-        aggiungi_html_addetto(nuovo_id , posizione)
+    const nuovo_id = document.querySelector('#add-distributore-id').value;
+    if (document.querySelector('#add-dist-form').reportValidity()) {
+        aggiungi_html_distributore(nuovo_id, posizione);
+        document.querySelector('#add-dist-form').reset()
     }
-
-})
+});
