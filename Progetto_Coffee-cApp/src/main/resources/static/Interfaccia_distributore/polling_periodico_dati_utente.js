@@ -4,7 +4,7 @@ let credito_el = document.querySelector('.credit')
 
 let intervallo = setInterval(check_user, 2000)
 function check_user() {
-    fetch("utente.json")
+    fetch("../XML/utente.json")
         .then(res => res.json())
         .then(res => {
             if (username_el && credito_el) {

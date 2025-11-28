@@ -9,6 +9,10 @@ document.querySelectorAll('.btn-bevanda').forEach(btn => {
     btn.addEventListener('click', e => {
 
         const card = e.target.closest('.bevanda-card');
+
+        document.querySelectorAll('.bevanda-card.attiva').forEach(c => c.classList.remove('attiva'));
+        card.classList.add('attiva');
+
         prezzo = parseFloat(card.querySelector('.bevanda-prezzo').innerText.replace('€ ', '' ).replace(',' , '.'));
         console.log('prezzo selezionato ' + prezzo)
     });

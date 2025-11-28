@@ -114,10 +114,6 @@ body {
     background-color: #ffb63d;
 }
 
-.btn-bevanda:focus {
-    border: 3px solid #000000;
-}
-
 .zucchero-controls {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
@@ -163,6 +159,12 @@ body {
     display: flex;
     justify-content:center;
     align-items:center;
+}
+
+.bevanda-card.attiva{
+    box-shadow: 0 8px 30px rgb(255, 182, 61);
+    transform: translateY(-4px);
+    transition: all 0.2s;
 }
 
 .Caffè-Icona{

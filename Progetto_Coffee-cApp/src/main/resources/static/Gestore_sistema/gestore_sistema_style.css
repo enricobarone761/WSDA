@@ -152,7 +152,6 @@ body {
     color: #fff;
 }
 
-.btn-disattiva:hover,
 .btn-danger:hover { background: #b71c1c; }
 
 .btn-attiva { background: #4caf50; color: #fff; }
