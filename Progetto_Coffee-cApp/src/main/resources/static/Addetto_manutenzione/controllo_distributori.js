@@ -72,5 +72,7 @@ document.querySelector('#load_state').addEventListener('click', (event) => {
         aggiornaID(id_distributore)
         carica_forniture(id_distributore)
         carica_guasti(id_distributore)
+    }else{
+        alert('ID inesistente')
     }
 })

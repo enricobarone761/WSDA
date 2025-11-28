@@ -23,7 +23,7 @@ window.addEventListener('distributoriCaricati', ()=>{
 
         lista_distributori.forEach(e=>{
             //controllo id
-            if(criteri_di_ricerca['distributore-id'] && criteri_di_ricerca['distributore-id'] !== e.id ){
+            if(criteri_di_ricerca['distributore-id'] && criteri_di_ricerca['distributore-id'].toUpperCase() !== e.id){
                 lista_distributori_validi.delete(e.id)
             }
 
@@ -60,11 +60,16 @@ window.addEventListener('distributoriCaricati', ()=>{
         console.log(lista_distributori_validi)
 
         //.hide() con jquery di tutti i distributori che NON SONO nella lista / mostriamo il risultato della query di ricerca
-        document.querySelectorAll('.distributore-card').forEach(e=>{
-            if(!lista_distributori_validi.has(e.id)){
-                $(`#${e.id}`).hide(10);
-            }
-        })
+        if(lista_distributori_validi.size === 0){
+            alert('Nessun distributore trovato con questi criteri di ricerca')
+            document.querySelector('#search-dist-form').reset()
+        }else{
+            document.querySelectorAll('.distributore-card').forEach(e=>{
+                if(!lista_distributori_validi.has(e.id)){
+                    $(`#${e.id}`).hide(10);
+                }
+            })
+        }
 
 
     })
