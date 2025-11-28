@@ -7,8 +7,11 @@ fetch('../XML/xml-distributori.xml')
         xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
 
         //qui estraggo soltanto la lista di ID da xml su cui iterare. Quando serve, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
-        lista_id_distributori = Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id) })
+        lista_id_distributori = Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id)
 
+        // la creazione di questo evento personalizzato mi permette di fare ricerca sui distributori aspettando che vengano prima caricati in memoria
+        window.dispatchEvent(new CustomEvent('distributoriCaricati'));
+    })
     .then(carica_distributori)
     .catch(errore => console.log(errore));
 
@@ -50,6 +53,7 @@ function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disatti
 
     const div = document.createElement('div')
     div.classList.add('distributore-card')
+    div.id = id
     div.innerHTML =
         `<div class="distributore-header">
             <div>
