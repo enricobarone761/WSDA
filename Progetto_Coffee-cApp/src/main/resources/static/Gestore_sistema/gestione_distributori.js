@@ -16,12 +16,14 @@ fetch('../XML/xml-distributori.xml')
     .catch(errore => console.log(errore));
 
 
-function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disattiva
+function aggiungi_html_distributore(id, posizione) {
+
+    const nodo_distributore = xmlDocDist.getElementById(id)
 
     //funzione forse superflua che mi aiuta per compilare in modo più leggibile l'HTML qui sotto
     //recupera lo stato di forniture/guasti da XML in modo pulito e semplice
     const distributore = function(categoria, tipo) {
-        const elementi = xmlDocDist.getElementById(id)?.querySelectorAll(categoria);
+        const elementi = nodo_distributore?.querySelectorAll(categoria);
         let risultato = null;
         if(elementi != null){
             elementi.forEach(e => {
@@ -50,6 +52,14 @@ function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disatti
         return `width: ${livello}%; background: ${colore};`;
     }
 
+    const stato_pulsante_card = function(){
+        if(nodo_distributore?.querySelector('stato').textContent === 'Attivo'){
+            return 'Disattiva'
+        }else{
+            return 'Attiva'
+        }
+    }
+
 
     const div = document.createElement('div')
     div.classList.add('distributore-card')
@@ -58,11 +68,11 @@ function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disatti
         `<div class="distributore-header">
             <div>
                 <span class="distributore-id">${id}</span>
-                <span class="distributore-stato attivo">${xmlDocDist.getElementById(id)?.querySelector('stato')?.innerHTML}</span>
+                <span class="distributore-stato ${nodo_distributore?.querySelector('stato')?.innerHTML.toLowerCase()}">${nodo_distributore?.querySelector('stato')?.innerHTML}</span>
             </div>
             <div class="distributore-posizione">
-                Edificio ${xmlDocDist.getElementById(id)?.querySelector('edificio')?.innerHTML ?? posizione.edificio} - 
-                Piano ${xmlDocDist.getElementById(id)?.querySelector('piano')?.innerHTML ?? posizione.piano}
+                Edificio ${nodo_distributore?.querySelector('edificio')?.innerHTML ?? posizione.edificio} - 
+                Piano ${nodo_distributore?.querySelector('piano')?.innerHTML ?? posizione.piano}
             </div>
         </div>
 
@@ -125,7 +135,7 @@ function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disatti
         </div>
 
         <div class="distributore-actions">
-            <button class="btn-piccolo btn-disattiva">Disattiva</button>
+            <button class="btn-piccolo btn-disattiva">${stato_pulsante_card()}</button>
             <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
         </div>`;
 
@@ -137,14 +147,30 @@ function aggiungi_html_distributore(id, posizione) { //TODO tasto Attiva/Disatti
     })
 
 
-    //LOGICA PULSANTE ATTIVA/DISATTIVA TODO
+    //LOGICA PULSANTE ATTIVA/DISATTIVA
     div.querySelector('.btn-disattiva').addEventListener('click', listener => {
-        alert('Hai disattivato ' + id)
+        const statoSpan = div.querySelector('.distributore-stato');
+        const pulsante = div.querySelector('.btn-disattiva');
 
+        if (statoSpan.classList.contains('attivo')) {
+            // Disattiva il distributore
+            statoSpan.classList.remove('attivo');
+            statoSpan.classList.add('inattivo');
+            statoSpan.textContent = 'Inattivo';
+            pulsante.textContent = 'Attiva';
+            alert('Hai disattivato ' + id);
+        } else {
+            // Attiva il distributore
+            statoSpan.classList.remove('inattivo');
+            statoSpan.classList.add('attivo');
+            statoSpan.textContent = 'Attivo';
+            pulsante.textContent = 'Disattiva';
+            alert('Hai attivato ' + id);
+        }
     })
 
     //
-    document.querySelector('.distributori-list').prepend(div)
+    document.querySelector('.distributori-list').appendChild(div)
     console.log(div)
 }
 
@@ -166,7 +192,11 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
 
     const nuovo_id = document.querySelector('#add-distributore-id').value;
     if (document.querySelector('#add-dist-form').reportValidity()) {
-        aggiungi_html_distributore(nuovo_id, posizione);
-        document.querySelector('#add-dist-form').reset()
+        if (!lista_id_distributori.includes(nuovo_id)) {
+            aggiungi_html_distributore(nuovo_id, posizione);
+            document.querySelector('#add-dist-form').reset();
+        } else {
+            alert('Errore: ID distributore già esistente');
+        }
     }
 });

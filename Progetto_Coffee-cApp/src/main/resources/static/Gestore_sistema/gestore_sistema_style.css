@@ -132,7 +132,6 @@ body {
 
 .btn-success:hover { background: #191919; }
 
-/* piccolo buttons inherit common properties, keep only differences */
 .btn-piccolo {
     font-size: 13px;
     padding: 7px 17px;
@@ -144,8 +143,10 @@ body {
     transition: background 0.2s;
 }
 
-/* Consolidate danger styles used in multiple classes */
-.btn-disattiva,
+.btn-disattiva{
+    background: #ececec;
+    color: var(--accent);
+}
 .btn-danger {
     background: #f44336;
     color: #fff;

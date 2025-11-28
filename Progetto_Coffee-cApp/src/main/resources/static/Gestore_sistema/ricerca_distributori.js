@@ -4,6 +4,7 @@ window.addEventListener('distributoriCaricati', ()=>{
     document.querySelector('#search-dist-btn').addEventListener('click', e=>{
         e.preventDefault();
 
+        //ad ogni pressione ripristiniamo tutte le card per poi eseguire la logica di ricerca
         document.querySelectorAll('.distributore-card').forEach(e=>{
                 $(`#${e.id}`).show(10);
         })
@@ -59,7 +60,6 @@ window.addEventListener('distributoriCaricati', ()=>{
         console.log(lista_distributori_validi)
 
         //.hide() con jquery di tutti i distributori che NON SONO nella lista / mostriamo il risultato della query di ricerca
-
         document.querySelectorAll('.distributore-card').forEach(e=>{
             if(!lista_distributori_validi.has(e.id)){
                 $(`#${e.id}`).hide(10);

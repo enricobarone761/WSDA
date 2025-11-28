@@ -75,7 +75,7 @@
                 <div class="input-row">
                     <div class="input-group">
                         <label for="add-distributore-id">ID</label>
-                        <input type="text" id="add-distributore-id" placeholder="CA005" required>
+                        <input type="text" id="add-distributore-id" placeholder="CA005" pattern="CA[0-9]{3}" required>
                     </div>
 
                     <div class="input-group">
@@ -124,7 +124,7 @@
 
                 <div class="filter-buttons-row">
                     <button id="search-dist-low-stock-btn" type="button" class="btn btn-warning">
-                        1 Fornitura <50%
+                        Distributori con una fornitura sotto al 50%
                     </button>
                     <button id="search-dist-fault-btn" type="button" class="btn btn-danger">
                         Distributori con Guasto
