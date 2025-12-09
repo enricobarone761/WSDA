@@ -11,7 +11,6 @@ function check_user() {
                 username_el.textContent = res.username;
                 credito_el.textContent = res.credit;
                 clearInterval(intervallo) // Interrompre il controllo dell'utente una volta connesso
-                console.log('sssssssss')
             }
         console.log('Utente Connesso')
         })
