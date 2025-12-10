@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	function loadXMLDoc(url) {
+		var xmlhttp;
+		var txt, x, xx, i;
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				txt = "<table border='2'><tr><th>Title</th><th>Artist</th><th>Price</th></tr>";
+				x = xmlhttp.responseXML.documentElement
+						.getElementsByTagName("CD");
+				for (i = 0; i < x.length; i++) {
+					txt = txt + "<tr>";
+					txt += makeTableCell(x[i].getElementsByTagName("TITLE"));
+					txt += makeTableCell(x[i].getElementsByTagName("ARTIST"));
+					txt += makeTableCell(x[i].getElementsByTagName("PRICE"));					
+					txt = txt + "</tr>";
+				}
+				txt = txt + "</table>";
+				document.getElementById('txtCDInfo').innerHTML = txt;
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+	
+
+	function makeTableCell(x) {
+		var txt = "";
+		try {
+			txt = txt + "<td>" + x[0].firstChild.nodeValue + "</td>";
+		} catch (er) {
+			txt = txt + "<td> </td>";
+		}
+		return txt;
+	}
+	
+</script>
+</head>
+<body>
+
+	<div id="txtCDInfo"></div>
+	<hr />
+	<button onclick="loadXMLDoc('10_random_cd.jsp')">Get CD info</button>
+
+</body>
+</html>

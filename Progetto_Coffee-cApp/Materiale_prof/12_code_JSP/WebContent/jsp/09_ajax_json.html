@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Get JSON data from a JSP</title>
+<script>
+	function getRandomLink(){
+		var xmlhttp = new XMLHttpRequest();
+		var url = "09_random_link.jsp";
+
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var myLink = JSON.parse(xmlhttp.responseText);
+				var a = "<a href=" + myLink.link + ">" + myLink.title + "</a>";
+				document.getElementById("id01").innerHTML = a;
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+	</script>
+</head>
+<body>
+	<div id="id01"></div>
+	<hr />
+	<button onclick="getRandomLink()">Get a random link</button>
+
+</body>
+</html>
