@@ -1,4 +1,4 @@
-package it.unipa.wsda.progetto_coffeecapp;
+package unipa.it.progetto_coffeecapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

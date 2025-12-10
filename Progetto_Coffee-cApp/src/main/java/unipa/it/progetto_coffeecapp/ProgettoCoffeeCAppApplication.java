@@ -1,4 +1,4 @@
-package it.unipa.wsda.progetto_coffeecapp;
+package unipa.it.progetto_coffeecapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
