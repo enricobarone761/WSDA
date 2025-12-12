@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrazione AJAX</title>
+</head>
+<body>
+
+<h2>Registrazione Utente</h2>
+
+<label>Nome:</label><br>
+<input type="text" id="nome"><br><br>
+
+<label>Cognome:</label><br>
+<input type="text" id="cognome"><br><br>
+
+<label>Email:</label><br>
+<input type="email" id="email"><br><br>
+
+<button onclick="inviaRegistrazione()">Registrati</button>
+
+<p id="risposta" style="font-weight:bold; margin-top:20px;"></p>
+
+<script>
+  function inviaRegistrazione() {
+    const data = {
+      nome: document.getElementById("nome").value,
+      cognome: document.getElementById("cognome").value,
+      email: document.getElementById("email").value
+    };
+
+    fetch("registrazione", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+            .then(r => r.json())
+            .then(json => {
+              document.getElementById("risposta").innerText = json.codice;
+            });
+  }
+</script>
+
+</body>
+</html>
