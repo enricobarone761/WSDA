@@ -49,7 +49,11 @@ La versione Spring Boot è stata corretta a 3.2.0 (la versione 4.0.0 non esiste)
 
 ### Configurazione della Connessione
 
-Modifica i parametri nel file `DatabaseConnectionExample.java`:
+⚠️ **IMPORTANTE - Sicurezza**: Il file `DatabaseConnectionExample.java` contiene credenziali hardcoded solo a scopo didattico/di test. 
+
+**NON utilizzare mai credenziali hardcoded in produzione!** Utilizza invece Spring Boot `application.properties` (vedi sezione "Prossimi Passi" più in basso).
+
+Per testare l'esempio, modifica i parametri nel file `DatabaseConnectionExample.java`:
 
 ```java
 private static final String URL = "jdbc:mysql://127.0.0.1:3306/nome_db";

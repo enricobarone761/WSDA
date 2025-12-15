@@ -14,7 +14,14 @@ import java.sql.SQLException;
  */
 public class DatabaseConnectionExample {
     
-    // Parametri di connessione - modificare in base alla propria configurazione
+    // ATTENZIONE: Questi sono valori di esempio per scopo didattico.
+    // In un'applicazione reale, NON inserire mai credenziali hardcoded nel codice!
+    // Utilizzare invece:
+    // - Variabili d'ambiente
+    // - File application.properties di Spring Boot
+    // - Gestori di configurazione sicuri
+    
+    // Parametri di connessione - MODIFICARE in base alla propria configurazione
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/nome_db";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "password";
