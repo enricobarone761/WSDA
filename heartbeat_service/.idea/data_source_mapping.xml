@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/.idea/queries/Query_1.sql" value="d95b91b4-38b9-4f36-9745-f024304ce494" />
-    <file url="file://$PROJECT_DIR$/src/main/java/pippone.java" value="d95b91b4-38b9-4f36-9745-f024304ce494" />
-  </component>
-</project>
