@@ -2,14 +2,14 @@ package it.unipa.wsda.heartbeat_service.d_DatabaseLayer;
 
 import java.sql.Timestamp;
 
-public class distributore {
+public class Distributore {
     private String id;
-    private DistributorStatus status;
+    private StatiDistributori status;
     private double lat;
     private double lon;
     private Timestamp lastHeartbeat;
 
-    public distributore(String id, DistributorStatus status, double lat, double lon, Timestamp lastHeartbeat) {
+    public Distributore(String id, StatiDistributori status, double lat, double lon, Timestamp lastHeartbeat) {
         this.id = id;
         this.status = status;
         this.lat = lat;
@@ -49,11 +49,11 @@ public class distributore {
         this.lastHeartbeat = lastHeartbeat;
     }
 
-    public DistributorStatus getStatus() {
+    public StatiDistributori getStatus() {
         return status;
     }
 
-    public void setStatus(DistributorStatus status) {
+    public void setStatus(StatiDistributori status) {
         this.status = status;
     }
 }

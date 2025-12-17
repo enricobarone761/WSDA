@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class distributori_db {
+public class DistributoriInfoDB {
     public static void main(String[] args) {
 
-        try (Connection conn = conn_distributore.getConnection();
+        try (Connection conn = ConnessioneDistributore.getConnection();
              Statement stmt = conn.createStatement()) {
 
             // 1) Creazione database

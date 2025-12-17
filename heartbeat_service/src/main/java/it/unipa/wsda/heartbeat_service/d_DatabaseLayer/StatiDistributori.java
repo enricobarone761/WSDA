@@ -1,6 +1,6 @@
 package it.unipa.wsda.heartbeat_service.d_DatabaseLayer;
 
-public enum DistributorStatus {
+public enum StatiDistributori {
     ATTIVO,
     MANUTENZIONE,
     GUASTO

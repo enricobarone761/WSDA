@@ -1,8 +1,9 @@
+/*
 package it.unipa.wsda.heartbeat_service.a_PresentationLayer;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import it.unipa.wsda.heartbeat_service.b_BusinessLogicLayer.DistributorService;
+import it.unipa.wsda.heartbeat_service.b_BusinessLogicLayer.kjsahdkjashd;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,16 +12,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "HeartbeatServlet", urlPatterns = {"/heartbeat"})
 public class HeartbeatServlet extends HttpServlet {
 
-    private DistributorService service;
+    private kjsahdkjashd service;
 
     @Override
     public void init() throws ServletException {
-        service = new DistributorService();
+        service = new kjsahdkjashd();
     }
 
     @Override
@@ -38,3 +38,4 @@ public class HeartbeatServlet extends HttpServlet {
     }
 }
 
+*/
