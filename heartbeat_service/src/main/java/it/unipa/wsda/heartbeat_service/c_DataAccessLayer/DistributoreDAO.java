@@ -4,10 +4,7 @@ import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.StatiDistributori;
 import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.ConnessioneDistributore;
 import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.Distributore;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -85,6 +82,18 @@ public class DistributoreDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, ds.toString());
+            ps.setString(2,id);
+            ps.executeUpdate();
+        }
+    }
+
+    public void updateLastHeartbeat(String id) throws SQLException {
+        String sql = "UPDATE distributori SET last_heartbeat = ? WHERE id = ?";
+
+        try (Connection conn = ConnessioneDistributore.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis()));
             ps.setString(2,id);
             ps.executeUpdate();
         }
