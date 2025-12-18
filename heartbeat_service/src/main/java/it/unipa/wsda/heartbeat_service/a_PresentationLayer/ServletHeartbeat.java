@@ -26,12 +26,7 @@ public class ServletHeartbeat extends HttpServlet {
             service.aggiornaUltimoHeartbeat(req.getParameter("id"));
             resp.setStatus(HttpServletResponse.SC_OK); //codice 200 OK
         } catch (SQLException e) {
-            // Se l'eccezione contiene "NotFound" significa che l'id non esiste nel DB
-            if (e.getMessage() != null && e.getMessage().contains("NotFound:")) {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
-            } else {
-                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-            }
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 
