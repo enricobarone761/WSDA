@@ -95,7 +95,10 @@ public class DistributoreDAO {
 
             ps.setTimestamp(1, new java.sql.Timestamp(System.currentTimeMillis()));
             ps.setString(2,id);
-            ps.executeUpdate();
+            if (ps.executeUpdate() == 0) {
+                // inserito per testare la servlet
+                throw new SQLException("NotFound: distributore con id=" + id);
+            }
         }
     }
 

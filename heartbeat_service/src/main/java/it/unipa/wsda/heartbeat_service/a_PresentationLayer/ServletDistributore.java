@@ -28,7 +28,7 @@ public class ServletDistributore extends HttpServlet {
     }
 
     private long ultimoControlloGuasti = 0;
-    private static final long INTERVALLO_CONTROLLO = 30 * 1000; // Esempio: controlla ogni 30 secondi
+    private static final long INTERVALLO_CONTROLLO = 30 * 1000; //30 secondi
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
