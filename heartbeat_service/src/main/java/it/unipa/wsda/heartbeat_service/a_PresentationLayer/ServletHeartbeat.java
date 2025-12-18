@@ -1,6 +1,5 @@
 package it.unipa.wsda.heartbeat_service.a_PresentationLayer;
 
-import com.google.gson.Gson;
 import it.unipa.wsda.heartbeat_service.b_BusinessLogicLayer.DistributoreService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,7 +24,7 @@ public class ServletHeartbeat extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             service.aggiornaUltimoHeartbeat(req.getParameter("id"));
-            resp.setStatus(HttpServletResponse.SC_CREATED); //codice 201 successo
+            resp.setStatus(HttpServletResponse.SC_OK); //codice 200 OK
         } catch (SQLException e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }

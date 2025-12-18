@@ -19,7 +19,7 @@ public class ServletDistributore extends HttpServlet {
 
 
     private DistributoreService service;
-    private Gson gson; // libreria google che converte (bidirezionale) oggetti java <-> json
+    private Gson gson; // libreria google che converte oggetti java <-> json (bidirezionale)
 
     @Override
     public void init() throws ServletException {
@@ -27,11 +27,22 @@ public class ServletDistributore extends HttpServlet {
         gson = new Gson();
     }
 
+    private long ultimoControlloGuasti = 0;
+    private static final long INTERVALLO_CONTROLLO = 30 * 1000; // Esempio: controlla ogni 30 secondi
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            if (System.currentTimeMillis() - ultimoControlloGuasti > INTERVALLO_CONTROLLO) {
+                service.aggiornaStatoDistributoriGuasti();
+                ultimoControlloGuasti = System.currentTimeMillis();
+            }
+
             List<Distributore> list = service.allDistributori();
+
+            resp.setContentType("application/json");
             resp.getWriter().write(gson.toJson(list));
+
         } catch (SQLException e) {
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }

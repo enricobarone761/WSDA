@@ -5,11 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DistributoriInfoDB {
-    public static void main(String[] args) {
-
+    public static void main() {
         try (Connection conn = ConnessioneDistributore.getConnection();
              Statement stmt = conn.createStatement()) {
-
             // 1) Creazione database
             stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS distributori_info");
             System.out.println("Database creato");
@@ -32,3 +30,6 @@ public class DistributoriInfoDB {
         }
     }
 }
+
+
+

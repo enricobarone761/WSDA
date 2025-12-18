@@ -49,9 +49,7 @@ public class Distributore {
         this.lastHeartbeat = lastHeartbeat;
     }
 
-    public StatiDistributori getStatus() {
-        return status;
-    }
+    public StatiDistributori getStatus() { return status; }
 
     public void setStatus(StatiDistributori status) {
         this.status = status;

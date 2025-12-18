@@ -22,7 +22,7 @@ public class DistributoreDAO {
             ps.setString(2,dis.getStatus().toString());
             ps.setDouble(3,dis.getLat());
             ps.setDouble(4,dis.getLon());
-            ps.setTimestamp(5, dis.getLastHeartbeat());
+            ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 
             ps.executeUpdate();
 

@@ -10,22 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="577098cc-6e16-4622-9923-403b17f661fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/HelloServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/ServletDistributore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/DistributoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/DistributorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/yyyyyyyyDistributorServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/HeartbeatServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/HeartbeatServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/DistributorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/kjsahdkjashd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/c_DataAccessLayer/CRUD_distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/c_DataAccessLayer/DistributoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/c_DataAccessLayer/DistributorDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/DistributorStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/StatiDistributori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/conn_distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/ConnessioneDistributore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/Distributore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/distributori_db.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/DistributoriInfoDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/a_PresentationLayer/HeartbeatServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/DistributoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/DistributoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/b_BusinessLogicLayer/kjsahdkjashd.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/Distributore.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/Distributore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/DistributoriInfoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../heartbeat_service/src/main/java/it/unipa/wsda/heartbeat_service/d_DatabaseLayer/DistributoriInfoDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,6 +214,7 @@
       <workItem from="1765960013319" duration="1602000" />
       <workItem from="1765981597555" duration="641000" />
       <workItem from="1766005710764" duration="694000" />
+      <workItem from="1766066565044" duration="482000" />
     </task>
     <servers />
   </component>
