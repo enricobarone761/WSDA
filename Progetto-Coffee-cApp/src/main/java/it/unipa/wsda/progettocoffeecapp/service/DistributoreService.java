@@ -3,7 +3,6 @@ package it.unipa.wsda.progettocoffeecapp.service;
 import it.unipa.wsda.progettocoffeecapp.model.Connessione;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,7 +17,7 @@ public class DistributoreService {
     }
 
     public Optional<Utente> getUtenteConnesso(String distributoreId) {
-        return connessioneRepository.findByDistributoreIdAndDataFineIsNull(distributoreId)
+        return connessioneRepository.findByDistributoreId_distributoreAndDataFineIsNull(distributoreId)
                 .map(Connessione::getUtente);
     }
 }
