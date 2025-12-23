@@ -1,6 +1,8 @@
 package it.unipa.wsda.progettocoffeecapp.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -10,7 +12,9 @@ public class Distributore {
 
     @Id
     private String id_distributore;
-    private String stato;
+
+    @Enumerated(EnumType.STRING)
+    private StatiDistributori stato;
 
     private Integer livello_caffe;
     private Integer livello_latte;
