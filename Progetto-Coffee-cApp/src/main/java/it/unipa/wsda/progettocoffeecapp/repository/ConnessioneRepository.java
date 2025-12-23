@@ -4,6 +4,9 @@ import it.unipa.wsda.progettocoffeecapp.model.Connessione;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ConnessioneRepository extends CrudRepository<Connessione, Long> {
+    Optional<Connessione> findByDistributoreIdAndDataFineIsNull(String attr0);
 }
