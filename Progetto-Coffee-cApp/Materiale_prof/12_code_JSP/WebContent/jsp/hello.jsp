@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hello world</title>
+<title>it.unipa.wsda.progettocoffeecapp.controller.Hello world</title>
 </head>
 <body>
-	<h1>Hello world!</h1>
+	<h1>it.unipa.wsda.progettocoffeecapp.controller.Hello world!</h1>
 </body>
 </html>
