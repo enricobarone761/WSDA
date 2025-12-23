@@ -25,30 +25,32 @@ public class ErogazioneController {
         this.bevandaService = bevandaService;
     }
 
-    @PostMapping("/{idDistributore}/eroga")
-    public ResponseEntity<?> erogaBevanda(@PathVariable String idDistributore, @RequestBody Map<String, Integer> request) {
-        Integer idBevanda = request.get("idBevanda");
+    @PostMapping("/{id_distributore}/eroga")
+    public ResponseEntity<?> erogaBevanda(@PathVariable String id_distributore, @RequestBody Map<String, Integer> request) {
+        Integer idBevanda = request.get("id_bevanda");
         if (idBevanda == null) {
             return ResponseEntity.badRequest().body("ID bevanda non specificato");
         }
 
-        Optional<Utente> utenteConnesso = distributoreService.getUtenteConnesso(idDistributore);
+        //1 controlliamo l'utente connesso
+        Optional<Utente> utenteConnesso = distributoreService.getUtenteConnesso(id_distributore);
 
         if (utenteConnesso.isEmpty()) {
             return ResponseEntity.status(401).body("Nessun utente connesso al distributore");
         }
 
+        //2 recuperiamo costo bevanda
         Optional<Bevanda> bevandaOpt = bevandaService.getBevanda(idBevanda);
         if (bevandaOpt.isEmpty()) {
             return ResponseEntity.badRequest().body("Bevanda non trovata");
         }
 
-        Bevanda bevanda = bevandaOpt.get();
+        Bevanda bevanda = bevandaOpt.get(); // il .get() estrae l'oggetto dall'optional
         Utente utente = utenteConnesso.get();
         boolean successo = utenteService.scalaCredito(utente.getId_utente(), bevanda.getCosto());
 
         if (successo) {
-            return ResponseEntity.ok("Erogazione in corso...");
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(402).body("Credito insufficiente");
         }
