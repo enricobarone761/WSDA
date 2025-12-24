@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
 
 @Controller
-public class LoginController {
+public class RicaricaController {
 
     private final UtenteService utenteService;
 
-    public LoginController(UtenteService utenteService) {
+    public RicaricaController(UtenteService utenteService) {
         this.utenteService = utenteService;
     }
 
-    @PostMapping("/login")
-    public String login(@RequestParam String email, 
-                        @RequestParam String password, 
-                        Model model) {
+    @PostMapping("/ricarica")
+    public String ricaricaCredito(@RequestParam Integer id_utente,
+                                  @RequestParam Integer importo,
+                                  Model model) {
         
-        Optional<Utente> utenteOpt = utenteService.findByUsername(email);
+        utenteService.ricaricaCredito(id_utente, importo);
         
+        Optional<Utente> utenteOpt = utenteService.findById(id_utente);
         if (utenteOpt.isPresent()) {
-            Utente utente = utenteOpt.get();
-            model.addAttribute("utente", utente);
+            model.addAttribute("utente", utenteOpt.get());
             return "connessione_distributore";
         } else {
             return "redirect:/Cliente/login.html?error=UserNotFound";

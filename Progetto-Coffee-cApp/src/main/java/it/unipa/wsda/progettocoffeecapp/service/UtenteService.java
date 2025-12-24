@@ -20,6 +20,10 @@ public class UtenteService {
         return utenteRepository.findByUsername(username);
     }
 
+    public Optional<Utente> findById(Integer id) {
+        return utenteRepository.findById(id);
+    }
+
     @Transactional
     public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
         // Verifica se l'utente esiste già
@@ -50,5 +54,15 @@ public class UtenteService {
             }
         }
         return false;
+    }
+
+    @Transactional
+    public void ricaricaCredito(Integer idUtente, int importo) {
+        Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
+        if (utenteOpt.isPresent()) {
+            Utente utente = utenteOpt.get();
+            utente.setCredito_residuo(utente.getCredito_residuo() + importo);
+            utenteRepository.save(utente);
+        }
     }
 }
