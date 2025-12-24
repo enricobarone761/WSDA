@@ -16,6 +16,10 @@ public class UtenteService {
         this.utenteRepository = utenteRepository;
     }
 
+    public Optional<Utente> findByUsername(String username) {
+        return utenteRepository.findByUsername(username);
+    }
+
     @Transactional
     public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
         // Verifica se l'utente esiste già

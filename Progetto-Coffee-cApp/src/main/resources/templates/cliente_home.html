@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connessione Distributore</title>
+    <link rel="stylesheet" th:href="@{/Cliente/connessione_distributore_style.css}">
+</head>
+<body>
+<div class="contenitore">
+    <div class="intestazione">
+        <div class="info-utente">
+            <div class="etichetta-credito">Credito Disponibile</div>
+            <p class="euro_simbolo">€ <span class="credito" th:text="${utente.credito_residuo}">0</span></p>
+            <div class="nome-utente" th:text="${utente.nome + ' ' + utente.cognome}">Nome Utente</div>
+        </div>
+        <img th:src="@{/CSS-e-Icone/coffee_bean.png}" height="100" alt="Chicco"/>
+    </div>
+
+    <div class="contenuto">
+        <div class="sezione">
+            <h2 class="titolo-sezione">Connessione</h2>
+            <form>
+                <div class="gruppo-form">
+                    <label for="id-distributore">ID Distributore</label>
+                    <input type="text" id="id-distributore" placeholder="CA001" pattern="CA\d{3}" required>
+                </div>
+                <button id="conn" type="submit" class="btn btn-primario">Connetti</button>
+            </form>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Disconnessione</h2>
+            <button id="disconnessione-btn" type="button" class="btn btn-pericolo">
+                <span style="display:inline-flex; align-items:center;">
+                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/logout-rounded--v1.png" alt="logout" style="height:20px; width:20px;"/>
+                    <span style="margin-left:5px;">Scollega Distributore</span>
+                </span>
+            </button>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Ricarica</h2>
+            <form>
+                <div class="gruppo-form">
+                    <label for="importo">Importo (€)</label>
+                    <input type="number" id="importo" placeholder="0.00" min="0.5" step="0.50" required>
+                </div>
+                <button id="ricarica" type="submit" class="btn btn-successo">Effettua Ricarica</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
