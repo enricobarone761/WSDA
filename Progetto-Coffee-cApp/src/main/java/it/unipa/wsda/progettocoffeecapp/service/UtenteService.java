@@ -17,13 +17,31 @@ public class UtenteService {
     }
 
     @Transactional
+    public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
+        // Verifica se l'utente esiste già
+        if (utenteRepository.findByUsername(email).isPresent()) {
+            throw new Exception("Utente già registrato con questa email.");
+        }
+
+        // Creazione nuovo utente
+        Utente nuovoUtente = new Utente();
+        nuovoUtente.setNome(nome);
+        nuovoUtente.setCognome(cognome);
+        nuovoUtente.setUsername(email);
+        nuovoUtente.setPassword(password); // In un caso reale, la password andrebbe criptata
+        nuovoUtente.setCredito_residuo(0);
+        nuovoUtente.setRuolo("CLIENTE");
+
+        return utenteRepository.save(nuovoUtente);
+    }
+
+    @Transactional
     public boolean scalaCredito(Integer idUtente, int costo) {
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
             if (utente.getCredito_residuo() >= costo) {
                 utente.setCredito_residuo(utente.getCredito_residuo() - costo);
-                //utenteRepository.save(utente);
                 return true;
             }
         }

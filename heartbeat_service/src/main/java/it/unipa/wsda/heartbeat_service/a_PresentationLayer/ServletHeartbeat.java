@@ -26,6 +26,7 @@ public class ServletHeartbeat extends HttpServlet {
             service.aggiornaUltimoHeartbeat(req.getParameter("id"));
             resp.setStatus(HttpServletResponse.SC_OK); //codice 200 OK
         } catch (SQLException e) {
+            System.out.println(req.getParameter("id"));
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
