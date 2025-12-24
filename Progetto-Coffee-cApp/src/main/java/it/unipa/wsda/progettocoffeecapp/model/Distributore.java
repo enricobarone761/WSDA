@@ -16,6 +16,11 @@ public class Distributore {
     @Enumerated(EnumType.STRING)
     private StatiDistributori stato;
 
+    private Integer lat;
+    private Integer lon;
+    private String edificio;
+    private String piano;
+
     private Integer livello_caffe;
     private Integer livello_latte;
     private Integer livello_zucchero;
