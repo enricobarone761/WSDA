@@ -33,8 +33,8 @@ function resetUI() {
     if (userLabel_el) userLabel_el.textContent = "In attesa...";
 }
 
-// Polling continuo ogni 3 secondi
-setInterval(check_user, 8000);
+// Polling continuo ogni 5 secondi
+setInterval(check_user, 5000);
 
 // Esecuzione iniziale
 check_user();

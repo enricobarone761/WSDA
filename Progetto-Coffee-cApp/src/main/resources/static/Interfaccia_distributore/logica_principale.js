@@ -4,6 +4,8 @@ const DISTRIBUTORE_ID = "CA001";
 let prezzo = null;
 let idBevandaSelezionata = null;
 
+
+//Logica di selezione della bevanda
 document.querySelectorAll('.btn-bevanda').forEach(btn => {
     btn.addEventListener('click', e => {
         const card = e.target.closest('.bevanda-card');
