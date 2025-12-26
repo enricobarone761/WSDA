@@ -9,7 +9,6 @@ import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
@@ -34,8 +33,7 @@ public class DistributoreService {
 
     @Transactional
     public void connetti(Integer idUtente, String idDistributore) {
-        // Rimuoviamo eventuali connessioni attive precedenti per questo utente o distributore
-        // (dato che i campi sono unique nel modello)
+        // cancelliamo eventuali connessione attive precedenti, un utente supporta una connessione attiva alla volta
         disconnetti(idUtente);
         
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);

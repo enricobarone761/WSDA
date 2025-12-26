@@ -14,30 +14,30 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
         fetch(`/connetti?id_utente=${id_utente}&id_distributore=${id_distributore}`, {
             method: 'POST'
         })
-        .then(response => response.json()) // Assumiamo che il backend risponda con JSON
-        .then(data => {
-            if (data.success) { // Se il backend indica successo
-                input_id = id_distributore;
-                alert('Connessione stabilita con il distributore ' + input_id);
-
-                // Aggiornamento UI
-                botton_connessione.disabled = true;
-                botton_connessione.style.backgroundColor = '#dcd9d4';
-                botton_connessione.innerHTML = 'Connesso';
-
-                if (status_div && id_connesso_el) {
-                    id_connesso_el.textContent = input_id;
-                    status_div.style.display = 'block';
-                }
+        .then(response => {
+            if (response.ok) {
+                return response.text(); // Il controller restituisce testo, non JSON
             } else {
-                // Gestisci il caso in cui il backend risponda con un errore logico
-                alert('Errore durante la connessione: ' + (data.message || 'Errore sconosciuto'));
-                console.error('Errore logico dal server:', data.message);
+                return response.text().then(text => { throw new Error(text) });
+            }
+        })
+        .then(message => {
+            input_id = id_distributore;
+            alert(message); // "Connessione riuscita"
+
+            // Aggiornamento UI
+            botton_connessione.disabled = true;
+            botton_connessione.style.backgroundColor = '#dcd9d4';
+            botton_connessione.innerHTML = 'Connesso';
+
+            if (status_div && id_connesso_el) {
+                id_connesso_el.textContent = input_id;
+                status_div.style.display = 'block';
             }
         })
         .catch(error => {
             console.error('Errore durante la connessione:', error);
-            alert('Errore di comunicazione con il server: ' + error.message);
+            alert(error.message);
         });
     }
 });
@@ -49,7 +49,14 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
             method: 'POST'
         })
         .then(response => {
-            alert('Disconnesso dal distributore ' + input_id);
+            if (response.ok) {
+                return response.text();
+            } else {
+                return response.text().then(text => { throw new Error(text) });
+            }
+        })
+        .then(message => {
+            alert(message); // "Disconnessione riuscita"
             
             // Reset UI
             input_id = null;
@@ -64,10 +71,9 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
         })
         .catch(error => {
             console.error('Errore durante la disconnessione:', error);
+            alert(error.message);
         });
     } else {
         alert('Nessun distributore connesso');
     }
 });
-
-// La ricarica è gestita tramite Thymeleaf, non serve quindi logica js
