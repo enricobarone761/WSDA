@@ -40,9 +40,9 @@ function carica_guasti(id){
     for( let componente of guasti) {
 
         const nome = componente.querySelector('nome').innerHTML
-        const stato = componente.querySelector('stato').innerHTML
-        const icona = stato === 'OK' ? '✓' : stato === 'Manutenzione' ? '!' : 'x';
-        const classe = stato === 'OK' ? 'guasto-ok' : stato === 'Manutenzione' ? 'guasto-warning' : 'guasto-errore';
+        const stato = componente.querySelector('stato').innerHTML === 'OK' ? 'OK' : 'GUASTO';
+        const icona = stato === 'OK' ? '✓' : 'x';
+        const classe = stato === 'OK' ? 'guasto-ok' : 'guasto-errore';
 
         const div = document.createElement('div')
         div.innerHTML =
@@ -57,8 +57,9 @@ function carica_guasti(id){
     }
 }
 
-function aggiornaID(id) {
-    document.querySelector('#ID').innerHTML = 'Distributore: ' + id;
+function aggiornaID(id) { //aggiungi anche lo stato
+    const stato = xmlDoc.getElementById(id).querySelector('stato').innerHTML;
+    document.querySelector('#ID').innerHTML = `Distributore: ${id}<br>Stato: ${stato}`;
 }
 
 function carica_stato(id) {
@@ -69,7 +70,7 @@ function carica_stato(id) {
 
 //PULSATE CARICA STATO
 document.querySelector('#load_state').addEventListener('click', async (event) => {
-    event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina e la rimozione di tutti i dati
+    event.preventDefault(); //previene refresh pagina
     await scaricaDati();
 
     // svuota le griglie prima ad ogni nuova pressione.
