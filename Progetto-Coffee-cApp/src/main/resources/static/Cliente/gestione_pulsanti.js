@@ -14,25 +14,30 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
         fetch(`/connetti?id_utente=${id_utente}&id_distributore=${id_distributore}`, {
             method: 'POST'
         })
-        .then(response => {
-            // Anche se il backend non è pronto, facciamo finta che vada a buon fine per ora
-            // o gestiamo l'errore se vogliamo essere pronti.
-            input_id = id_distributore;
-            alert('Richiesta di connessione inviata al distributore ' + input_id);
-            
-            // Aggiornamento UI
-            botton_connessione.disabled = true;
-            botton_connessione.style.backgroundColor = '#dcd9d4';
-            botton_connessione.innerHTML = 'Connesso';
-            
-            if (status_div && id_connesso_el) {
-                id_connesso_el.textContent = input_id;
-                status_div.style.display = 'block';
+        .then(response => response.json()) // Assumiamo che il backend risponda con JSON
+        .then(data => {
+            if (data.success) { // Se il backend indica successo
+                input_id = id_distributore;
+                alert('Connessione stabilita con il distributore ' + input_id);
+
+                // Aggiornamento UI
+                botton_connessione.disabled = true;
+                botton_connessione.style.backgroundColor = '#dcd9d4';
+                botton_connessione.innerHTML = 'Connesso';
+
+                if (status_div && id_connesso_el) {
+                    id_connesso_el.textContent = input_id;
+                    status_div.style.display = 'block';
+                }
+            } else {
+                // Gestisci il caso in cui il backend risponda con un errore logico
+                alert('Errore durante la connessione: ' + (data.message || 'Errore sconosciuto'));
+                console.error('Errore logico dal server:', data.message);
             }
         })
         .catch(error => {
             console.error('Errore durante la connessione:', error);
-            alert('Errore di comunicazione con il server');
+            alert('Errore di comunicazione con il server: ' + error.message);
         });
     }
 });
@@ -65,5 +70,4 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
     }
 });
 
-// Nota: La ricarica è gestita tramite form POST standard nel template Thymeleaf,
-// quindi non serve logica JS aggiuntiva qui a meno di voler fare fetch.
+// La ricarica è gestita tramite Thymeleaf, non serve quindi logica js
