@@ -62,10 +62,7 @@ function aggiornaID(id) {
 }
 
 function carica_stato(id) {
-    const stato = xmlDoc.getElementById(id).querySelector('stato').innerHTML;
-    const select = document.querySelector('#stato-distributore');
-    select.value = stato;
-    document.querySelector('#sezione-stato').style.display = 'block';
+    document.querySelector('#controlli-stato').style.display = 'flex';
     document.querySelector('#ripristina_forniture').style.display = 'block';
     document.querySelector('#ripristina_guasti').style.display = 'block';
 }
@@ -78,7 +75,7 @@ document.querySelector('#load_state').addEventListener('click', async (event) =>
     // svuota le griglie prima ad ogni nuova pressione.
     document.querySelector('.forniture-grid').innerHTML = '';
     document.querySelector('.guasti-grid').innerHTML = '';
-    document.querySelector('#sezione-stato').style.display = 'none';
+    document.querySelector('#controlli-stato').style.display = 'none';
     document.querySelector('#ripristina_forniture').style.display = 'none';
     document.querySelector('#ripristina_guasti').style.display = 'none';
 
@@ -130,16 +127,15 @@ document.querySelector('#ripristina_guasti').addEventListener('click', async () 
     }
 });
 
-// PULSANTE AGGIORNA STATO
-document.querySelector('#aggiorna_stato').addEventListener('click', async () => {
+// PULSANTI PER CAMBIARE STATO
+async function cambiaStato(nuovo_stato) {
     const id_distributore = document.querySelector('#id-distributore').value;
-    const nuovo_stato = document.querySelector('#stato-distributore').value;
     try {
         const response = await fetch(`/manutenzione/cambia-stato?idDistributore=${id_distributore}&stato=${nuovo_stato}`, {
             method: 'POST',
         });
         if (response.ok) {
-            alert('Stato aggiornato!');
+            alert('Stato aggiornato in ' + nuovo_stato + '!');
             // ricarica i dati per mostrare lo stato aggiornato
             document.querySelector('#load_state').click();
         }
@@ -147,4 +143,7 @@ document.querySelector('#aggiorna_stato').addEventListener('click', async () => 
         console.error('Errore:', error);
         alert('Errore di connessione');
     }
-});
+}
+
+document.querySelector('#change2attivo').addEventListener('click', () => cambiaStato('ATTIVO'));
+document.querySelector('#change2manutenzione').addEventListener('click', () => cambiaStato('MANUTENZIONE'));

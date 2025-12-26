@@ -28,7 +28,14 @@
             </form>
         </div>
 
-        <div id="ID" class="forniture-id" style="width: fit-content; text-align: start; font-size: 20px">Nessun distributore connesso</div><br>
+        <div style="text-align: left; display: flex; flex-direction: row; align-items: center; gap: 1rem; margin-bottom: 20px;">
+            <div id="ID" class="forniture-id" style="width: fit-content; text-align: start; font-size: 20px;">Nessun distributore connesso</div>
+            <div id="controlli-stato" style="display: flex; gap: 10px;">
+                <button id="change2attivo" class="btn" style="background-color: #28a745; color: white; border: none; padding: 20px 15px; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 16px;">ATTIVA</button>
+                <button id="change2manutenzione" class="btn" style="background-color: #ffc107; color: black; border: none; padding: 5px 15px; border-radius: 15px; cursor: pointer; font-weight: bold; font-size: 16px;">MANUTENZIONE</button>
+            </div>
+        </div>
+
 
         <div class="divisore"></div>
 
@@ -50,19 +57,6 @@
             <button id="ripristina_guasti" class="btn btn-secondary" style="margin-top: 10px; display: none;">Ripristina Guasti</button>
         </div>
 
-        <div class="divisore"></div>
-
-        <div class="sezione" id="sezione-stato" style="display: none;">
-            <h2 class="titolo-sezione">Gestione Stato</h2>
-            <div class="gruppo-form">
-                <label for="stato-distributore">Stato Distributore</label>
-                <select id="stato-distributore">
-                    <option value="ATTIVO">Attivo</option>
-                    <option value="MANUTENZIONE">In Manutenzione</option>
-                </select>
-            </div>
-            <button id="aggiorna_stato" class="btn btn-primary">Aggiorna Stato</button>
-        </div>
     </div>
 </div>
 </body>
