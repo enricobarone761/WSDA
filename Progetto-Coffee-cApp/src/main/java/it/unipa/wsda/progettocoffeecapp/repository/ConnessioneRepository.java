@@ -12,4 +12,7 @@ import java.util.Optional;
 public interface ConnessioneRepository extends CrudRepository<Connessione, Integer> {
     @Query("SELECT c FROM Connessione c WHERE c.distributore.id_distributore = :id AND c.dataFine IS NULL")
     Optional<Connessione> findByDistributoreId_distributoreAndDataFineIsNull(@Param("id") String id);
+
+    @Query("SELECT c FROM Connessione c WHERE c.utente.id_utente = :idUtente AND c.dataFine IS NULL")
+    Optional<Connessione> findByUtenteId(@Param("idUtente") Integer idUtente);
 }
