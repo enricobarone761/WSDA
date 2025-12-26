@@ -37,6 +37,7 @@
             <div class="forniture-grid">
                 <!-- i dati vengono inseriti con js -->
             </div>
+            <button id="ripristina_forniture" class="btn btn-secondary" style="margin-top: 10px; display: none;">Ripristina Forniture</button>
         </div>
 
         <div class="divisore"></div>
@@ -46,6 +47,21 @@
             <div class="guasti-grid">
                 <!-- i dati vengono inseriti con js -->
             </div>
+            <button id="ripristina_guasti" class="btn btn-secondary" style="margin-top: 10px; display: none;">Ripristina Guasti</button>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione" id="sezione-stato" style="display: none;">
+            <h2 class="titolo-sezione">Gestione Stato</h2>
+            <div class="gruppo-form">
+                <label for="stato-distributore">Stato Distributore</label>
+                <select id="stato-distributore">
+                    <option value="ATTIVO">Attivo</option>
+                    <option value="MANUTENZIONE">In Manutenzione</option>
+                </select>
+            </div>
+            <button id="aggiorna_stato" class="btn btn-primary">Aggiorna Stato</button>
         </div>
     </div>
 </div>

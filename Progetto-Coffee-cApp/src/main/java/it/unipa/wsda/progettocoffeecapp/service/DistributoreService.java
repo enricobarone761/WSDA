@@ -2,6 +2,7 @@ package it.unipa.wsda.progettocoffeecapp.service;
 
 import it.unipa.wsda.progettocoffeecapp.model.Connessione;
 import it.unipa.wsda.progettocoffeecapp.model.Distributore;
+import it.unipa.wsda.progettocoffeecapp.model.StatiDistributori;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.DistributoreRepository;
@@ -54,5 +55,39 @@ public class DistributoreService {
     @Transactional
     public void disconnetti(Integer idUtente) {
         connessioneRepository.findByUtenteId(idUtente).ifPresent(connessioneRepository::delete);
+    }
+
+    @Transactional
+    public void ripristinaForniture(String idDistributore) {
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
+            distributore.setLivello_caffe(100);
+            distributore.setLivello_latte(100);
+            distributore.setLivello_zucchero(100);
+            distributore.setLivello_bicchieri(100);
+            distributore.setLivello_cioccolato(100);
+            distributore.setLivello_the(100);
+            distributoreRepository.save(distributore);
+        });
+    }
+
+    @Transactional
+    public void ripristinaGuasti(String idDistributore) {
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
+            distributore.setStato_pompa_acqua(true);
+            distributore.setStato_riscaldatore(true);
+            distributore.setStato_erogatore(true);
+            distributore.setStato_display(true);
+            distributore.setStato_gettoniera(true);
+            distributore.setStato_macina_caffe(true);
+            distributoreRepository.save(distributore);
+        });
+    }
+
+    @Transactional
+    public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
+            distributore.setStato(nuovoStato);
+            distributoreRepository.save(distributore);
+        });
     }
 }

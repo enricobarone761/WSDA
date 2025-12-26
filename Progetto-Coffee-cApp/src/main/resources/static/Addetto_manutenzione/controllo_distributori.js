@@ -61,6 +61,15 @@ function aggiornaID(id) {
     document.querySelector('#ID').innerHTML = 'Distributore: ' + id;
 }
 
+function carica_stato(id) {
+    const stato = xmlDoc.getElementById(id).querySelector('stato').innerHTML;
+    const select = document.querySelector('#stato-distributore');
+    select.value = stato;
+    document.querySelector('#sezione-stato').style.display = 'block';
+    document.querySelector('#ripristina_forniture').style.display = 'block';
+    document.querySelector('#ripristina_guasti').style.display = 'block';
+}
+
 //PULSATE CARICA STATO
 document.querySelector('#load_state').addEventListener('click', async (event) => {
     event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina e la rimozione di tutti i dati
@@ -69,6 +78,9 @@ document.querySelector('#load_state').addEventListener('click', async (event) =>
     // svuota le griglie prima ad ogni nuova pressione.
     document.querySelector('.forniture-grid').innerHTML = '';
     document.querySelector('.guasti-grid').innerHTML = '';
+    document.querySelector('#sezione-stato').style.display = 'none';
+    document.querySelector('#ripristina_forniture').style.display = 'none';
+    document.querySelector('#ripristina_guasti').style.display = 'none';
 
     const id_distributore = document.querySelector('#id-distributore').value;
     if (xmlDoc.getElementById(id_distributore)) { //contrlla se esiste
@@ -77,7 +89,62 @@ document.querySelector('#load_state').addEventListener('click', async (event) =>
         aggiornaID(id_distributore)
         carica_forniture(id_distributore)
         carica_guasti(id_distributore)
+        carica_stato(id_distributore)
     } else {
         alert('ID inesistente')
     }
 })
+
+// PULSANTE RIPRISTINA FORNITURE
+document.querySelector('#ripristina_forniture').addEventListener('click', async () => {
+    const id_distributore = document.querySelector('#id-distributore').value;
+    try {
+        const response = await fetch(`/manutenzione/ripristina-forniture?idDistributore=${id_distributore}`, {
+            method: 'POST',
+        });
+        if (response.ok) {
+            alert('Forniture ripristinate!');
+            // ricarica i dati per mostrare i livelli aggiornati
+            document.querySelector('#load_state').click();
+        }
+    } catch (error) {
+        console.error('Errore:', error);
+        alert('Errore di connessione');
+    }
+});
+
+// PULSANTE RIPRISTINA GUASTI
+document.querySelector('#ripristina_guasti').addEventListener('click', async () => {
+    const id_distributore = document.querySelector('#id-distributore').value;
+    try {
+        const response = await fetch(`/manutenzione/ripristina-guasti?idDistributore=${id_distributore}`, {
+            method: 'POST',
+        });
+        if (response.ok) {
+            alert('Guasti ripristinati!');
+            // ricarica i dati per mostrare i livelli aggiornati
+            document.querySelector('#load_state').click();
+        }
+    } catch (error) {
+        console.error('Errore:', error);
+    }
+});
+
+// PULSANTE AGGIORNA STATO
+document.querySelector('#aggiorna_stato').addEventListener('click', async () => {
+    const id_distributore = document.querySelector('#id-distributore').value;
+    const nuovo_stato = document.querySelector('#stato-distributore').value;
+    try {
+        const response = await fetch(`/manutenzione/cambia-stato?idDistributore=${id_distributore}&stato=${nuovo_stato}`, {
+            method: 'POST',
+        });
+        if (response.ok) {
+            alert('Stato aggiornato!');
+            // ricarica i dati per mostrare lo stato aggiornato
+            document.querySelector('#load_state').click();
+        }
+    } catch (error) {
+        console.error('Errore:', error);
+        alert('Errore di connessione');
+    }
+});
