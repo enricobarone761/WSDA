@@ -17,7 +17,7 @@ public class Utente {
     private String password;
     private String nome;
     private String cognome;
-    private Integer credito_residuo;
+    private Double credito_residuo;
     private String ruolo;
 
 }

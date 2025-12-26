@@ -20,7 +20,7 @@ public class RicaricaController {
 
     @PostMapping("/ricarica")
     public String ricaricaCredito(@RequestParam Integer id_utente,
-                                  @RequestParam Integer importo,
+                                  @RequestParam Double importo,
                                   Model model) {
         
         utenteService.ricaricaCredito(id_utente, importo);

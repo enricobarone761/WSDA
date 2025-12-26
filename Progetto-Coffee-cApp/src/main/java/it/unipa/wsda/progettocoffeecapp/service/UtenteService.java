@@ -37,14 +37,14 @@ public class UtenteService {
         nuovoUtente.setCognome(cognome);
         nuovoUtente.setUsername(email);
         nuovoUtente.setPassword(password); // In un caso reale, la password andrebbe criptata
-        nuovoUtente.setCredito_residuo(0);
+        nuovoUtente.setCredito_residuo(0.0);
         nuovoUtente.setRuolo("CLIENTE");
 
         return utenteRepository.save(nuovoUtente);
     }
 
     @Transactional
-    public boolean scalaCredito(Integer idUtente, int costo) {
+    public boolean scalaCredito(Integer idUtente, double costo) {
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
@@ -57,7 +57,7 @@ public class UtenteService {
     }
 
     @Transactional
-    public void ricaricaCredito(Integer idUtente, int importo) {
+    public void ricaricaCredito(Integer idUtente, double importo) {
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
