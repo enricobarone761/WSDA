@@ -10,8 +10,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class RegistrazioneController {
 
-    @Autowired
-    private UtenteService utenteService;
+    private final UtenteService utenteService;
+
+    public RegistrazioneController(UtenteService utenteService) {
+        this.utenteService = utenteService;
+    }
 
     @PostMapping("/register")
     public String registerUser(@RequestParam String nome,

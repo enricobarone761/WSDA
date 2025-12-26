@@ -63,7 +63,7 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
             botton_connessione.disabled = false;
             botton_connessione.style.backgroundColor = '';
             botton_connessione.innerHTML = 'Connetti';
-            
+
             if (status_div) {
                 status_div.style.display = 'none';
             }
