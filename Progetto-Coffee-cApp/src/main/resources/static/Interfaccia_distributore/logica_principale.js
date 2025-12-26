@@ -18,27 +18,17 @@ document.querySelectorAll('.btn-bevanda').forEach(btn => {
     });
 });
 
+
+// Logica erogazione e riduzione del credito
 document.querySelector('.btn-conferma').addEventListener('click', () => {
     if (idBevandaSelezionata === null) {
         alert("Nessuna bevanda selezionata");
         return;
     }
 
-    const creditoAttuale = parseFloat(credito_residuo_el.textContent);
-    if (prezzo > creditoAttuale) {
-        alert("Credito insufficiente! Si prega di ricaricare il credito.");
-        return;
-    }
-
     // Chiamata al backend per l'erogazione
-    fetch(`/erogazione/${DISTRIBUTORE_ID}/eroga`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id_bevanda: idBevandaSelezionata
-        })
+    fetch(`http://localhost:8080/erogazione/${DISTRIBUTORE_ID}/eroga/${idBevandaSelezionata}`, {
+        method: 'POST'
     })
     .then(response => {
         if (response.ok) {

@@ -8,7 +8,6 @@ import it.unipa.wsda.progettocoffeecapp.service.UtenteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -25,13 +24,10 @@ public class ErogazioneController {
         this.bevandaService = bevandaService;
     }
 
-    @PostMapping("/{id_distributore}/eroga")
-    public ResponseEntity<?> erogaBevanda(@PathVariable String id_distributore, @RequestBody Map<String, Integer> request) {
-        Integer idBevanda = request.get("id_bevanda");
-        if (idBevanda == null) {
-            return ResponseEntity.badRequest().body("ID bevanda non specificato");
-        }
-
+    @PostMapping("/{id_distributore}/eroga/{id_bevanda}")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<?> erogaBevanda(@PathVariable String id_distributore, @PathVariable Integer id_bevanda) {
+        
         //1 controlliamo l'utente connesso
         Optional<Utente> utenteConnesso = distributoreService.getUtenteConnesso(id_distributore);
 
@@ -40,12 +36,12 @@ public class ErogazioneController {
         }
 
         //2 recuperiamo costo bevanda
-        Optional<Bevanda> bevandaOpt = bevandaService.getBevanda(idBevanda);
+        Optional<Bevanda> bevandaOpt = bevandaService.getBevanda(id_bevanda);
         if (bevandaOpt.isEmpty()) {
             return ResponseEntity.badRequest().body("Bevanda non trovata");
         }
 
-        Bevanda bevanda = bevandaOpt.get(); // il .get() estrae l'oggetto dall'optional
+        Bevanda bevanda = bevandaOpt.get();
         Utente utente = utenteConnesso.get();
         boolean successo = utenteService.scalaCredito(utente.getId_utente(), bevanda.getCosto());
 

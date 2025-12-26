@@ -11,5 +11,5 @@ public class Bevanda {
     @Id
     private Integer id_bevanda;
     private String nome;
-    private Integer costo;
+    private Double costo;
 }
