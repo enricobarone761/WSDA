@@ -1,31 +1,38 @@
-let username_el = document.querySelector('.username')
-let credito_el = document.querySelector('.credit')
+let username_el = document.querySelector('.username');
+let credito_el = document.querySelector('.credit');
+let userLabel_el = document.querySelector('.user-label');
 
+const DISTRIBUTORE_ID = "CA001";
 
-let intervallo = setInterval(check_user, 2000)
 function check_user() {
-    fetch("../XML/utente.json")
-        .then(res => res.json())
+    fetch(`/api/distributore/polling-utente?id=${DISTRIBUTORE_ID}`)
         .then(res => {
-            if (username_el && credito_el) {
-                username_el.textContent = res.username;
-                credito_el.textContent = res.credit;
-                clearInterval(intervallo) // Interrompre il controllo dell'utente una volta connesso
-            }
-        console.log('Utente Connesso')
+            if (!res.ok) throw new Error("Utente non trovato");
+            return res.json();
         })
-
+        .then(data => {
+            // L'endpoint restituisce nome, cognome e credito
+            if (data && data.nome) {
+                if (username_el) username_el.textContent = `${data.nome} ${data.cognome || ''}`;
+                if (credito_el) credito_el.textContent = data.credito !== undefined ? parseFloat(data.credito).toFixed(2) : "0.00";
+                if (userLabel_el) userLabel_el.textContent = "Utente Connesso";
+            } else {
+                resetUI();
+            }
+        })
         .catch(error => {
-            document.getElementsByClassName("user-label")[0].innerText = ""
-            username_el = "Nessun Utente Connesso";
-            credito_el = "";
-            console.log('Nessun file presente')
-
-            document.querySelectorAll(".btn-bevanda").forEach(element => {
-                element.outerHTML = '<img src="../CSS-e-Icone/blocked-svgrepo-com.svg" class="Caffè-Icona" alt="" style="height:50px">'
-            })
-
+            resetUI();
         });
 }
-check_user()
 
+function resetUI() {
+    if (username_el) username_el.textContent = "Nessun Utente";
+    if (credito_el) credito_el.textContent = "0.00";
+    if (userLabel_el) userLabel_el.textContent = "In attesa...";
+}
+
+// Polling continuo ogni 3 secondi (non si interrompe mai)
+setInterval(check_user, 3000);
+
+// Esecuzione iniziale
+check_user();
