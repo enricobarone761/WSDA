@@ -16,22 +16,14 @@
         <div class="destra">
             <p>Accedi al tuo account <strong>Coffee App</strong>: Manutentore</p>
             <div class="login-form">
-                <form method="post">
-                    <label for="email"></label>
-                    <input type="email" name="email" id="email" placeholder="Email" required><br>
+                <form method="post" action="http://localhost:8080/login-manutentore">
+                    <label for="username"></label>
+                    <input type="text" name="username" id="username" placeholder="Username" required><br>
 
                     <label for="password"></label>
-                    <input type="password" name="password" id="password" placeholder="Password" required><br><br>
+                    <input type="password" name="password" id="password" placeholder="Password"><br><br>
 
-                    <button type="button" onclick="LoginSubmit()">Accedi</button>
-                    <script>
-                        function LoginSubmit() {
-                            const form = document.querySelector('.login-form form');
-                            if (form.reportValidity()){
-                                window.location.href = "controllo_distributore.html";
-                            }
-                        }
-                    </script>
+                    <button type="submit">Accedi</button>
                 </form>
 
             </div>

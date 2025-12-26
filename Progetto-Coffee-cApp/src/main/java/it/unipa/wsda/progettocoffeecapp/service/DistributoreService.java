@@ -31,6 +31,10 @@ public class DistributoreService {
                 .map(Connessione::getUtente);
     }
 
+    public Iterable<Distributore> getAllDistributori(){
+        return distributoreRepository.findAll();
+    }
+
     @Transactional
     public void connetti(Integer idUtente, String idDistributore) {
         // cancelliamo eventuali connessione attive precedenti, un utente supporta una connessione attiva alla volta

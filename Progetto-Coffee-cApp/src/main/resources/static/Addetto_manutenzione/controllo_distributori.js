@@ -1,6 +1,6 @@
 //Livelli forniture da XML
 let xmlDoc = null;
-fetch('../XML/xml-distributori.xml')
+fetch('http://localhost:8080/info_distributori')
     .then(response => response.text())
     .then(str => {
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");

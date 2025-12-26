@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<distributori xmlns:th="http://www.thymeleaf.org">
+    <distributore th:each="distributore : ${distributori}" th:attr="id=${distributore.id_distributore}">
+
+        <edificio th:text="${distributore.edificio}">Edificio</edificio>
+        <piano th:text="${distributore.piano}">Piano</piano>
+
+        <stato th:text="${distributore.stato}">Stato</stato>
+
+        <forniture>
+            <fornitura>
+                <nome>Caffè</nome>
+                <livello th:text="${distributore.livello_caffe}">0</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Latte</nome>
+                <livello th:text="${distributore.livello_latte}">0</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Zucchero</nome>
+                <livello th:text="${distributore.livello_zucchero}">0</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Thè</nome>
+                <livello th:text="${distributore.livello_the}">0</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Cioccolato</nome>
+                <livello th:text="${distributore.livello_cioccolato}">0</livello>
+            </fornitura>
+            <fornitura>
+                <nome>Bicchieri</nome>
+                <livello th:text="${distributore.livello_bicchieri}">0</livello>
+            </fornitura>
+        </forniture>
+
+        <guasti>
+            <componente>
+                <nome>Pompa Acqua</nome>
+                <stato th:text="${distributore.stato_pompa_acqua} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+            <componente>
+                <nome>Riscaldatore</nome>
+                <stato th:text="${distributore.stato_riscaldatore} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+            <componente>
+                <nome>Erogatore</nome>
+                <stato th:text="${distributore.stato_erogatore} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+            <componente>
+                <nome>Display</nome>
+                <stato th:text="${distributore.stato_display} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+            <componente>
+                <nome>Gettoniera</nome>
+                <stato th:text="${distributore.stato_gettoniera} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+            <componente>
+                <nome>Macina Caffè</nome>
+                <stato th:text="${distributore.stato_macina_caffe} ? 'OK' : 'Guasto'">OK</stato>
+            </componente>
+        </guasti>
+    </distributore>
+</distributori>

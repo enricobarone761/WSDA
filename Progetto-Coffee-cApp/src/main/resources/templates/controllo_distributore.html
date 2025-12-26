@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controllo Distributore</title>
+    <link rel="stylesheet" th:href="@{/Addetto_manutenzione/controllo_distributore_style.css}">
+    <script th:src="@{/Addetto_manutenzione/controllo_distributori.js}" defer></script>
+</head>
+<body>
+<div class="contenitore">
+    <div class="intestazione">
+        <div class="info-utente">
+            <p class="etichetta-manutentore">Manutentore</p>
+            <p class="nome-utente" th:text="${nome} + ' ' + ${cognome}">Nome Cognome</p>
+        </div>
+    </div>
+
+    <div class="contenuto">
+        <div class="sezione">
+            <h2 class="titolo-sezione">Carica Stato Distributore</h2>
+            <form>
+                <div class="gruppo-form">
+                    <label for="id-distributore">ID Distributore</label>
+                    <input type="text" id="id-distributore" placeholder="Inserisci l'ID del distributore" pattern="CA[0-9]{3}" required>
+                </div>
+                <button id="load_state" type="submit" class="btn btn-primary">Carica Stato</button>
+            </form>
+        </div>
+
+        <div id="ID" class="forniture-id" style="width: fit-content; text-align: start; font-size: 20px">Nessun distributore connesso</div><br>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Livelli Forniture</h2>
+            <div class="forniture-grid">
+                <!-- i dati vengono inseriti con js -->
+            </div>
+        </div>
+
+        <div class="divisore"></div>
+
+        <div class="sezione">
+            <h2 class="titolo-sezione">Stato Guasti</h2>
+            <div class="guasti-grid">
+                <!-- i dati vengono inseriti con js -->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

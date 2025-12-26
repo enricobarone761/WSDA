@@ -2,7 +2,7 @@ let input_id = null;
 const botton_connessione = document.querySelector('#conn');
 const status_div = document.querySelector('#status-connessione');
 const id_connesso_el = document.querySelector('#id-connesso');
-const id_utente = document.querySelector('#id_utente_hidden')?.value;
+const id_utente = document.querySelector('#id_utente_hidden')?.value; //recupera da thymeleaf l'id utente che però non mostro nell'html
 
 // CONNESSIONE
 document.querySelector('#form-connessione').addEventListener('submit', (event) => {
@@ -57,7 +57,7 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
         .then(message => {
             alert(message); // "Disconnessione riuscita"
             
-            // Reset UI
+            // reset ui
             input_id = null;
             botton_connessione.disabled = false;
             botton_connessione.style.backgroundColor = '';
