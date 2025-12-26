@@ -15,11 +15,10 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
             method: 'POST'
         })
         .then(response => {
-            if (response.ok) {
-                return response.text(); // Il controller restituisce testo, non JSON
-            } else {
+            if (!response.ok) {
                 return response.text().then(text => { throw new Error(text) });
             }
+            return response.text();
         })
         .then(message => {
             input_id = id_distributore;
