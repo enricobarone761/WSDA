@@ -1,11 +1,15 @@
 //Livelli forniture da XML
 let xmlDoc = null;
-fetch('http://localhost:8080/info_distributori')
-    .then(response => response.text())
-    .then(str => {
+
+async function scaricaDati() {
+    try {
+        const response = await fetch('http://localhost:8080/info_distributori');
+        const str = await response.text();
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");
-    })
-    .catch(errore => console.log(errore));
+    } catch (errore) {
+        console.log(errore);
+    }
+}
 
 function carica_forniture(id){
     const forniture = xmlDoc.getElementById(id).querySelectorAll('fornitura');
@@ -58,21 +62,22 @@ function aggiornaID(id) {
 }
 
 //PULSATE CARICA STATO
-document.querySelector('#load_state').addEventListener('click', (event) => {
+document.querySelector('#load_state').addEventListener('click', async (event) => {
     event.preventDefault(); // Temporaneo per l'assignment (da rimuovere in futuro). Previene il refresh della pagina e la rimozione di tutti i dati
+    await scaricaDati();
 
     // svuota le griglie prima ad ogni nuova pressione.
     document.querySelector('.forniture-grid').innerHTML = '';
     document.querySelector('.guasti-grid').innerHTML = '';
 
     const id_distributore = document.querySelector('#id-distributore').value;
-    if(xmlDoc.getElementById(id_distributore)){ //contrlla se esiste
+    if (xmlDoc.getElementById(id_distributore)) { //contrlla se esiste
         console.log(id_distributore)
 
         aggiornaID(id_distributore)
         carica_forniture(id_distributore)
         carica_guasti(id_distributore)
-    }else{
+    } else {
         alert('ID inesistente')
     }
 })
