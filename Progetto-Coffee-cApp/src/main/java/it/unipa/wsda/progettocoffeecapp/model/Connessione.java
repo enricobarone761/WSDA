@@ -14,11 +14,11 @@ public class Connessione {
     private Integer id_connessione;
 
     @ManyToOne
-    @JoinColumn(name = "id_utente", nullable = false)
+    @JoinColumn(name = "id_utente", nullable = false, unique = true)
     private Utente utente;
 
     @ManyToOne
-    @JoinColumn(name = "id_distributore", nullable = false)
+    @JoinColumn(name = "id_distributore", nullable = false, unique = true)
     private Distributore distributore;
 
     @CreationTimestamp
