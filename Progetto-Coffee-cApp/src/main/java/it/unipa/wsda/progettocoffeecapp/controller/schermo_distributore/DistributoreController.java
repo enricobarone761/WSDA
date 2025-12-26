@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/distributore")
+@CrossOrigin(origins = "*") // questa annotazione mi permette di scambiare dati su porte diversa, intellij mi crea un po di problemi qui
 public class DistributoreController {
 
     private final DistributoreService distributoreService;
@@ -15,10 +16,11 @@ public class DistributoreController {
         this.distributoreService = distributoreService;
     }
 
-    @GetMapping("/{id}/utente-connesso")
-    public ResponseEntity<Utente> getUtenteConnesso(@PathVariable String id) {
-        return distributoreService.getUtenteConnesso(id)
-                .map(ResponseEntity::ok)
+    @GetMapping("/polling-utente")
+    public ResponseEntity<Utente> getUtenteConnesso(@RequestParam String idDistributore) {
+        //System.out.println(idDistributore);
+        return distributoreService.getUtenteConnesso(idDistributore)
+                .map(utente -> ResponseEntity.ok(utente))
                 .orElse(ResponseEntity.noContent().build());
     }
 }
