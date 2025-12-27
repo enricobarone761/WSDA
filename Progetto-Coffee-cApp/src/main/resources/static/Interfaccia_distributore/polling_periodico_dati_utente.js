@@ -19,6 +19,10 @@ function check_user() {
                 if (username_el) username_el.textContent = `${data.nome} ${data.cognome || ''}`;
                 if (credito_el) credito_el.textContent = data.credito_residuo !== undefined ? parseFloat(data.credito_residuo).toFixed(2) : "0.00";
                 if (userLabel_el) userLabel_el.textContent = "Utente Connesso";
+
+                // mostra i pulsanti "seleziona" e nasconde le icone di blocco
+                document.querySelectorAll('.btn-bevanda').forEach(btn => btn.style.display = 'block');
+                document.querySelectorAll('.icon-blocked').forEach(img => img.style.display = 'none');
             }
         })
         .catch(error => {
@@ -31,6 +35,14 @@ function resetUI() {
     if (username_el) username_el.textContent = "Nessun Utente";
     if (credito_el) credito_el.textContent = "0.00";
     if (userLabel_el) userLabel_el.textContent = "In attesa...";
+
+    // mostra le icone di blocco e nasconde i pulsanti "seleziona"
+    document.querySelectorAll('.btn-bevanda').forEach(btn => btn.style.display = 'none');
+    document.querySelectorAll('.icon-blocked').forEach(img => {
+        img.style.display = 'block';
+        img.style.margin = '0 auto';
+        img.style.height = '45px';
+    });
 }
 
 // Polling continuo ogni 5 secondi
