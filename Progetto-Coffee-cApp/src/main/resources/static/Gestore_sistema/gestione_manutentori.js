@@ -1,5 +1,5 @@
 let xmlDoc = null;
-fetch('../XML/addetti_manutenzione.xml')
+fetch('http://localhost:8080/elenco-addetti')
     .then(response => response.text())
     .then(str => {
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");
@@ -9,12 +9,11 @@ fetch('../XML/addetti_manutenzione.xml')
 
 
 function costruttore_addetto(foo){
-    const addetto = {
+    return {
         'nome': foo.querySelector('nome').innerHTML,
         'cognome': foo.querySelector('cognome').innerHTML,
         'email': foo.querySelector('email').innerHTML
     }
-    return addetto
 }
 
 function aggiungi_html_addetto(addetto){
