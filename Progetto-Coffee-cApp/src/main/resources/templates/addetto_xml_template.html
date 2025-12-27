@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<impiegati xmlns:th="http://www.thymeleaf.org">
+    <addetto th:each="addetto : ${addetti}">
+        <nome th:text="${addetto.nome}">Nome</nome>
+        <cognome th:text="${addetto.cognome}">Cognome</cognome>
+        <email th:text="${addetto.email}">Email</email>
+    </addetto>
+</impiegati>
