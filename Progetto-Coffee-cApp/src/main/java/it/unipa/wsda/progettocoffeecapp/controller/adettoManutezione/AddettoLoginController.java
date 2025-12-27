@@ -1,4 +1,4 @@
-package it.unipa.wsda.progettocoffeecapp.controller.AdettoManutezione;
+package it.unipa.wsda.progettocoffeecapp.controller.adettoManutezione;
 
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.service.UtenteService;
