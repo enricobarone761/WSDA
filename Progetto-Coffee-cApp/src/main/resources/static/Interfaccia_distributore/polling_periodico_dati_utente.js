@@ -48,5 +48,4 @@ function resetUI() {
 // Polling continuo ogni 5 secondi
 setInterval(check_user, 5000);
 
-// Esecuzione iniziale
 check_user();

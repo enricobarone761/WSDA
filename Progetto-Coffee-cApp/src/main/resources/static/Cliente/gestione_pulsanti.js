@@ -35,7 +35,6 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
             }
         })
         .catch(error => {
-            console.error('Errore durante la connessione:', error);
             alert(error.message);
         });
     }
@@ -69,7 +68,6 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
             document.querySelector('#id-distributore').value = '';
         })
         .catch(error => {
-            console.error('Errore durante la disconnessione:', error);
             alert(error.message);
         });
     } else {

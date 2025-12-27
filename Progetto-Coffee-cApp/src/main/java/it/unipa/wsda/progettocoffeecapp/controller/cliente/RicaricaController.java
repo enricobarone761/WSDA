@@ -1,13 +1,10 @@
 package it.unipa.wsda.progettocoffeecapp.controller.cliente;
 
-import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.service.UtenteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.Optional;
 
 @Controller
 public class RicaricaController {
@@ -19,18 +16,13 @@ public class RicaricaController {
     }
 
     @PostMapping("/ricarica")
-    public String ricaricaCredito(@RequestParam Integer id_utente,
-                                  @RequestParam Double importo,
-                                  Model model) {
+    public ResponseEntity<Boolean> ricaricaCredito(@RequestParam Integer id_utente,
+                                                    @RequestParam Double importo) {
         
-        utenteService.ricaricaCredito(id_utente, importo);
-        
-        Optional<Utente> utenteOpt = utenteService.findById(id_utente);
-        if (utenteOpt.isPresent()) {
-            model.addAttribute("utente", utenteOpt.get());
-            return "connessione_distributore";
+        if(utenteService.ricaricaCredito(id_utente, importo)){
+            return ResponseEntity.ok(true);
         } else {
-            return "redirect:/Cliente/login.html?error=UserNotFound";
+            return ResponseEntity.status(500).body(false);
         }
     }
 }

@@ -57,12 +57,14 @@ public class UtenteService {
     }
 
     @Transactional
-    public void ricaricaCredito(Integer idUtente, double importo) {
+    public Boolean ricaricaCredito(Integer idUtente, double importo) {
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
             utente.setCredito_residuo(utente.getCredito_residuo() + importo);
             utenteRepository.save(utente);
+            return true;
         }
+        return false;
     }
 }
