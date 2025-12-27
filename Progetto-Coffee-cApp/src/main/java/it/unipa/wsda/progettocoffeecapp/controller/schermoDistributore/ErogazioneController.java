@@ -1,4 +1,4 @@
-package it.unipa.wsda.progettocoffeecapp.controller.schermo_distributore;
+package it.unipa.wsda.progettocoffeecapp.controller.schermoDistributore;
 
 import it.unipa.wsda.progettocoffeecapp.model.Bevanda;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
