@@ -1,6 +1,6 @@
 let xmlDocDist = null;
 let lista_id_distributori = null
-fetch('../XML/xml-distributori.xml')
+fetch('../XML(assignment precedenti)/xml-distributori.xml')
     .then(response => response.text())
     .then(str => {
 

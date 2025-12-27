@@ -29,8 +29,18 @@ function aggiungi_html_addetto(addetto){
 
     //LOGICA PULSANTE RIMUOVI
     div.querySelector('.rmv-addetto').addEventListener('click', listener => {
-        alert('Hai rimosso ' + addetto.nome + ' ' + addetto.cognome)
-        div.closest('.manutentore-card').remove();
+        fetch(`http://localhost:8080/gestione-addetti/rimuovi?email=${addetto.email}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                div.closest('.manutentore-card').remove();
+                alert('Rimosso')
+            } else {
+                alert("errore");
+            }
+        })
+        .catch(error => console.error('Error:', error));
     })
 
     document.querySelector('.manutentori-list').appendChild(div)
@@ -56,9 +66,25 @@ document.querySelector('#agg-add').addEventListener('click' , listener=>{
         'email': document.querySelector('#addetto-email').value
     }
     if(document.querySelector('form').reportValidity()){
-        aggiungi_html_addetto(nuovo_addetto)
+        fetch('http://localhost:8080/gestione-addetti/aggiungi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuovo_addetto),
+        })
+        .then(response => {
+            if (response.ok) {
+                aggiungi_html_addetto(nuovo_addetto);
+                // reset form
+                document.querySelector('#addetto-nome').value = '';
+                document.querySelector('#addetto-cognome').value = '';
+                document.querySelector('#addetto-email').value = '';
+            } else {
+                alert("Errore durante l'aggiunta dell'addetto");
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 
 })
-
-
