@@ -16,22 +16,14 @@
     <div class="destra">
         <p>Accedi al tuo account <strong>Coffee App</strong>: Gestore Sistema</p>
         <div class="login-form">
-            <form method="post">
+            <form method="post" action="http://localhost:8080/login-gestore">
                 <label for="email"></label>
                 <input type="email" name="email" id="email" placeholder="Email" required><br>
 
                 <label for="password"></label>
                 <input type="password" name="password" id="password" placeholder="Password" required><br><br>
 
-                <button type="button" onclick="LoginSubmit()">Accedi</button>
-                <script>
-                    function LoginSubmit() {
-                        const form = document.querySelector('.login-form form');
-                        if (form.reportValidity()){
-                            window.location.href = "gestore_sistema.html";
-                        }
-                    }
-                </script>
+                <button type="submit">Accedi</button>
             </form>
 
         </div>
