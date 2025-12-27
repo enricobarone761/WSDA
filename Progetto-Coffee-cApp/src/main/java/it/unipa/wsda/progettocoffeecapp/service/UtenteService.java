@@ -26,9 +26,9 @@ public class UtenteService {
 
     @Transactional
     public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
-        // Verifica se l'utente esiste già
+        // verifica se l'utente esiste già
         if (utenteRepository.findByUsername(email).isPresent()) {
-            throw new Exception("Utente già registrato con questa email.");
+            throw new Exception("Email già esistente");
         }
 
         // Creazione nuovo utente
@@ -36,7 +36,7 @@ public class UtenteService {
         nuovoUtente.setNome(nome);
         nuovoUtente.setCognome(cognome);
         nuovoUtente.setUsername(email);
-        nuovoUtente.setPassword(password); // In un caso reale, la password andrebbe criptata
+        nuovoUtente.setPassword(password);
         nuovoUtente.setCredito_residuo(0.0);
         nuovoUtente.setRuolo("CLIENTE");
 
@@ -62,7 +62,6 @@ public class UtenteService {
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
             utente.setCredito_residuo(utente.getCredito_residuo() + importo);
-            utenteRepository.save(utente);
             return true;
         }
         return false;

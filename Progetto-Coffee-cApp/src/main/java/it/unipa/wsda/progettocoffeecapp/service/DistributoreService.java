@@ -48,7 +48,6 @@ public class DistributoreService {
             Connessione connessione = new Connessione();
             connessione.setUtente(utenteOpt.get());
             connessione.setDistributore(distributoreOpt.get());
-            connessioneRepository.save(connessione);
         }
     }
 
@@ -66,7 +65,6 @@ public class DistributoreService {
             distributore.setLivello_bicchieri(100);
             distributore.setLivello_cioccolato(100);
             distributore.setLivello_the(100);
-            distributoreRepository.save(distributore);
         });
     }
 
@@ -79,7 +77,6 @@ public class DistributoreService {
             distributore.setStato_display(true);
             distributore.setStato_gettoniera(true);
             distributore.setStato_macina_caffe(true);
-            distributoreRepository.save(distributore);
         });
     }
 
@@ -87,7 +84,6 @@ public class DistributoreService {
     public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
         distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
             distributore.setStato(nuovoStato);
-            distributoreRepository.save(distributore);
         });
     }
 }
