@@ -28,7 +28,7 @@ public class DistributoreService {
     }
 
     public Optional<Utente> getUtenteConnesso(String distributoreId) {
-        return connessioneRepository.findByDistributoreId_distributoreAndDataFineIsNull(distributoreId)
+        return connessioneRepository.findByDistributoreId_distributore(distributoreId)
                 .map(Connessione::getUtente);
     }
 

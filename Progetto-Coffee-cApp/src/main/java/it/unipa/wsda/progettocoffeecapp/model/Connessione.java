@@ -24,7 +24,4 @@ public class Connessione {
     @CreationTimestamp
     @Column(name = "data_inizio", nullable = false, updatable = false)
     private Timestamp dataInizio;
-
-    @Column(name = "data_fine")
-    private Timestamp dataFine;
 }
