@@ -2,7 +2,7 @@
 window.addEventListener('distributoriCaricati', ()=>{
 
     document.querySelector('#search-dist-btn').addEventListener('click', e=>{
-        e.preventDefault();
+        //e.preventDefault();
 
         //ad ogni pressione ripristiniamo tutte le card per poi eseguire la logica di ricerca
         document.querySelectorAll('.distributore-card').forEach(e=>{

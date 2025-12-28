@@ -198,6 +198,8 @@ body {
 .distributore-stato { padding: 4px 12px; border-radius: 11px; font-size: 12px; font-weight: 700; }
 .distributore-stato.attivo { background: #e9faec; color: #4caf50; }
 .distributore-stato.inattivo { background: #ede7e6; color: #aaaaaa; }
+.distributore-stato.manutenzione { background: #fff2ce; color: #ff9800; }
+.distributore-stato.guasto { background: #ffe3e3; color: #f44336; }
 
 /* FORNITURE e GUASTI h4 condividono stile */
 .forniture-section h4,

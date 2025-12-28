@@ -1,19 +1,23 @@
 let xmlDocDist = null;
 let lista_id_distributori = null
-fetch('http://localhost:8080/info_distributori')
-    .then(response => response.text())
-    .then(str => {
 
-        xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
+function scaricaDatiDistributori() {
+    fetch('http://localhost:8080/info_distributori')
+        .then(response => response.text())
+        .then(str => {
 
-        //qui estraggo soltanto la lista di ID da xml su cui iterare. Quando serve, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
-        lista_id_distributori = Array.from( xmlDocDist.getElementsByTagName('distributore') ).map(e => e.id)
+            xmlDocDist = new DOMParser().parseFromString(str, "application/xml");
 
-        // la creazione di questo evento personalizzato mi permette di fare ricerca sui distributori aspettando che vengano prima caricati in memoria
-        window.dispatchEvent(new CustomEvent('distributoriCaricati'));
-    })
-    .then(carica_distributori)
-    .catch(errore => console.log(errore));
+            //qui estraggo soltanto la lista di ID da xml su cui iterare. Quando serve, la logica di estrazione dei dati avviene dentro aggiungi_html_distributore()
+            lista_id_distributori = Array.from(xmlDocDist.getElementsByTagName('distributore')).map(e => e.id)
+
+            // la creazione di questo evento personalizzato mi permette di fare ricerca sui distributori aspettando che vengano prima caricati in memoria
+            window.dispatchEvent(new CustomEvent('distributoriCaricati'));
+        })
+        .then(carica_distributori)
+        .catch(errore => console.log(errore));
+}
+scaricaDatiDistributori() //primo avvio
 
 
 function aggiungi_html_distributore(id, posizione) {
@@ -53,7 +57,7 @@ function aggiungi_html_distributore(id, posizione) {
     }
 
     const stato_pulsante_card = function(){
-        if(distributore_el_xml?.querySelector('stato').textContent === 'Attivo'){
+        if(distributore_el_xml?.querySelector('stato').textContent === 'ATTIVO'){
             return 'Disattiva'
         }else{
             return 'Attiva'
@@ -68,7 +72,7 @@ function aggiungi_html_distributore(id, posizione) {
         `<div class="distributore-header">
             <div>
                 <span class="distributore-id">${id}</span>
-                <span class="distributore-stato ${(distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'Inattivo').toLowerCase()}">${distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'Inattivo'}</span>
+                <span class="distributore-stato ${(distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'INATTIVO').toLowerCase()}">${distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'INATTIVO'}</span>
             </div>
             <div class="distributore-posizione">
                 Edificio ${distributore_el_xml?.querySelector('edificio')?.innerHTML ?? posizione?.edificio} - 
@@ -166,14 +170,14 @@ function aggiungi_html_distributore(id, posizione) {
             // Disattiva il distributore
             statoSpan.classList.remove('attivo');
             statoSpan.classList.add('inattivo');
-            statoSpan.textContent = 'Inattivo';
+            statoSpan.textContent = 'INATTIVO';
             pulsante.textContent = 'Attiva';
             alert('Hai disattivato ' + id);
         } else {
             // Attiva il distributore
             statoSpan.classList.remove('inattivo');
             statoSpan.classList.add('attivo');
-            statoSpan.textContent = 'Attivo';
+            statoSpan.textContent = 'ATTIVO';
             pulsante.textContent = 'Disattiva';
             alert('Hai attivato ' + id);
         }
@@ -185,6 +189,7 @@ function aggiungi_html_distributore(id, posizione) {
 }
 
 function carica_distributori(){
+    document.querySelector('.distributori-list').innerHTML = '';
     for( let distributore of lista_id_distributori ) {
         aggiungi_html_distributore( distributore )
     }
@@ -192,7 +197,7 @@ function carica_distributori(){
 
 //LOGICA PULSANTE AGGIUNGI
 document.querySelector('#add-dist-btn').addEventListener('click', listener => {
-    listener.preventDefault() 
+    listener.preventDefault();
     console.log('adsdasda');
 
     const posizione = {
@@ -219,11 +224,8 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
             })
             .then(response => {
                 if (response.ok) {
-                    aggiungi_html_distributore(nuovo_id, posizione);
                     document.querySelector('#add-dist-form').reset();
-                    lista_id_distributori.push(nuovo_id); // Aggiorna la lista locale
-                } else {
-                    alert('Errore durante l\'aggiunta del distributore');
+                    scaricaDatiDistributori();
                 }
             })
             .catch(error => console.error('Errore:', error));
