@@ -92,6 +92,16 @@ public class DistributoreService {
     @Transactional
     public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
         distributoreRepository.findById(idDistributore).ifPresent(distributore -> distributore.setStato(nuovoStato));
+
+        //sync con db Jakarta
+        try {
+            restClient.put()
+                    .uri(URL + "?id=" + idDistributore + "&stato=" + nuovoStato)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Transactional

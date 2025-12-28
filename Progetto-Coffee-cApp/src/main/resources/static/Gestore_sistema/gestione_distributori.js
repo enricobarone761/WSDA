@@ -154,7 +154,7 @@ function aggiungi_html_distributore(id) {
     })
 
 
-    //LOGICA PULSANTE ATTIVA/DISATTIVA
+    //LOGICA PULSANTE ATTIVA/DISATTIVA TODO logica backend, non modifica nulla nel db
     div.querySelector('.btn-disattiva').addEventListener('click', _ => {
         const statoSpan = div.querySelector('.distributore-stato');
         const pulsante = div.querySelector('.btn-disattiva');
