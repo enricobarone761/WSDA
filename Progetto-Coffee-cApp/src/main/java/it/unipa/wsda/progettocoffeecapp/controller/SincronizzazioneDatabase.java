@@ -1,17 +1,30 @@
 package it.unipa.wsda.progettocoffeecapp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import it.unipa.wsda.progettocoffeecapp.model.StatiDistributori;
+import it.unipa.wsda.progettocoffeecapp.service.DistributoreService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+import java.util.List;
+
+@Controller
 @RequestMapping("/sync")
-class SincronizzazioneDatabase {
+public class SincronizzazioneDatabase {
+
+    private final DistributoreService distributoreService;
+    public SincronizzazioneDatabase(DistributoreService distributoreService) {
+        this.distributoreService = distributoreService;
+    }
 
     @PostMapping
-    public void syncStatus(){
-        //TODO qui ricevo la lista di tutti i distr guasti e aggiorno nel mio db
+    @ResponseBody
+    public void syncStatus(@RequestBody List<String> idsGuasti){
+        for (String id : idsGuasti) {
+            distributoreService.cambiaStatoSenzaSync(id, StatiDistributori.GUASTO);
+        }
     }
 
 }
