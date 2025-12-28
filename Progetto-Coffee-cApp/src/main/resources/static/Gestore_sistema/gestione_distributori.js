@@ -142,8 +142,18 @@ function aggiungi_html_distributore(id, posizione) {
 
     //LOGICA PULSANTE RIMUOVI
     div.querySelector('.btn-rimuovi').addEventListener('click', listener => {
-        alert('Hai rimosso ' + id )
-        div.closest('.distributore-card').remove();
+        fetch(`http://localhost:8080/gestione-distributori/rimuovi?id=${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Hai rimosso ' + id )
+                div.closest('.distributore-card').remove();
+            } else {
+                alert('Errore durante la rimozione del distributore');
+            }
+        })
+        .catch(error => console.error('Errore:', error));
     })
 
 
@@ -182,19 +192,42 @@ function carica_distributori(){
 
 //LOGICA PULSANTE AGGIUNGI
 document.querySelector('#add-dist-btn').addEventListener('click', listener => {
-    listener.preventDefault() //Temporaneo per l'assignment
+    listener.preventDefault() 
     console.log('adsdasda');
 
     const posizione = {
-        'edificio': document.querySelector('#add-distributore-piano').value,
-        'piano': document.querySelector('#add-distributore-edificio').value
+        'edificio': document.querySelector('#add-distributore-edificio').value,
+        'piano': document.querySelector('#add-distributore-piano').value
     };
 
     const nuovo_id = document.querySelector('#add-distributore-id').value;
     if (document.querySelector('#add-dist-form').reportValidity()) {
         if (!lista_id_distributori.includes(nuovo_id)) {
-            aggiungi_html_distributore(nuovo_id, posizione);
-            document.querySelector('#add-dist-form').reset();
+            
+            const nuovoDistributore = {
+                id_distributore: nuovo_id,
+                edificio: posizione.edificio,
+                piano: posizione.piano
+            };
+
+            fetch('http://localhost:8080/gestione-distributori/aggiungi', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(nuovoDistributore)
+            })
+            .then(response => {
+                if (response.ok) {
+                    aggiungi_html_distributore(nuovo_id, posizione);
+                    document.querySelector('#add-dist-form').reset();
+                    lista_id_distributori.push(nuovo_id); // Aggiorna la lista locale
+                } else {
+                    alert('Errore durante l\'aggiunta del distributore');
+                }
+            })
+            .catch(error => console.error('Errore:', error));
+
         } else {
             alert('Errore: ID distributore già esistente');
         }
