@@ -9,6 +9,7 @@ import it.unipa.wsda.progettocoffeecapp.repository.DistributoreRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClient;
 
 import java.util.Optional;
 
@@ -18,6 +19,9 @@ public class DistributoreService {
     private final ConnessioneRepository connessioneRepository;
     private final UtenteRepository utenteRepository;
     private final DistributoreRepository distributoreRepository;
+    private final RestClient restClient = RestClient.create();
+    private final String URL = "http://localhost:8081/heartbeat_service_war_exploded/distributori";
+
     public DistributoreService(ConnessioneRepository connessioneRepository, 
                               UtenteRepository utenteRepository, 
                               DistributoreRepository distributoreRepository) {
@@ -85,9 +89,7 @@ public class DistributoreService {
 
     @Transactional
     public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
-        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
-            distributore.setStato(nuovoStato);
-        });
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> distributore.setStato(nuovoStato));
     }
 
     @Transactional
@@ -106,6 +108,16 @@ public class DistributoreService {
     @Transactional
     public void deleteDistributoreById(String id) {
         distributoreRepository.deleteById(id);
+
+        //sync con db Jakarta
+        try {
+            restClient.delete()
+                    .uri(URL + "?id=" + id)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
