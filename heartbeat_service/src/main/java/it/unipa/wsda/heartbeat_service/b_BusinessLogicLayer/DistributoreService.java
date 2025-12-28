@@ -5,7 +5,15 @@ import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.StatiDistributori;
 import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.Distributore;
 
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Response;
+
 
 
 public class DistributoreService {
@@ -35,6 +43,7 @@ public class DistributoreService {
     public void aggiornaStatoDistributoriGuasti() throws SQLException {
         long tempoLimite = 3 * 60 * 1000L; // 3 minuti
         long adesso = System.currentTimeMillis();
+        Set<String> distributoriGuastiIds = new HashSet<>();
 
         for (Distributore dis : allDistributori()) {
             // Controllo se è passato troppo tempo E se NON è in manutenzione
@@ -44,11 +53,19 @@ public class DistributoreService {
                 // aggiorna solo se non è già GUASTO per evitare query inutili
                 if (dis.getStato() != StatiDistributori.GUASTO) {
                     aggiornaStato(dis.getId(), StatiDistributori.GUASTO);
+                    distributoriGuastiIds.add(dis.getId());
                 }
             }
         }
 
-        //TODO qui deve essere fatto la POST per sincronizzare i db
+        //sync con il progetto Spring dei db con guasto, dall'altro lato un endpoint legge la lista di id che invio
+
+        Response response = ClientBuilder.newClient()
+                .target("https://api.example.com/endpoint")
+                .request()
+                .post(Entity.json(distributoriGuastiIds));
+
+
 
     }
 
