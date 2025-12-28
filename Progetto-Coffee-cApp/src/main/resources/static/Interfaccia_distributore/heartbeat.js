@@ -10,13 +10,13 @@ function sendHeartbeat() {
     })
     .then(response => {
         if (!response.ok) {
-            console.error('Errore durante l\'invio dell\'heartbeat alla Servlet');
+            console.error("Errore durante l'invio dell'heartbeat alla Servlet");
         } else {
             console.log('Heartbeat inviato con successo alla Servlet');
         }
     })
     .catch(error => {
-        console.error('Errore di rete durante l\'invio dell\'heartbeat:', error);
+        console.error("'Errore di rete durante l'invio dell'heartbeat:'", error);
     });
 }
 
@@ -24,4 +24,4 @@ function sendHeartbeat() {
 setInterval(sendHeartbeat, 60000);
 
 // Invia un heartbeat iniziale al caricamento della pagina
-//sendHeartbeat();
+sendHeartbeat();
