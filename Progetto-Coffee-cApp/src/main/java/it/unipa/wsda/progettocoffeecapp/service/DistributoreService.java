@@ -18,7 +18,6 @@ public class DistributoreService {
     private final ConnessioneRepository connessioneRepository;
     private final UtenteRepository utenteRepository;
     private final DistributoreRepository distributoreRepository;
-
     public DistributoreService(ConnessioneRepository connessioneRepository, 
                               UtenteRepository utenteRepository, 
                               DistributoreRepository distributoreRepository) {
@@ -103,6 +102,7 @@ public class DistributoreService {
 
         distributoreRepository.save(distributore);
     }
+
     @Transactional
     public void deleteDistributoreById(String id) {
         distributoreRepository.deleteById(id);

@@ -47,6 +47,9 @@ public class DistributoreService {
                 }
             }
         }
+
+        //TODO qui deve essere fatto la POST per sincronizzare i db
+
     }
 
 }
