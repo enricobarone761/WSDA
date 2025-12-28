@@ -19,7 +19,7 @@ public class DistributoreDAO {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             ps.setString(1, dis.getId());
-            ps.setString(2,dis.getStatus().toString());
+            ps.setString(2,dis.getStato().toString());
             ps.setDouble(3,dis.getLat());
             ps.setDouble(4,dis.getLon());
             ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));

@@ -7,10 +7,12 @@ import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.DistributoreRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -22,8 +24,8 @@ public class DistributoreService {
     private final RestClient restClient = RestClient.create();
     private final String URL = "http://localhost:8081/heartbeat_service_war_exploded/distributori";
 
-    public DistributoreService(ConnessioneRepository connessioneRepository, 
-                              UtenteRepository utenteRepository, 
+    public DistributoreService(ConnessioneRepository connessioneRepository,
+                              UtenteRepository utenteRepository,
                               DistributoreRepository distributoreRepository) {
         this.connessioneRepository = connessioneRepository;
         this.utenteRepository = utenteRepository;
@@ -45,7 +47,7 @@ public class DistributoreService {
     public void connetti(Integer idUtente, String idDistributore) {
         // cancelliamo eventuali connessione attive precedenti, un utente supporta una connessione attiva alla volta
         disconnetti(idUtente);
-        
+
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         Optional<Distributore> distributoreOpt = distributoreRepository.findById(idDistributore);
 
@@ -103,6 +105,32 @@ public class DistributoreService {
         ripristinaGuastiDistributore(distributore);
 
         distributoreRepository.save(distributore);
+
+
+        //sync con db Jakarta
+        String json = String.format("""
+            {
+                "id": "%s",
+                "stato": "%s",
+                "lat": %f,
+                "lon": %f,
+                "lastHeartbeat": null
+            }
+            """, distributore.getId_distributore(),
+                distributore.getStato(),
+                distributore.getLat(),
+                distributore.getLon());
+
+        try {
+            restClient.post()
+                    .uri(URL)
+                    .body(json)
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Transactional

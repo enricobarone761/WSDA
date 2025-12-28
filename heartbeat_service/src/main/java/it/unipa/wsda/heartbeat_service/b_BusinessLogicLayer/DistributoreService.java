@@ -38,11 +38,11 @@ public class DistributoreService {
 
         for (Distributore dis : allDistributori()) {
             // Controllo se è passato troppo tempo E se NON è in manutenzione
-            if (dis.getStatus() != StatiDistributori.MANUTENZIONE &&
+            if (dis.getStato() != StatiDistributori.MANUTENZIONE &&
                     (adesso - dis.getLastHeartbeat().getTime() > tempoLimite)) {
 
                 // aggiorna solo se non è già GUASTO per evitare query inutili
-                if (dis.getStatus() != StatiDistributori.GUASTO) {
+                if (dis.getStato() != StatiDistributori.GUASTO) {
                     aggiornaStato(dis.getId(), StatiDistributori.GUASTO);
                 }
             }

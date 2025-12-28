@@ -40,7 +40,7 @@ public class ServletDistributoriGuasti extends HttpServlet {
 
             List<Distributore> lista_guasti = service.allDistributori()
                     .stream()
-                    .filter(x -> x.getStatus() == StatiDistributori.GUASTO)
+                    .filter(x -> x.getStato() == StatiDistributori.GUASTO)
                     .toList();
 
             resp.setContentType("application/json");

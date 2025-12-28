@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 
 public class Distributore {
     private String id;
-    private StatiDistributori status;
+    private StatiDistributori stato;
     private double lat;
     private double lon;
     private Timestamp lastHeartbeat;
 
     public Distributore(String id, StatiDistributori status, double lat, double lon, Timestamp lastHeartbeat) {
         this.id = id;
-        this.status = status;
+        this.stato = status;
         this.lat = lat;
         this.lon = lon;
         this.lastHeartbeat = lastHeartbeat;
@@ -49,9 +49,9 @@ public class Distributore {
         this.lastHeartbeat = lastHeartbeat;
     }
 
-    public StatiDistributori getStatus() { return status; }
+    public StatiDistributori getStato() { return stato; }
 
-    public void setStatus(StatiDistributori status) {
-        this.status = status;
+    public void setStato(StatiDistributori stato) {
+        this.stato = stato;
     }
 }
