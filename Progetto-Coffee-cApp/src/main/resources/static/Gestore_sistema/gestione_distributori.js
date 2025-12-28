@@ -20,26 +20,24 @@ function scaricaDatiDistributori() {
 scaricaDatiDistributori() //primo avvio
 
 
-function aggiungi_html_distributore(id, posizione) {
+function aggiungi_html_distributore(id) {
 
     const distributore_el_xml = xmlDocDist.getElementById(id)
 
     //funzione forse superflua che mi aiuta per compilare in modo più leggibile l'HTML qui sotto
     //recupera lo stato di forniture/guasti da XML in modo pulito e semplice
     const distributore = function(categoria, tipo) {
-        const elementi = distributore_el_xml?.querySelectorAll(categoria);
+        const elementi = distributore_el_xml.querySelectorAll(categoria);
         let risultato = null;
-        if(elementi != null){
-            elementi.forEach(e => {
-                if (e.querySelector('nome').textContent === tipo) {
-                    if (categoria === 'fornitura') {
-                        risultato = e.querySelector('livello').innerHTML;
-                    } else { // se componente
-                        risultato = e.querySelector('stato').innerHTML;
-                    }
+        elementi.forEach(e => {
+            if (e.querySelector('nome').textContent === tipo) {
+                if (categoria === 'fornitura') {
+                    risultato = e.querySelector('livello').textContent;
+                } else { // se componente
+                    risultato = e.querySelector('stato').textContent;
                 }
-            });
-        }
+            }
+        });
         return risultato;
     };
 
@@ -56,13 +54,8 @@ function aggiungi_html_distributore(id, posizione) {
         return `width: ${livello}%; background: ${colore};`;
     }
 
-    const stato_pulsante_card = function(){
-        if(distributore_el_xml?.querySelector('stato').textContent === 'ATTIVO'){
-            return 'Disattiva'
-        }else{
-            return 'Attiva'
-        }
-    }
+    const stato_attuale = distributore_el_xml.querySelector('stato').textContent;
+    const testo_pulsante = stato_attuale === 'ATTIVO' ? 'Disattiva' : 'Attiva';
 
 
     const div = document.createElement('div')
@@ -72,11 +65,11 @@ function aggiungi_html_distributore(id, posizione) {
         `<div class="distributore-header">
             <div>
                 <span class="distributore-id">${id}</span>
-                <span class="distributore-stato ${(distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'INATTIVO').toLowerCase()}">${distributore_el_xml?.querySelector('stato')?.innerHTML ?? 'INATTIVO'}</span>
+                <span class="distributore-stato ${stato_attuale.toLowerCase()}">${stato_attuale}</span>
             </div>
             <div class="distributore-posizione">
-                Edificio ${distributore_el_xml?.querySelector('edificio')?.innerHTML ?? posizione?.edificio} - 
-                Piano ${distributore_el_xml?.querySelector('piano')?.innerHTML ?? posizione?.piano}
+                Edificio ${distributore_el_xml.querySelector('edificio').textContent} - 
+                Piano ${distributore_el_xml.querySelector('piano').textContent}
             </div>
         </div>
 
@@ -85,67 +78,67 @@ function aggiungi_html_distributore(id, posizione) {
             <div class="fornitura-item">
                 <span>Caffè</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Caffè') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Caffè'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Caffè') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Caffè')}%</span>
             </div>
             <div class="fornitura-item">
                 <span>Latte</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Latte') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Latte'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Latte') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Latte')}%</span>
             </div>
             <div class="fornitura-item">
                 <span>Zucchero</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Zucchero') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Zucchero'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Zucchero') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Zucchero')}%</span>
             </div>
             <div class="fornitura-item">
                 <span>Thè</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Thè') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Thè'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Thè') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Thè')}%</span>
             </div>
             <div class="fornitura-item">
                 <span>Cioccolato</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Cioccolato') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Cioccolato'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Cioccolato') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Cioccolato')}%</span>
             </div>
             <div class="fornitura-item">
                 <span>Bicchieri</span>
                 <div class="barra-container">
-                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Bicchieri') ?? 100)}"></div>
+                    <div class="barra-progresso" style="${getBarraStyle(distributore('fornitura','Bicchieri'))}"></div>
                 </div>
-                <span class="percentuale">${distributore('fornitura','Bicchieri') ?? 100}%</span>
+                <span class="percentuale">${distributore('fornitura','Bicchieri')}%</span>
             </div>
         </div>
 
         <div class="guasti-section">
             <h4>Stato Componenti</h4>
             <div class="guasti-grid">
-                <div class="guasto-item ${ (distributore('componente','Pompa Acqua') ?? 'ok').toLowerCase() }">Pompa Acqua</div>
-                <div class="guasto-item ${ (distributore('componente','Riscaldatore') ?? 'ok').toLowerCase() }">Riscaldatore</div>
-                <div class="guasto-item ${ (distributore('componente','Erogatore') ?? 'ok').toLowerCase() }">Erogatore</div>
-                <div class="guasto-item ${ (distributore('componente','Display') ?? 'ok').toLowerCase() }">Display</div>
-                <div class="guasto-item ${ (distributore('componente','Gettoniera') ?? 'ok').toLowerCase() }">Gettoniera</div>
-                <div class="guasto-item ${ (distributore('componente','Macina Caffè') ?? 'ok').toLowerCase() }">Macina Caffè</div>
+                <div class="guasto-item ${ distributore('componente','Pompa Acqua').toLowerCase() }">Pompa Acqua</div>
+                <div class="guasto-item ${ distributore('componente','Riscaldatore').toLowerCase() }">Riscaldatore</div>
+                <div class="guasto-item ${ distributore('componente','Erogatore').toLowerCase() }">Erogatore</div>
+                <div class="guasto-item ${ distributore('componente','Display').toLowerCase() }">Display</div>
+                <div class="guasto-item ${ distributore('componente','Gettoniera').toLowerCase() }">Gettoniera</div>
+                <div class="guasto-item ${ distributore('componente','Macina Caffè').toLowerCase() }">Macina Caffè</div>
             </div>
         </div>
 
         <div class="distributore-actions">
-            <button class="btn-piccolo btn-disattiva">${stato_pulsante_card()}</button>
+            <button class="btn-piccolo btn-disattiva">${testo_pulsante}</button>
             <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
         </div>`;
 
 
     //LOGICA PULSANTE RIMUOVI
-    div.querySelector('.btn-rimuovi').addEventListener('click', listener => {
+    div.querySelector('.btn-rimuovi').addEventListener('click', _ => {
         fetch(`http://localhost:8080/gestione-distributori/rimuovi?id=${id}`, {
             method: 'DELETE'
         })
@@ -162,7 +155,7 @@ function aggiungi_html_distributore(id, posizione) {
 
 
     //LOGICA PULSANTE ATTIVA/DISATTIVA
-    div.querySelector('.btn-disattiva').addEventListener('click', listener => {
+    div.querySelector('.btn-disattiva').addEventListener('click', _ => {
         const statoSpan = div.querySelector('.distributore-stato');
         const pulsante = div.querySelector('.btn-disattiva');
 
