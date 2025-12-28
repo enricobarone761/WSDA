@@ -23,6 +23,7 @@ public class SincronizzazioneDatabase {
     @ResponseBody
     public void syncStatus(@RequestBody List<String> idsGuasti){
         for (String id : idsGuasti) {
+            System.out.println("Aggiornamento ricevuto" + id);
             distributoreService.cambiaStatoSenzaSync(id, StatiDistributori.GUASTO);
         }
     }
