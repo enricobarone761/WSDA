@@ -18,7 +18,7 @@ function sendHeartbeat() {
 }
 
 // Invia l'heartbeat ogni 60 secondi
-setInterval(sendHeartbeat, 1000);
+setInterval(sendHeartbeat, 60000);
 
 // Invia un heartbeat iniziale al caricamento della pagina
 sendHeartbeat();

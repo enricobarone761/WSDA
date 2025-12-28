@@ -10,7 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Connessione {
 
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_connessione;
 
     @ManyToOne

@@ -1,4 +1,4 @@
-package it.unipa.wsda.progettocoffeecapp.config;
+package it.unipa.wsda.progettocoffeecapp;
 
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DatabaseInitializer {
+public class SvuotaTabellaConnessioneDaEliminare {
 
     @Bean
     CommandLineRunner clearConnessioneTable(ConnessioneRepository connessioneRepository) {
