@@ -22,15 +22,20 @@ public class ServletHeartbeat extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //righe necessarie per mitigare il fastidioso CORS
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+
+
         try {
             service.aggiornaUltimoHeartbeat(req.getParameter("id"));
+            System.out.println("Ricevuto " + req.getParameter("id"));
             resp.setStatus(HttpServletResponse.SC_OK); //codice 200 OK
+
         } catch (SQLException e) {
-            System.out.println(req.getParameter("id"));
+            System.out.println("Fallito " + req.getParameter("id"));
             resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
-
-
-
 }
