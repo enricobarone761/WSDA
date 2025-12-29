@@ -46,8 +46,9 @@ public class DistributoreService {
         Set<String> lista_id_distributori_guasti = new HashSet<>();
 
         for (Distributore dis : allDistributori()) {
-            // Controllo se è passato troppo tempo E se NON è in manutenzione
+            // Controllo se è passato troppo tempo E se NON è in manutenzione o inattivo
             if (dis.getStato() != StatiDistributori.MANUTENZIONE &&
+                    dis.getStato() != StatiDistributori.INATTIVO &&
                     (adesso - dis.getLastHeartbeat().getTime() > tempoLimite)) {
 
                 lista_id_distributori_guasti.add(dis.getId()); //lista id da inviare
