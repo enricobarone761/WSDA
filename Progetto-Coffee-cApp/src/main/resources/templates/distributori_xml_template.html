@@ -2,7 +2,7 @@
 <distributori xmlns:th="http://www.thymeleaf.org">
     <distributore th:each="distributore : ${distributori}" th:attr="id=${distributore.id_distributore}">
 
-        <edificio th:text="${distributore.edificio}">Edificio</edificio>
+        <via th:text="${distributore.via}">Via</via>
         <piano th:text="${distributore.piano}">Piano</piano>
 
         <stato th:text="${distributore.stato}">Stato</stato>

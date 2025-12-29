@@ -18,7 +18,7 @@ public class Distributore {
 
     private Double lat;
     private Double lon;
-    private String edificio;
+    private String via;
     private String piano;
 
     private Integer livello_caffe;

@@ -68,7 +68,7 @@ function aggiungi_html_distributore(id) {
                 <span class="distributore-stato ${stato_attuale.toLowerCase()}">${stato_attuale}</span>
             </div>
             <div class="distributore-posizione">
-                Edificio ${distributore_el_xml.querySelector('edificio').textContent} - 
+                Via ${distributore_el_xml.querySelector('via').textContent} - 
                 Piano ${distributore_el_xml.querySelector('piano').textContent}
             </div>
         </div>
@@ -194,7 +194,7 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
     console.log('adsdasda');
 
     const posizione = {
-        'edificio': document.querySelector('#add-distributore-edificio').value,
+        'via': document.querySelector('#add-distributore-via').value,
         'piano': document.querySelector('#add-distributore-piano').value
     };
 
@@ -204,7 +204,7 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
             
             const nuovoDistributore = {
                 id_distributore: nuovo_id,
-                edificio: posizione.edificio,
+                via: posizione.via,
                 piano: posizione.piano
             };
 

@@ -27,8 +27,8 @@ window.addEventListener('distributoriCaricati', ()=>{
                 lista_distributori_validi.delete(e.id)
             }
 
-            //controllo edificio
-            if(criteri_di_ricerca['distributore-edificio'] && criteri_di_ricerca['distributore-edificio'].toLowerCase() !== e.querySelector('edificio').textContent.toLowerCase() ){
+            //controllo via
+            if(criteri_di_ricerca['distributore-via'] && criteri_di_ricerca['distributore-via'].toLowerCase() !== e.querySelector('via').textContent.toLowerCase() ){
                 lista_distributori_validi.delete(e.id)
             }
 
@@ -75,4 +75,3 @@ window.addEventListener('distributoriCaricati', ()=>{
     })
 
 })
-
