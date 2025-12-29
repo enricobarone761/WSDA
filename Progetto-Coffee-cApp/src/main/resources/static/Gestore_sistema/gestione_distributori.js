@@ -68,7 +68,7 @@ function aggiungi_html_distributore(id) {
                 <span class="distributore-stato ${stato_attuale.toLowerCase()}">${stato_attuale}</span>
             </div>
             <div class="distributore-posizione">
-                Via ${distributore_el_xml.querySelector('via').textContent} - 
+                ${distributore_el_xml.querySelector('via').textContent} - 
                 Piano ${distributore_el_xml.querySelector('piano').textContent}
             </div>
         </div>

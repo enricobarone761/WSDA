@@ -53,6 +53,7 @@ public class DistributoreService {
             Connessione connessione = new Connessione();
             connessione.setUtente(utenteOpt.get());
             connessione.setDistributore(distributoreOpt.get());
+            connessioneRepository.save(connessione);
         }
     }
 
@@ -72,6 +73,7 @@ public class DistributoreService {
         distributore.setLivello_bicchieri(100);
         distributore.setLivello_cioccolato(100);
         distributore.setLivello_the(100);
+        distributoreRepository.save(distributore);
     }
 
     @Transactional
@@ -85,11 +87,15 @@ public class DistributoreService {
         distributore.setStato_display(true);
         distributore.setStato_gettoniera(true);
         distributore.setStato_macina_caffe(true);
+        distributoreRepository.save(distributore);
     }
 
     @Transactional
     public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
-        distributoreRepository.findById(idDistributore).ifPresent(distributore -> distributore.setStato(nuovoStato));
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
+            distributore.setStato(nuovoStato);
+            distributoreRepository.save(distributore);
+        });
 
         //sync con db Jakarta
         try {
@@ -105,7 +111,10 @@ public class DistributoreService {
     @Transactional
     public void cambiaStato(String idDistributore, StatiDistributori nuovoStato, Boolean sync) {
         //questo metodo è necessario per evitare loop nell'aggiornamento tra i db nei due progetti
-        distributoreRepository.findById(idDistributore).ifPresent(distributore -> distributore.setStato(nuovoStato));
+        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
+            distributore.setStato(nuovoStato);
+            distributoreRepository.save(distributore);
+        });
     }
 
     @Transactional

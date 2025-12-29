@@ -50,6 +50,7 @@ public class UtenteService {
             Utente utente = utenteOpt.get();
             if (utente.getCredito_residuo() >= costo) {
                 utente.setCredito_residuo(utente.getCredito_residuo() - costo);
+                utenteRepository.save(utente);
                 return true;
             }
         }
@@ -62,6 +63,7 @@ public class UtenteService {
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
             utente.setCredito_residuo(utente.getCredito_residuo() + importo);
+            utenteRepository.save(utente);
             return true;
         }
         return false;
