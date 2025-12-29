@@ -14,13 +14,12 @@ public class Connessione {
     @Column(name = "id_connessione", nullable = false, updatable = false, unique = true, length = 36)
     private String id_connessione = java.util.UUID.randomUUID().toString();
 
-    // Utente associato a questa connessione.
-    @ManyToOne
-    @JoinColumn(name = "id_utente", nullable = false, unique = true)
+    @OneToOne
+    @JoinColumn(name = "id_utente", nullable = false)
     private Utente utente;
 
-    @ManyToOne
-    @JoinColumn(name = "id_distributore", nullable = false, unique = true)
+    @OneToOne
+    @JoinColumn(name = "id_distributore", nullable = false)
     private Distributore distributore;
 
     @CreationTimestamp
