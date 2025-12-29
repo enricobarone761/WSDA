@@ -10,9 +10,11 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Connessione {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_connessione;
+    // trovato su internet come identificare una connessione, generato automaticamente come UUID Universally Unique Identifier.
+    @Column(name = "id_connessione", nullable = false, updatable = false, unique = true, length = 36)
+    private String id_connessione = java.util.UUID.randomUUID().toString();
 
+    // Utente associato a questa connessione.
     @ManyToOne
     @JoinColumn(name = "id_utente", nullable = false, unique = true)
     private Utente utente;

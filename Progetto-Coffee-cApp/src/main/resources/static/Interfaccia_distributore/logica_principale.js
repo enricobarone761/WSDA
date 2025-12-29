@@ -1,5 +1,5 @@
 let credito_residuo_el = document.querySelector('.credit');
-const DISTRIBUTORE_ID = "CA001";
+const DISTRIBUTORE_ID = document.querySelector('.dispenser-id').innerText;
 
 let prezzo = null;
 let idBevandaSelezionata = null;

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 
+import java.sql.SQLException;
 import java.util.Optional;
 
 @Service
@@ -54,6 +55,8 @@ public class DistributoreService {
             connessione.setUtente(utenteOpt.get());
             connessione.setDistributore(distributoreOpt.get());
             connessioneRepository.save(connessione);
+        }else{
+            throw new RuntimeException("Utente o distributore non trovato");
         }
     }
 

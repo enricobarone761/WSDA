@@ -2,10 +2,10 @@ let username_el = document.querySelector('.username');
 let credito_el = document.querySelector('.credit');
 let userLabel_el = document.querySelector('.user-label');
 
-const DISTRIBUTORE_ID_THIS = "CA001";
+const DISTRIBUTORE_ID_THIS = document.querySelector('.dispenser-id').innerText;
 
 function check_user() {
-    fetch(`http://localhost:8080/distributore/polling-utente?idDistributore=${DISTRIBUTORE_ID_THIS}`)
+    fetch(`http://localhost:8080/distributore/polling-utente?idDistributore=${DISTRIBUTORE_ID}`)
         .then(res => {
             if (res.status === 204) {
                 resetUI();
