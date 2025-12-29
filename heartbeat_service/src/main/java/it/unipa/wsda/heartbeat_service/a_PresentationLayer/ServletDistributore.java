@@ -30,6 +30,8 @@ public class ServletDistributore extends HttpServlet {
     private long ultimoControlloGuasti = 0;
     private static final long INTERVALLO_CONTROLLO = 30 * 1000; //30 secondi
 
+
+    //lista tutti i distributori
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
