@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreazioneDistributori_info_db {
+public class DatabaseInit {
     public static void main() {
         try (Connection conn = ConnessioneDistributore.getConnection();
              Statement stmt = conn.createStatement()) {
