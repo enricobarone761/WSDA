@@ -104,7 +104,7 @@ public class DistributoreService {
     }
 
     @Transactional
-    public void cambiaStatoSenzaSync(String idDistributore, StatiDistributori nuovoStato) {
+    public void cambiaStato(String idDistributore, StatiDistributori nuovoStato, Boolean sync) {
         //questo metodo è necessario per evitare loop nell'aggiornamento tra i db nei due progetti
         distributoreRepository.findById(idDistributore).ifPresent(distributore -> distributore.setStato(nuovoStato));
     }
