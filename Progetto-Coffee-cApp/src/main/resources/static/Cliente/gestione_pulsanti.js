@@ -1,13 +1,42 @@
-let input_id = null;
+//questa pagina implementa sessioStorage, semplice funzione js che mi permette di "resistere" al refresh della pagina
+//conservando l'id distributore al quale si è connessi. Quando la tab viene chiusa la sessione è cancellata
+
+let input_id = sessionStorage.getItem('id_distributore'); //all'avvio è null
+
 const botton_connessione = document.querySelector('#conn');
 const status_div = document.querySelector('#status-connessione');
 const id_connesso_el = document.querySelector('#id-connesso');
-const id_utente = document.querySelector('#id_utente_hidden')?.value; //recupera da thymeleaf l'id utente che però non mostro nell'html
+const id_utente = document.querySelector('#id_utente_hidden')?.value;
+
+// funzione per aggiornare la UI in base allo stato di connessione
+function aggiornaUI(id) {
+    if (id) {
+        botton_connessione.disabled = true;
+        botton_connessione.style.backgroundColor = '#dcd9d4';
+        botton_connessione.innerHTML = 'Connesso';
+        if (status_div && id_connesso_el) {
+            id_connesso_el.textContent = id;
+            status_div.style.display = 'block';
+        }
+    } else {
+        botton_connessione.disabled = false;
+        botton_connessione.style.backgroundColor = '';
+        botton_connessione.innerHTML = 'Connetti';
+        if (status_div) {
+            status_div.style.display = 'none';
+        }
+        document.querySelector('#id-distributore').value = '';
+    }
+}
+
+// al primo avvio è null, quindi UI vuota
+if (input_id) {
+    aggiornaUI(input_id);
+}
 
 // CONNESSIONE
 document.querySelector('#form-connessione').addEventListener('submit', (event) => {
     event.preventDefault();
-
     const id_distributore = document.querySelector('#id-distributore').value;
     
     if (id_distributore && id_utente) {
@@ -22,17 +51,9 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
         })
         .then(message => {
             input_id = id_distributore;
-            alert(message); // "Connessione riuscita"
-
-            // Aggiornamento UI
-            botton_connessione.disabled = true;
-            botton_connessione.style.backgroundColor = '#dcd9d4';
-            botton_connessione.innerHTML = 'Connesso';
-
-            if (status_div && id_connesso_el) {
-                id_connesso_el.textContent = input_id;
-                status_div.style.display = 'block';
-            }
+            sessionStorage.setItem('id_distributore', input_id);
+            alert(message);
+            aggiornaUI(input_id);
         })
         .catch(error => {
             alert(error.message);
@@ -54,18 +75,10 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
             }
         })
         .then(message => {
-            alert(message); // "Disconnessione riuscita"
-            
-            // reset ui
+            alert(message);
             input_id = null;
-            botton_connessione.disabled = false;
-            botton_connessione.style.backgroundColor = '';
-            botton_connessione.innerHTML = 'Connetti';
-
-            if (status_div) {
-                status_div.style.display = 'none';
-            }
-            document.querySelector('#id-distributore').value = '';
+            sessionStorage.removeItem('id_distributore');
+            aggiornaUI(null);
         })
         .catch(error => {
             alert(error.message);

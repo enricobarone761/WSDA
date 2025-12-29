@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formRicarica = document.querySelector('#form-ricarica');
 
     // funzione per aggiornare il credito a schermo
+    //ho deciso di usare un polling continuo del credito come lo schermo distributore per mantenerlo aggiornato
+    //ad ogni erogazione
     const aggiornaCredito = () => {
         if (!idUtente) return;
 
@@ -36,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => {
                     if (response.ok) {
                         alert('Ricarica effettuata');
-                        // ho separato l'invio dall'aggiornamento a schermo utilizzando lo stesso approccio dell'interfaccia distributore
+                        // ho separato l'invio dall'aggiornamento a schermo utilizzando
+                        // lo stesso approccio dell'interfaccia distributore
                         document.querySelector('#importo').value = '';
                     }
                 })
