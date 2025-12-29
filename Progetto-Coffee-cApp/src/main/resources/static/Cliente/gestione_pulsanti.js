@@ -11,7 +11,7 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
     const id_distributore = document.querySelector('#id-distributore').value;
     
     if (id_distributore && id_utente) {
-        fetch(`/connetti?id_utente=${id_utente}&id_distributore=${id_distributore}`, {
+        fetch(`http://localhost:8080/connetti?id_utente=${id_utente}&id_distributore=${id_distributore}`, {
             method: 'POST'
         })
         .then(response => {
@@ -43,7 +43,7 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
 // DISCONNESSIONE
 document.querySelector('#disconnessione-btn').addEventListener('click', () => {
     if (input_id && id_utente) {
-        fetch(`/disconnetti?id_utente=${id_utente}`, {
+        fetch(`http://localhost:8080/disconnetti?id_utente=${id_utente}`, {
             method: 'POST'
         })
         .then(response => {
