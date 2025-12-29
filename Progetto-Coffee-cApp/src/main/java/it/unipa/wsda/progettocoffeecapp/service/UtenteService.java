@@ -5,6 +5,7 @@ import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,6 +64,35 @@ public class UtenteService {
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
             utente.setCredito_residuo(utente.getCredito_residuo() + importo);
+            utenteRepository.save(utente);
+            return true;
+        }
+        return false;
+    }
+
+    // Sezione per gli Addetti
+    public List<Utente> getAllAddetti() {
+        return utenteRepository.findByRuolo("ADDETTO");
+    }
+
+    @Transactional
+    public boolean assegnaRuoloAddetto(String email) {
+        Optional<Utente> utenteOpt = utenteRepository.findByUsername(email);
+        if (utenteOpt.isPresent()) {
+            Utente utente = utenteOpt.get();
+            utente.setRuolo("ADDETTO");
+            utenteRepository.save(utente);
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional
+    public boolean rimuoviRuoloAddetto(String email) {
+        Optional<Utente> utenteOpt = utenteRepository.findByUsername(email);
+        if (utenteOpt.isPresent()) {
+            Utente utente = utenteOpt.get();
+            utente.setRuolo("CLIENTE");
             utenteRepository.save(utente);
             return true;
         }

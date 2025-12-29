@@ -60,28 +60,31 @@ function carica_addetti(){
 //LOGICA PULSANTE AGGIUNGI ADDETTO
 document.querySelector('#agg-add').addEventListener('click' , listener=>{
     listener.preventDefault()
-    const nuovo_addetto ={
-        'nome': document.querySelector('#addetto-nome').value,
-        'cognome': document.querySelector('#addetto-cognome').value,
-        'email': document.querySelector('#addetto-email').value
-    }
+    const email = document.querySelector('#addetto-email').value;
+
     if(document.querySelector('form').reportValidity()){
-        fetch('http://localhost:8080/gestione-addetti/aggiungi', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(nuovo_addetto),
+        fetch(`http://localhost:8080/gestione-addetti/aggiungi?email=${email}`, {
+            method: 'POST'
         })
         .then(response => {
             if (response.ok) {
-                aggiungi_html_addetto(nuovo_addetto);
-                // reset form
-                document.querySelector('#addetto-nome').value = '';
-                document.querySelector('#addetto-cognome').value = '';
-                document.querySelector('#addetto-email').value = '';
+                // ricarichiamo la lista degli addetti per aggiornarla
+                fetch('http://localhost:8080/elenco-addetti')
+                    .then(response => response.text())
+                    .then(str => {
+                        xmlDoc = new DOMParser().parseFromString(str, "application/xml");
+
+                        document.querySelector('.manutentori-list').innerHTML = '';
+                        carica_addetti();
+
+                        // reset form
+                        document.querySelector('#addetto-email').value = '';
+                        alert('Ruolo addetto assegnato con successo');
+                    });
             } else {
-                alert("Errore durante l'aggiunta dell'addetto");
+                return response.text().then(text => {
+                    alert("Errore: " + text);
+                });
             }
         })
         .catch(error => console.error('Error:', error));
