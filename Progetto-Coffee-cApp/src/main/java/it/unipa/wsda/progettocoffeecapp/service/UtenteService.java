@@ -58,7 +58,7 @@ public class UtenteService {
     }
 
     @Transactional
-    public Boolean ricaricaCredito(Integer idUtente, double importo) {
+    public boolean ricaricaCredito(Integer idUtente, double importo) {
         Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
