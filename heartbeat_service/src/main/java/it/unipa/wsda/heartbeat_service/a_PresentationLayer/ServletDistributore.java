@@ -81,6 +81,7 @@ public class ServletDistributore extends HttpServlet {
             try {
                 service.aggiornaStato(req.getParameter("id") , StatiDistributori.valueOf(req.getParameter("stato")));
                 resp.setStatus(HttpServletResponse.SC_OK);
+                System.out.println("Cambio stato ricevuto "+req.getParameter("id"));
             }catch(SQLException e) {
                 resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
 

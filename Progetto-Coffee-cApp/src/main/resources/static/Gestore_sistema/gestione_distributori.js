@@ -154,34 +154,36 @@ function aggiungi_html_distributore(id) {
     })
 
 
-    //LOGICA PULSANTE ATTIVA/DISATTIVA TODO logica backend, non modifica nulla nel db
+    //LOGICA PULSANTE ATTIVA/DISATTIVA
     div.querySelector('.btn-disattiva').addEventListener('click', _ => {
         const statoSpan = div.querySelector('.distributore-stato');
         const pulsante = div.querySelector('.btn-disattiva');
 
-        if (statoSpan.classList.contains('attivo')) {
-            // Disattiva il distributore
-            statoSpan.classList.remove('attivo');
-            statoSpan.classList.add('inattivo');
-            statoSpan.textContent = 'INATTIVO';
-            pulsante.textContent = 'Attiva';
-            alert('Hai disattivato ' + id);
-        } else {
-            // Attiva il distributore
-            statoSpan.classList.remove('inattivo');
-            statoSpan.classList.add('attivo');
-            statoSpan.textContent = 'ATTIVO';
-            pulsante.textContent = 'Disattiva';
-            alert('Hai attivato ' + id);
-        }
-    })
+        const nuovoStato = statoSpan.textContent === 'ATTIVO' ? 'INATTIVO' : 'ATTIVO';
+
+        fetch(`http://localhost:8080/manutenzione/cambia-stato?idDistributore=${id}&stato=${nuovoStato}`, {
+            method: 'POST'
+        })
+            .then(response => {
+                if (!response.ok) throw new Error();
+
+                statoSpan.className = `distributore-stato ${nuovoStato.toLowerCase()}`;
+
+                const isDisattivato = nuovoStato === 'INATTIVO';
+                statoSpan.textContent = nuovoStato;
+                pulsante.textContent = isDisattivato ? 'Attiva' : 'Disattiva';
+
+                alert(`Hai ${isDisattivato ? 'disattivato' : 'attivato'} il distributore ${id}`);
+            })
+            .catch(() => alert('Errore durante il cambio di stato'));
+    });
 
     //
     document.querySelector('.distributori-list').prepend(div)
     console.log(div)
 }
 
-function carica_distributori(){
+function carica_distributori() {
     document.querySelector('.distributori-list').innerHTML = '';
     for( let distributore of lista_id_distributori ) {
         aggiungi_html_distributore( distributore )

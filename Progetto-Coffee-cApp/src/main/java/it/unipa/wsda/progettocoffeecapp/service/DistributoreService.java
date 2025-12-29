@@ -100,9 +100,11 @@ public class DistributoreService {
         //sync con db Jakarta
         try {
             restClient.put()
-                    .uri(URL + "?id=" + idDistributore + "&stato=" + nuovoStato)
+                    .uri(URL +"/status"+ "?id=" + idDistributore + "&stato=" + nuovoStato)
                     .retrieve()
                     .toBodilessEntity();
+
+            System.out.println("Cambio stato inviato");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
