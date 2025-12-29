@@ -20,8 +20,10 @@ public class DistributoreService {
     private final ConnessioneRepository connessioneRepository;
     private final UtenteRepository utenteRepository;
     private final DistributoreRepository distributoreRepository;
+
+    //RestClient integrato in Spring, serve per effettuare chiamate post (sincrone) direttamente nel backend
     private final RestClient restClient = RestClient.create();
-    private final String URL = "http://localhost:8081/heartbeat_service_war_exploded/distributori";
+    private final String URL = "http://localhost:8081/heartbeat_service_war_exploded/distributori"; //progetto Jakarta
 
     public DistributoreService(ConnessioneRepository connessioneRepository,
                               UtenteRepository utenteRepository,
@@ -94,32 +96,25 @@ public class DistributoreService {
     }
 
     @Transactional
-    public void cambiaStato(String idDistributore, StatiDistributori nuovoStato) {
+    public void cambiaStato(String idDistributore, StatiDistributori nuovoStato, boolean sync) {
         distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
             distributore.setStato(nuovoStato);
             distributoreRepository.save(distributore);
         });
 
         //sync con db Jakarta
-        try {
-            restClient.put()
-                    .uri(URL +"/status"+ "?id=" + idDistributore + "&stato=" + nuovoStato)
-                    .retrieve()
-                    .toBodilessEntity();
+        if (sync) { //il controllo sync mi è necessario per evitare loop nella sincronizzazione tra i due db dell'assignment
+            try {
+                restClient.put()
+                        .uri(URL +"/status"+ "?id=" + idDistributore + "&stato=" + nuovoStato)
+                        .retrieve()
+                        .toBodilessEntity();
 
-            System.out.println("Cambio stato inviato");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                System.out.println("Cambio stato inviato");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
-
-    @Transactional
-    public void cambiaStato(String idDistributore, StatiDistributori nuovoStato, Boolean sync) {
-        //questo metodo è necessario per evitare loop nell'aggiornamento tra i db nei due progetti
-        distributoreRepository.findById(idDistributore).ifPresent(distributore -> {
-            distributore.setStato(nuovoStato);
-            distributoreRepository.save(distributore);
-        });
     }
 
     @Transactional
@@ -136,20 +131,20 @@ public class DistributoreService {
 
 
         //sync con db Jakarta
-        String json = String.format("""
-            {
-                "id": "%s",
-                "stato": "%s",
-                "lat": %f,
-                "lon": %f,
-                "lastHeartbeat": null
-            }
-            """, distributore.getId_distributore(),
-                distributore.getStato(),
-                distributore.getLat(),
-                distributore.getLon());
-
         try {
+            String json = String.format("""
+                {
+                    "id": "%s",
+                    "stato": "%s",
+                    "lat": %f,
+                    "lon": %f,
+                    "lastHeartbeat": null
+                }
+                """, distributore.getId_distributore(),
+                    distributore.getStato(),
+                    distributore.getLat(),
+                    distributore.getLon());
+
             restClient.post()
                     .uri(URL)
                     .body(json)

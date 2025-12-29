@@ -28,7 +28,7 @@ function aggiungi_html_addetto(addetto){
         <button class="btn-piccolo btn-danger rmv-addetto">Rimuovi</button>`;
 
     //LOGICA PULSANTE RIMUOVI
-    div.querySelector('.rmv-addetto').addEventListener('click', listener => {
+    div.querySelector('.rmv-addetto').addEventListener('click', () => {
         fetch(`http://localhost:8080/gestione-addetti/rimuovi?email=${addetto.email}`, {
             method: 'DELETE'
         })

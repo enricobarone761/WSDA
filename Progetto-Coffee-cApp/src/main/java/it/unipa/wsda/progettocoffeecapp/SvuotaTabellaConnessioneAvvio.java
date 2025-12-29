@@ -5,14 +5,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+//questa classe svuota la tabella Connessione ad ogni avvio di spring
+
 @Configuration
-public class SvuotaTabellaConnessioneDaEliminare {
+public class SvuotaTabellaConnessioneAvvio {
 
     @Bean
     CommandLineRunner clearConnessioneTable(ConnessioneRepository connessioneRepository) {
-        return args -> {
+        return _ -> {
             connessioneRepository.deleteAll();
-            System.out.println("Tabella Connessione pulita con successo all'avvio dell'applicazione.");
+            System.out.println("Tabella Connessione svuotata");
         };
     }
 }

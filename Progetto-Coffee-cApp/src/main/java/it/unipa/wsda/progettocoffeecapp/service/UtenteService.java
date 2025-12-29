@@ -26,7 +26,7 @@ public class UtenteService {
     }
 
     @Transactional
-    public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
+    public void registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
         // verifica se l'utente esiste già
         if (utenteRepository.findByUsername(email).isPresent()) {
             throw new Exception("Email già esistente");
@@ -41,7 +41,7 @@ public class UtenteService {
         nuovoUtente.setCredito_residuo(0.0);
         nuovoUtente.setRuolo("CLIENTE");
 
-        return utenteRepository.save(nuovoUtente);
+        utenteRepository.save(nuovoUtente);
     }
 
     @Transactional
