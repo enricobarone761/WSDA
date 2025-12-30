@@ -10,7 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Connessione {
 
     @Id
-    // trovato su internet come identificare una connessione, generato automaticamente come UUID Universally Unique Identifier.
+    // trovato su internet un identificatore standard per le connessioni, generato automaticamente come UUID Universally Unique Identifier.
     @Column(name = "id_connessione", nullable = false, updatable = false, unique = true, length = 36)
     private String id_connessione = java.util.UUID.randomUUID().toString();
 

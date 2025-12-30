@@ -1,6 +1,6 @@
 package it.unipa.wsda.heartbeat_service.b_BusinessLogicLayer;
 
-import it.unipa.wsda.heartbeat_service.c_DataAccessLayer.DistributoreDAO;
+import it.unipa.wsda.heartbeat_service.c_DataAccessLayer.DistributoreRepository;
 import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.StatiDistributori;
 import it.unipa.wsda.heartbeat_service.d_DatabaseLayer.Distributore;
 
@@ -18,7 +18,7 @@ import jakarta.ws.rs.core.Response;
 
 public class DistributoreService {
 
-    private final DistributoreDAO dao = new DistributoreDAO();
+    private final DistributoreRepository dao = new DistributoreRepository();
 
     public void aggiungiDistributore(Distributore dis) throws SQLException {
         dao.save(dis);

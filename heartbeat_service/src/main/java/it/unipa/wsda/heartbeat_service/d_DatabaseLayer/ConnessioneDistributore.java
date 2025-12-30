@@ -10,11 +10,15 @@ public class ConnessioneDistributore {
     private static final String PASSWORD = "1234567890";
 
     public static Connection getConnection() throws SQLException {
+
+        //il blocco che segue è necessario per iniettare correttamente la dipendenza del driver di connessione al db
+        //senza questo non riesco a connettermi a mySql
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Driver MySQL non trovato", e);
         }
+
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
