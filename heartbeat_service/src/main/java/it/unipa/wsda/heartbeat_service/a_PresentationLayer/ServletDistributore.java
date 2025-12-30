@@ -34,6 +34,11 @@ public class ServletDistributore extends HttpServlet {
     //lista tutti i distributori
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //righe necessarie per mitigare il fastidioso CORS
+        resp.setHeader("Access-Control-Allow-Origin", "*");
+        resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+
         try {
             if (System.currentTimeMillis() - ultimoControlloGuasti > INTERVALLO_CONTROLLO) {
                 service.aggiornaStatoDistributoriGuasti();

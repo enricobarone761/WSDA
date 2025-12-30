@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 btnMappa.textContent = "Nascondi Mappa";
 
                 if (!map) {
-                    // Inizializza la mappa centrata su Palermo (o altra posizione di default)
+                    // mappa centrata su Palermo
                     map = L.map('map').setView([38.1157, 13.3615], 13);
 
                     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -18,9 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     }).addTo(map);
 
-                    // TODO: Sostituire con l'URL reale dell'endpoint
-                    // L'endpoint deve restituire un JSON array di oggetti con proprietà 'lat' e 'lon'
-                    const endpointUrl = 'https://example.com/api/distributori'; 
+                    const endpointUrl = 'http://localhost:8081/heartbeat_service_war_exploded/distributori';
 
                     fetch(endpointUrl)
                         .then(response => {
@@ -31,19 +29,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         })
                         .then(data => {
                             data.forEach(punto => {
-                                if (punto.lat && punto.lon) {
-                                    L.marker([punto.lat, punto.lon]).addTo(map);
+
+                                if (punto.lat !== undefined && punto.lon !== undefined) {
+                                    console.log(punto);
+                                    const marker = L.marker([punto.lat, punto.lon]).addTo(map);
+
+                                    // aggiunta popup distributore
+                                    marker.bindPopup(`
+                                        <b>ID:</b> ${punto.id}<br>
+                                        <b>Stato:</b> ${punto.stato}<br>
+                                    `);
                                 }
                             });
                         })
                         .catch(error => {
-                            console.error('Errore nel recupero dei dati della mappa:', error);
-                            // Fallback per demo se l'endpoint non è raggiungibile
-                            // L.marker([38.1157, 13.3615]).addTo(map).bindPopup('Distributore Centrale (Demo)');
+                            console.error('Errore:', error);
                         });
                 }
-                
-                // Forza il ricalcolo delle dimensioni della mappa
+
                 setTimeout(() => {
                     map.invalidateSize();
                 }, 200);
