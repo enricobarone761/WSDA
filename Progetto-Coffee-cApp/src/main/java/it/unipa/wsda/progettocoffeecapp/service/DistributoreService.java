@@ -130,28 +130,18 @@ public class DistributoreService {
 
 
         //sync con db Jakarta
-        try {
-            String json = String.format("""
-                {
-                    "id": "%s",
-                    "stato": "%s",
-                    "lat": %f,
-                    "lon": %f,
-                    "lastHeartbeat": null
-                }
-                """, distributore.getId_distributore(),
-                    distributore.getStato(),
-                    distributore.getLat(),
-                    distributore.getLon());
-
-            restClient.post()
-                    .uri(URL)
-                    .body(json)
-                    .retrieve()
-                    .toBodilessEntity();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        record recordDistributore(String id, StatiDistributori stato, Double lat, Double lon, Object lastHeartbeat) {}
+        restClient.post()
+                .uri(URL)
+                .body(new recordDistributore(
+                        distributore.getId_distributore(),
+                        distributore.getStato(),
+                        distributore.getLat(),
+                        distributore.getLon(),
+                        null
+                ))
+                .retrieve()
+                .toBodilessEntity();
 
     }
 
