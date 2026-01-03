@@ -7,9 +7,11 @@ import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.DistributoreRepository;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
+import tools.jackson.databind.JsonNode;
 
 import java.util.Optional;
 
@@ -126,7 +128,26 @@ public class DistributoreService {
         ripristinaFornitureDistributore(distributore);
         ripristinaGuastiDistributore(distributore);
 
-        distributoreRepository.save(distributore);
+        //Sistema per ottenere coordinata lon e lat automaticamente dalla via
+        //ho trovato su internet questa API gratuita per il nostro scopo è piu che ottima
+        try {
+            JsonNode root = restClient.get()
+                    .uri("https://geocode.maps.co/search?q={address}&api_key=695960396263f379070428vux46ce69", distributore.getVia())
+                    .accept(MediaType.APPLICATION_JSON)
+                    .retrieve()
+                    .body(JsonNode.class);
+
+            JsonNode primo = root.get(0);
+            distributore.setLat( primo.get("lat").asDouble() );
+            distributore.setLon( primo.get("lon").asDouble() );
+
+        } catch (Exception e) {
+            System.err.println("Valore coordinate non trovato");
+
+        } finally {
+            distributoreRepository.save(distributore);
+        }
+
 
 
         //sync con db Jakarta
