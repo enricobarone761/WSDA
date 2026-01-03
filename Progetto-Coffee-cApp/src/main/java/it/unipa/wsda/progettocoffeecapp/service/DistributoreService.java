@@ -128,8 +128,8 @@ public class DistributoreService {
         ripristinaFornitureDistributore(distributore);
         ripristinaGuastiDistributore(distributore);
 
-        //Sistema per ottenere coordinata lon e lat automaticamente dalla via
-        //ho trovato su internet questa API gratuita per il nostro scopo è piu che ottima
+        //Sistema per ottenere coordinate lon e lat automaticamente dalla via
+        //ho trovato su internet questa API gratuita che per il nostro scopo è piu che ottima
         try {
             JsonNode root = restClient.get()
                     .uri("https://geocode.maps.co/search?q={address}&api_key=695960396263f379070428vux46ce69", distributore.getVia())
@@ -137,9 +137,9 @@ public class DistributoreService {
                     .retrieve()
                     .body(JsonNode.class);
 
-            JsonNode primo = root.get(0);
-            distributore.setLat( primo.get("lat").asDouble() );
-            distributore.setLon( primo.get("lon").asDouble() );
+            final JsonNode primoRisultato = root.get(0);
+            distributore.setLat( primoRisultato.get("lat").asDouble() );
+            distributore.setLon( primoRisultato.get("lon").asDouble() );
 
         } catch (Exception e) {
             System.err.println("Valore coordinate non trovato");
