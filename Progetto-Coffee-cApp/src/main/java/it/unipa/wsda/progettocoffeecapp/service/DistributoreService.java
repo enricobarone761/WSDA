@@ -132,7 +132,7 @@ public class DistributoreService {
         //ho trovato su internet questa API gratuita che per il nostro scopo è piu che ottima
         try {
             JsonNode root = restClient.get()
-                    .uri("https://geocode.maps.co/search?q={address}&api_key=695960396263f379070428vux46ce69", distributore.getVia())
+                    .uri("https://geocode.maps.co/search?q={indirizzo}&api_key=695960396263f379070428vux46ce69", distributore.getVia())
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
                     .body(JsonNode.class);
