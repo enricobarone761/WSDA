@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     }).addTo(map);
 
-                    const endpointUrl = 'http://localhost:8081/heartbeat_service_war_exploded/distributori';
+                    // la fetch viene fatta all'altro progetto Jakarta come richiesto dall'assignment
+                    const URLMappa = 'http://localhost:8081/heartbeat_service_war_exploded/distributori';
 
-                    fetch(endpointUrl)
+                    fetch(URLMappa)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
