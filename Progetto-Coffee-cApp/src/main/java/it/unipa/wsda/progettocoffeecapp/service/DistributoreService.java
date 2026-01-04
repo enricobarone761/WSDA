@@ -137,9 +137,11 @@ public class DistributoreService {
                     .retrieve()
                     .body(JsonNode.class);
 
-            final JsonNode primoRisultato = root.get(0);
-            distributore.setLat( primoRisultato.get("lat").asDouble() );
-            distributore.setLon( primoRisultato.get("lon").asDouble() );
+            if (root != null) {
+                final JsonNode primoRisultato = root.get(0);
+                distributore.setLat( primoRisultato.get("lat").asDouble() );
+                distributore.setLon( primoRisultato.get("lon").asDouble() );
+            }
 
         } catch (Exception e) {
             System.err.println("Valore coordinate non trovato");
