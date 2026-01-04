@@ -199,8 +199,8 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
         'via': document.querySelector('#add-distributore-via').value,
         'piano': document.querySelector('#add-distributore-piano').value
     };
-
     const nuovo_id = document.querySelector('#add-distributore-id').value;
+
     if (document.querySelector('#add-dist-form').reportValidity()) {
         if (!lista_id_distributori.includes(nuovo_id)) {
             
@@ -219,6 +219,7 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
             })
             .then(response => {
                 if (response.ok) {
+                    alert("Aggiunto "+ nuovo_id)
                     document.querySelector('#add-dist-form').reset();
                     scaricaDatiDistributori();
                 }
