@@ -5,22 +5,25 @@ import it.unipa.wsda.progettocoffeecapp.service.DistributoreService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
-@RequestMapping("/distributore")
 @CrossOrigin(origins = "*") // questa annotazione mi permette di scambiare dati su porte diversa, intellij mi crea un po di problemi qui
 public class DistributoreController {
 
-    private final DistributoreService distributoreService;
-
+    private final DistributoreService ds;
     public DistributoreController(DistributoreService distributoreService) {
-        this.distributoreService = distributoreService;
+        this.ds = distributoreService;
     }
 
-    @GetMapping("/polling-utente")
+    @GetMapping("/distributore/polling-utente")
     public ResponseEntity<Utente> getUtenteConnesso(@RequestParam String idDistributore) {
         //System.out.println(idDistributore);
-        return distributoreService.getUtenteConnesso(idDistributore)
-                .map(utente -> ResponseEntity.ok(utente))
-                .orElse(ResponseEntity.noContent().build());
+        Optional<Utente> utenteOpt = ds.getUtenteConnesso(idDistributore);
+        if (utenteOpt.isPresent()) {
+            return ResponseEntity.ok(utenteOpt.get());
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 }

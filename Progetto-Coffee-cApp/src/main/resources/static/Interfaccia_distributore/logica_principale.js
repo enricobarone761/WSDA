@@ -38,12 +38,8 @@ document.querySelector('.btn-conferma').addEventListener('click', () => {
             // Non serve aggiornare il credito manualmente qui perché il polling
             // lo aggiornerà automaticamente non appena il backend scala il credito.
             resetSelezione();
-        } else if (response.status === 402) {
-            alert("Credito insufficiente sul server.");
-        } else if (response.status === 401) {
-            alert("Nessun utente connesso.");
         } else {
-            alert("Errore durante l'erogazione.");
+            alert("Errore: " + response)
         }
     })
     .catch(error => {

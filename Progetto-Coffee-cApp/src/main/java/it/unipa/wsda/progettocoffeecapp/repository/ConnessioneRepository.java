@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ConnessioneRepository extends CrudRepository<Connessione, Integer> {
+public interface ConnessioneRepository extends CrudRepository<Connessione, String> {
     @Query("SELECT c FROM Connessione c WHERE c.distributore.id_distributore = :id")
     Optional<Connessione> findByDistributoreId_distributore(@Param("id") String id);
 

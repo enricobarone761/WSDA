@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/erogazione")
 public class ErogazioneController {
 
     private final DistributoreService distributoreService;
@@ -24,21 +23,21 @@ public class ErogazioneController {
         this.bevandaService = bevandaService;
     }
 
-    @PostMapping("/{id_distributore}/eroga/{id_bevanda}")
+    @PostMapping("/erogazione/{id_distributore}/eroga/{id_bevanda}")
     @CrossOrigin(origins = "*") // disabilito temporaneamente la protezione CORS
-    public ResponseEntity<?> erogaBevanda(@PathVariable String id_distributore, @PathVariable Integer id_bevanda) {
+    public ResponseEntity<String> erogaBevanda(@PathVariable String id_distributore, @PathVariable Integer id_bevanda) {
         
         //1 controlliamo l'utente connesso
         Optional<Utente> utenteConnesso = distributoreService.getUtenteConnesso(id_distributore);
 
         if (utenteConnesso.isEmpty()) {
-            return ResponseEntity.status(401).body("Nessun utente connesso al distributore");
+            return ResponseEntity.status(404).body("Nessun utente connesso al distributore");
         }
 
         //2 recuperiamo costo bevanda
         Optional<Bevanda> bevandaOpt = bevandaService.getBevanda(id_bevanda);
         if (bevandaOpt.isEmpty()) {
-            return ResponseEntity.badRequest().body("Bevanda non trovata");
+            return ResponseEntity.status(404).body("Bevanda non trovata");
         }
 
         Bevanda bevanda = bevandaOpt.get();
@@ -48,7 +47,7 @@ public class ErogazioneController {
         if (successo) {
             return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.status(402).body("Credito insufficiente");
+            return ResponseEntity.status(403).body("Credito insufficiente");
         }
     }
 }

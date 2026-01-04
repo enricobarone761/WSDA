@@ -145,6 +145,8 @@ public class DistributoreService {
 
         } catch (Exception e) {
             System.err.println("Valore coordinate non trovato");
+            distributore.setLat(null);
+            distributore.setLon(null);
 
         } finally {
             distributoreRepository.save(distributore);
