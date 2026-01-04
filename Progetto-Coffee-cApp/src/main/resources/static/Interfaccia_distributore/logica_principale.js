@@ -39,7 +39,7 @@ document.querySelector('.btn-conferma').addEventListener('click', () => {
             // lo aggiornerà automaticamente non appena il backend scala il credito.
             resetSelezione();
         } else {
-            alert("Errore: " + response)
+            response.text().then(text => alert("Errore: " + text));
         }
     })
     .catch(error => {

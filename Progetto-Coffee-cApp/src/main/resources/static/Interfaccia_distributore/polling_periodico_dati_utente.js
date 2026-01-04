@@ -44,8 +44,9 @@ function resetUI() {
         img.style.height = '45px';
     });
 }
+resetUI()
+
 
 // Polling continuo ogni 5 secondi
 setInterval(check_user, 5000);
-
 check_user();
