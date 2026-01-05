@@ -73,7 +73,7 @@ public class UtenteService {
 
     // Sezione per gli Addetti
     public List<Utente> getAllAddetti() {
-        return utenteRepository.findByRuolo("ADDETTO");
+        return utenteRepository.findByRuolo(Ruoli.ADDETTO);
     }
 
     @Transactional
