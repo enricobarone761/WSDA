@@ -47,20 +47,36 @@ public class DistributoreService {
 
     @Transactional
     public void connetti(Integer idUtente, String idDistributore) {
-        // cancelliamo eventuali connessione attive precedenti, un utente supporta una connessione attiva alla volta
-        disconnetti(idUtente);
-
-        Optional<Utente> utenteOpt = utenteRepository.findById(idUtente);
-        Optional<Distributore> distributoreOpt = distributoreRepository.findById(idDistributore);
-
-        if (utenteOpt.isPresent() && distributoreOpt.isPresent()) {
-            Connessione connessione = new Connessione();
-            connessione.setUtente(utenteOpt.get());
-            connessione.setDistributore(distributoreOpt.get());
-            connessioneRepository.save(connessione);
-        }else{
-            throw new RuntimeException("Utente o distributore non trovato");
+        // verifica che l'utente non sia gia connesso
+        Optional<Connessione> connessioneEsistenteUtente = connessioneRepository.findByUtenteId(idUtente);
+        if (connessioneEsistenteUtente.isPresent()) {
+            throw new IllegalStateException("L'utente è già connesso ad un distributore");
         }
+
+        // verifica che il distributore sia disponibile
+        Optional<Connessione> connessioneEsistenteDistributore = connessioneRepository.findByDistributoreId_distributore(idDistributore);
+        if (connessioneEsistenteDistributore.isPresent()) {
+            throw new IllegalStateException("Il distributore è già occupato da un altro utente");
+        }
+
+        // verifica che l'utente esista
+        Utente utente = utenteRepository.findById(idUtente)
+                .orElseThrow(() -> new IllegalArgumentException("Utente non trovato"));
+
+        // verifica che il distributore esista
+        Distributore distributore = distributoreRepository.findById(idDistributore)
+                .orElseThrow(() -> new IllegalArgumentException("Distributore non trovato"));
+
+        // verifica che il distributore sia attivo
+        if (distributore.getStato() != StatiDistributori.ATTIVO) {
+            throw new IllegalStateException("Il distributore non è attivo (stato: " + distributore.getStato() + ")");
+        }
+
+        // nuova connessione
+        Connessione nuovaConnessione = new Connessione();
+        nuovaConnessione.setUtente(utente);
+        nuovaConnessione.setDistributore(distributore);
+        connessioneRepository.save(nuovaConnessione);
     }
 
     @Transactional
