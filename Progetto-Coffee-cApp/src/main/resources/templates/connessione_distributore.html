@@ -36,51 +36,55 @@
         <img th:src="@{/CSS-e-Icone/coffee_bean.png}" height="100" alt="Chicco"/>
     </div>
 
-    <div class="contenuto">
-        <div class="sezione">
-            <h2 class="titolo-sezione">Connessione</h2>
-            <form id="form-connessione">
-                <input type="hidden" id="id_utente_hidden" th:value="${utente.id_utente}">
-                <div class="gruppo-form">
-                    <label for="id-distributore">ID Distributore</label>
-                    <input type="text" id="id-distributore" placeholder="CA001" pattern="CA\d{3}" required>
+    <div class="contenuto" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+
+        <!-- Colonna Sinistra: Connessione, Disconnessione, Ricarica -->
+        <div class="colonna-sinistra" style="flex: 1; min-width: 300px;">
+            <div class="sezione">
+                <h2 class="titolo-sezione">Connessione</h2>
+                <form id="form-connessione">
+                    <input type="hidden" id="id_utente_hidden" th:value="${utente.id_utente}">
+                    <div class="gruppo-form">
+                        <label for="id-distributore">ID Distributore</label>
+                        <input type="text" id="id-distributore" placeholder="CA001" pattern="CA\d{3}" required>
+                    </div>
+                    <button id="conn" type="submit" class="btn btn-primario">Connetti</button>
+                </form>
+            </div>
+
+            <div class="divisore"></div>
+
+            <div class="sezione">
+                <h2 class="titolo-sezione">Disconnessione</h2>
+                <button id="disconnessione-btn" type="button" class="btn btn-pericolo">
+                    <span style="display:inline-flex; align-items:center;">
+                        <img src="https://img.icons8.com/ios-glyphs/30/ffffff/logout-rounded--v1.png" alt="logout" style="height:20px; width:20px;"/>
+                        <span style="margin-left:5px;">Scollega Distributore</span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="divisore"></div>
+
+            <div class="sezione">
+                <h2 class="titolo-sezione">Ricarica</h2>
+                <form id="form-ricarica">
+                    <div class="gruppo-form">
+                        <label for="importo">Importo (€)</label>
+                        <input type="number" id="importo" name="importo" placeholder="0.00" min="1" step="0.50" required>
+                    </div>
+                    <button id="ricarica-btn" type="submit" class="btn btn-successo">Effettua Ricarica</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Colonna Destra: Mappa -->
+        <div class="colonna-destra" style="flex: 1; min-width: 300px;">
+            <div class="sezione">
+                <h2 class="titolo-sezione">Mappa Distributori</h2>
+                <div id="map-container" style="display: none; margin-top: 15px;">
+                    <div id="map" style="height: 600px;width: 100%;border-radius: 10px;margin-top: 50px;position: relative"></div>
                 </div>
-                <button id="conn" type="submit" class="btn btn-primario">Connetti</button>
-            </form>
-        </div>
-
-        <div class="divisore"></div>
-
-        <div class="sezione">
-            <h2 class="titolo-sezione">Disconnessione</h2>
-            <button id="disconnessione-btn" type="button" class="btn btn-pericolo">
-                <span style="display:inline-flex; align-items:center;">
-                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/logout-rounded--v1.png" alt="logout" style="height:20px; width:20px;"/>
-                    <span style="margin-left:5px;">Scollega Distributore</span>
-                </span>
-            </button>
-        </div>
-
-        <div class="divisore"></div>
-
-        <div class="sezione">
-            <h2 class="titolo-sezione">Ricarica</h2>
-            <form id="form-ricarica">
-                <div class="gruppo-form">
-                    <label for="importo">Importo (€)</label>
-                    <input type="number" id="importo" name="importo" placeholder="0.00" min="1" step="0.50" required>
-                </div>
-                <button id="ricarica-btn" type="submit" class="btn btn-successo">Effettua Ricarica</button>
-            </form>
-        </div>
-
-        <div class="divisore"></div>
-
-        <div class="sezione">
-            <h2 class="titolo-sezione">Mappa Distributori</h2>
-            <button id="btn-mostra-mappa" type="button" class="btn btn-primario">Mostra Mappa Distributori</button>
-            <div id="map-container" style="display: none; margin-top: 15px;">
-                <div id="map" style="height: 400px; width: 100%; border-radius: 8px;"></div>
             </div>
         </div>
 
