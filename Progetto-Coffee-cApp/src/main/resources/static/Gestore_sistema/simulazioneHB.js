@@ -48,5 +48,5 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
     }
 
-    setInterval(mandaHB, 10000);
+    setInterval(mandaHB, 25000);
 })
