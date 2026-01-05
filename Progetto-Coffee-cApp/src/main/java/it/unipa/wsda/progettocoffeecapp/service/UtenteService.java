@@ -1,5 +1,6 @@
 package it.unipa.wsda.progettocoffeecapp.service;
 
+import it.unipa.wsda.progettocoffeecapp.model.Ruoli;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class UtenteService {
         nuovoUtente.setUsername(email);
         nuovoUtente.setPassword(password);
         nuovoUtente.setCredito_residuo(0.0);
-        nuovoUtente.setRuolo("CLIENTE");
+        nuovoUtente.setRuolo(Ruoli.CLIENTE);
 
         utenteRepository.save(nuovoUtente);
     }
@@ -80,7 +81,7 @@ public class UtenteService {
         Optional<Utente> utenteOpt = utenteRepository.findByUsername(email);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
-            utente.setRuolo("ADDETTO");
+            utente.setRuolo(Ruoli.ADDETTO);
             utenteRepository.save(utente);
             return true;
         }
@@ -92,7 +93,7 @@ public class UtenteService {
         Optional<Utente> utenteOpt = utenteRepository.findByUsername(email);
         if (utenteOpt.isPresent()) {
             Utente utente = utenteOpt.get();
-            utente.setRuolo("CLIENTE");
+            utente.setRuolo(Ruoli.CLIENTE);
             utenteRepository.save(utente);
             return true;
         }

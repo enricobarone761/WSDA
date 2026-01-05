@@ -1,9 +1,6 @@
 package it.unipa.wsda.progettocoffeecapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -18,6 +15,8 @@ public class Utente {
     private String nome;
     private String cognome;
     private Double credito_residuo;
-    private String ruolo;
+
+    @Enumerated(EnumType.STRING)
+    private Ruoli ruolo;
 
 }
