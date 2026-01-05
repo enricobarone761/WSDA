@@ -41,7 +41,7 @@ public class DistributoreService {
     }
 
     public void aggiornaStatoDistributoriGuasti() throws SQLException {
-        long tempoLimite = 3 * 60 * 1000L; // 3 minuti
+        long tempoLimite = 5 * 60 * 1000L; // 5 minuti
         long adesso = System.currentTimeMillis();
         Set<String> lista_id_distributori_guasti = new HashSet<>();
 
