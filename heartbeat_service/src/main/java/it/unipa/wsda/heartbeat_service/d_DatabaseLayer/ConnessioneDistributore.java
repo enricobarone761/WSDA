@@ -11,7 +11,7 @@ public class ConnessioneDistributore {
 
     private static final String URL = "jdbc:mysql://coffee-capp-132184a6-coffee-capp-0176.g.aivencloud.com:15746/distributori_info";
     private static final String USER = "avnadmin";
-    private static final String PASSWORD = "AVNS_OuZduaX3vxn1_XlG49y";
+    private static final String PASSWORD = "AVNS_MZJ4fwGs6Ty0WXxZVR0";
 
     public static Connection getConnection() throws SQLException {
 
