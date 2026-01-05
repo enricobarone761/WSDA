@@ -28,11 +28,7 @@ public class GestioneConnessione {
 
     @PostMapping("/disconnetti")
     public ResponseEntity<String> disconnetti(@RequestParam("id_utente") Integer idUtente) {
-        try {
-            distributoreService.disconnetti(idUtente);
-            return ResponseEntity.ok("Disconnessione riuscita");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Errore durante la disconnessione: " + e.getMessage());
-        }
+        distributoreService.disconnetti(idUtente);
+        return ResponseEntity.ok("Disconnessione riuscita");
     }
 }

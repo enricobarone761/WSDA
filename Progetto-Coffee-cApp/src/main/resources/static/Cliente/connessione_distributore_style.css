@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 50px 20px;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #f0f0f0;
     display: flex;
