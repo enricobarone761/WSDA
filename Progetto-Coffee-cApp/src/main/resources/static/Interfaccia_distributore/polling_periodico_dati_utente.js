@@ -5,7 +5,7 @@ let userLabel_el = document.querySelector('.user-label');
 const DISTRIBUTORE_ID_THIS = document.querySelector('.dispenser-id').innerText;
 
 function check_user() {
-    fetch(`http://localhost:8080/distributore/polling-utente?idDistributore=${DISTRIBUTORE_ID}`)
+    fetch(`http://localhost:8080/distributore/polling-utente?idDistributore=${DISTRIBUTORE_ID_THIS}`)
         .then(res => {
             if (res.status === 204) {
                 resetUI();
