@@ -53,10 +53,7 @@ public class DistributoreService {
 
                 lista_id_distributori_guasti.add(dis.getId()); //lista id da inviare
 
-                // aggiorna solo se non è già GUASTO per evitare query inutili
-                if (dis.getStato() != StatiDistributori.GUASTO) {
-                    aggiornaStato(dis.getId(), StatiDistributori.GUASTO);
-                }
+                aggiornaStato(dis.getId(), StatiDistributori.GUASTO);
             }
         }
 
