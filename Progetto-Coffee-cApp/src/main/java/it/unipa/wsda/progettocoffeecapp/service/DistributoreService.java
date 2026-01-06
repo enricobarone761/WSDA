@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 import tools.jackson.databind.JsonNode;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
@@ -171,7 +172,7 @@ public class DistributoreService {
 
 
         //sync con db Jakarta
-        record recordDistributore(String id, StatiDistributori stato, Double lat, Double lon, Object lastHeartbeat) {}
+        record recordDistributore(String id, StatiDistributori stato, Double lat, Double lon, Timestamp lastHeartbeat) {}
         restClient.post()
                 .uri(URL)
                 .body(new recordDistributore(
