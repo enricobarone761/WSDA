@@ -3,6 +3,7 @@ package it.unipa.wsda.progettocoffeecapp.service;
 import it.unipa.wsda.progettocoffeecapp.model.Ruoli;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class UtenteService {
 
     private final UtenteRepository utenteRepository;
-
-    public UtenteService(UtenteRepository utenteRepository) {
+    private final PasswordEncoder passwordEncoder;
+    public UtenteService(UtenteRepository utenteRepository, PasswordEncoder passwordEncoder) {
         this.utenteRepository = utenteRepository;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
     public Optional<Utente> findByUsername(String username) {
         return utenteRepository.findByUsername(username);
@@ -38,7 +41,7 @@ public class UtenteService {
         nuovoUtente.setNome(nome);
         nuovoUtente.setCognome(cognome);
         nuovoUtente.setUsername(email);
-        nuovoUtente.setPassword(password);
+        nuovoUtente.setPassword(passwordEncoder.encode(password));
         nuovoUtente.setCredito_residuo(0.0);
         nuovoUtente.setRuolo(Ruoli.CLIENTE);
 
