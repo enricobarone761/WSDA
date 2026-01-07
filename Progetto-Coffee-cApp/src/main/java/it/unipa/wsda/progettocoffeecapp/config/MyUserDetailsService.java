@@ -23,7 +23,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
-                .roles(user.getRuolo().toString().split(",")) // supporta ruoli multipli separati da virgola
+                .roles(user.getRuolo().name())
                 .build();
     }
 

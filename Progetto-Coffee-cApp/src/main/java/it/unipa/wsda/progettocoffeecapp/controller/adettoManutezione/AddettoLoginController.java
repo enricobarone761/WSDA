@@ -2,11 +2,14 @@ package it.unipa.wsda.progettocoffeecapp.controller.adettoManutezione;
 
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.service.UtenteService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -22,22 +25,37 @@ public class AddettoLoginController {
     @PostMapping("/login-manutentore")
     public String login(@RequestParam String username, 
                         @RequestParam String password,
-                        RedirectAttributes redirectAttributes) {
-        
-        Optional<Utente> utenteOpt = utenteService.findByUsername(username);
-        
-        if (utenteOpt.isPresent()) {
+                        HttpServletRequest request,
+                        HttpSession session) {
+
+        try {
+            // Verifica se l'utente esiste
+            Optional<Utente> utenteOpt = utenteService.findByUsername(username);
+            if (utenteOpt.isEmpty()) {
+                return "redirect:/Addetto_manutenzione/login_addetto_manutenzione.html?error=UserNotFound";
+            }
+
+            // Autentica l'utente con request.login() - gestisce automaticamente tutto
+            request.login(username, password);
+
+            // Aggiungi l'utente alla sessione
             Utente utente = utenteOpt.get();
-            redirectAttributes.addFlashAttribute("nome", utente.getNome());
-            redirectAttributes.addFlashAttribute("cognome", utente.getCognome());
+            session.setAttribute("utente", utente);
+
             return "redirect:/controllo-distributore";
-        } else {
-            return "redirect:/Addetto_manutenzione/login_addetto_manutenzione.html?error=UserNotFound";
+
+        } catch (ServletException e) {
+            return "redirect:/Addetto_manutenzione/login_addetto_manutenzione.html?error=AuthenticationFailed";
         }
     }
 
     @GetMapping("/controllo-distributore")
-    public String showControlloDistributore() {
+    public String showControlloDistributore(HttpSession session, Model model) {
+        Utente utente = (Utente) session.getAttribute("utente");
+        if (utente != null) {
+            model.addAttribute("nome", utente.getNome());
+            model.addAttribute("cognome", utente.getCognome());
+        }
         return "controllo_distributore";
     }
 }
