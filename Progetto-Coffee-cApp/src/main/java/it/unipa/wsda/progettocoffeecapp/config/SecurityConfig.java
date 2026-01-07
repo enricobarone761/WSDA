@@ -1,4 +1,4 @@
-package it.unipa.wsda.progettocoffeecapp;
+package it.unipa.wsda.progettocoffeecapp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
