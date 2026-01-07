@@ -29,17 +29,18 @@ public class AddettoLoginController {
                         HttpSession session) {
 
         try {
-            // Verifica se l'utente esiste
             Optional<Utente> utenteOpt = utenteService.findByUsername(username);
             if (utenteOpt.isEmpty()) {
                 return "redirect:/Addetto_manutenzione/login_addetto_manutenzione.html?error=UserNotFound";
             }
 
-            // Autentica l'utente con request.login() - gestisce automaticamente tutto
+            //request.login() gestisce automaticamente autenticazione + autorizzazione + sessione
             request.login(username, password);
 
-            // Aggiungi l'utente alla sessione
             Utente utente = utenteOpt.get();
+            //dall'introduzione di spring security possiamo lavorare meglio con le sessioni
+            //in questo caso salviamo quello che ci serve e lo recuperiamo nel GetMapping successivo
+            //aiutandoci a resistere anche al refresh
             session.setAttribute("utente", utente);
 
             return "redirect:/controllo-distributore";

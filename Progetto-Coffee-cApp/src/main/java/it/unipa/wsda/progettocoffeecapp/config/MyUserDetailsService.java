@@ -2,12 +2,14 @@ package it.unipa.wsda.progettocoffeecapp.config;
 
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+@NullMarked
 public class MyUserDetailsService implements UserDetailsService {
 
     private final UtenteRepository utenteRepository;

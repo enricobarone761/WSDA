@@ -1,6 +1,9 @@
 package it.unipa.wsda.progettocoffeecapp.controller.cliente;
 
 import it.unipa.wsda.progettocoffeecapp.service.UtenteService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,14 +23,25 @@ public class RegistrazioneController {
                                @RequestParam String cognome,
                                @RequestParam String email,
                                @RequestParam String password,
-                               RedirectAttributes redirectAttributes) {
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request,
+                               HttpSession session) {
         
         try {
-            utenteService.registraNuovoUtente(nome, cognome, email, password);
-            redirectAttributes.addFlashAttribute("success", "Registrazione completata con successo!");
+            var utente = utenteService.registraNuovoUtente(nome, cognome, email, password);
+            
+            request.login(email, password);
+            session.setAttribute("utente", utente);
+
+            //viene reindirizzato direttamente al controller per il login
+            return "redirect:/connessione-distributore";
+
+        } catch (ServletException e) {
+            System.err.println("Colpa di .login()");
             return "redirect:/Cliente/login.html";
 
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
+            System.out.println("Colpa di .registraNuovoUtente()");
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/Cliente/register.html";
         }

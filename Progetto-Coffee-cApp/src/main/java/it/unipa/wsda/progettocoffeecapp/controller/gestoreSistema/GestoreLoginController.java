@@ -31,32 +31,8 @@ public class GestoreLoginController {
     @PostMapping("/login-gestore")
     public String login(@RequestParam String username,
                         @RequestParam String password,
-                        HttpServletRequest request,
-                        HttpServletResponse response) { // Aggiungi questi due!
-        /*try {
-            // 1. Creiamo il "token" con i dati del form
-            UsernamePasswordAuthenticationToken token =
-                    new UsernamePasswordAuthenticationToken(username, password);
-
-            // 2. Chiediamo a Spring di validare (controlla password e ruoli)
-            Authentication auth = authenticationManager.authenticate(token);
-
-            // 3. Salviamo l'autenticazione nel sistema
-            SecurityContext context = SecurityContextHolder.createEmptyContext();
-            context.setAuthentication(auth);
-
-            // 4. FISSIAMO LA SESSIONE (Questo risolve il problema Anonymous)
-            new HttpSessionSecurityContextRepository().saveContext(context, request, response);
-
-            return "redirect:/Gestore_sistema/gestore_sistema.html";
-
-        } catch (AuthenticationException e) {
-            // Se le credenziali sono sbagliate
-            return "redirect:/Gestore_sistema/login_gestore_sistema.html?error=true";
-        }*/
-
+                        HttpServletRequest request) {
         try {
-            // Questo metodo fa internamente: authenticate + SecurityContext + Session save
             request.login(username, password);
             return "redirect:/Gestore_sistema/gestore_sistema.html";
         } catch (ServletException e) {

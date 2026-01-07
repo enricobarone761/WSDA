@@ -30,10 +30,10 @@ public class UtenteService {
     }
 
     @Transactional
-    public void registraNuovoUtente(String nome, String cognome, String email, String password) throws Exception {
+    public Utente registraNuovoUtente(String nome, String cognome, String email, String password) throws IllegalArgumentException {
         // verifica se l'utente esiste già
         if (utenteRepository.findByUsername(email).isPresent()) {
-            throw new Exception("Email già esistente");
+            throw new IllegalArgumentException("Email già esistente");
         }
 
         // Creazione nuovo utente
@@ -42,10 +42,11 @@ public class UtenteService {
         nuovoUtente.setCognome(cognome);
         nuovoUtente.setUsername(email);
         nuovoUtente.setPassword(passwordEncoder.encode(password));
-        nuovoUtente.setCredito_residuo(0.0);
+        nuovoUtente.setCredito_residuo(0.00);
         nuovoUtente.setRuolo(Ruoli.CLIENTE);
 
         utenteRepository.save(nuovoUtente);
+        return nuovoUtente;
     }
 
     @Transactional
