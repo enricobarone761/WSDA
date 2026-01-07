@@ -1,4 +1,4 @@
-package it.unipa.wsda.progettocoffeecapp;
+package it.unipa.wsda.progettocoffeecapp.config;
 
 import it.unipa.wsda.progettocoffeecapp.repository.ConnessioneRepository;
 import org.springframework.boot.CommandLineRunner;
