@@ -35,6 +35,4 @@ public class Distributore {
     private Boolean stato_gettoniera;
     private Boolean stato_macina_caffe;
 
-
-    protected Distributore() {}
 }
