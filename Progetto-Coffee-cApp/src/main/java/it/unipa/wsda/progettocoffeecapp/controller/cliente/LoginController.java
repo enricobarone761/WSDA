@@ -25,16 +25,18 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@RequestParam String username,
                         @RequestParam String password,
-                        HttpServletRequest request,
-                        HttpSession session) {
+                        HttpServletRequest request) {
         try {
             Optional<Utente> utenteOpt = utenteService.findByUsername(username);
             if (utenteOpt.isEmpty()) {
                 return "redirect:/Cliente/login.html?error=UserNotFound";
             }
 
+            request.logout();
+            HttpSession newSession = request.getSession(true);
+
             request.login(username, password);
-            session.setAttribute("utente", utenteOpt.get());
+            newSession.setAttribute("utente", utenteOpt.get());
             return "redirect:/connessione-distributore";
 
         } catch (ServletException e) {

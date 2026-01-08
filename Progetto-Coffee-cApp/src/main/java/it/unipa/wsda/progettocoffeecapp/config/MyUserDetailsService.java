@@ -3,6 +3,7 @@ package it.unipa.wsda.progettocoffeecapp.config;
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.repository.UtenteRepository;
 import org.jspecify.annotations.NullMarked;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,12 +23,11 @@ public class MyUserDetailsService implements UserDetailsService {
         Utente user = utenteRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Utente non trovato: " + username));
 
-        return org.springframework.security.core.userdetails.User
+        return User
                 .withUsername(user.getUsername())
                 .password(user.getPassword())
                 .roles(user.getRuolo().name())
                 .build();
     }
-
 
 }

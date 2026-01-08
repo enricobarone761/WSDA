@@ -49,7 +49,7 @@ public class SecurityConfig {
 
                         .requestMatchers("/elenco-addetti","/gestione-addetti/**","/gestione-distributori/**").hasRole("GESTORE")
 
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
@@ -63,9 +63,9 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    /*@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) {
         return authConfig.getAuthenticationManager();
-    }
+    }*/
 
 }

@@ -14,6 +14,7 @@ public class GestoreLoginController {
                         @RequestParam String password,
                         HttpServletRequest request) {
         try {
+            request.logout();
             request.login(username, password);
             return "redirect:/Gestore_sistema/gestore_sistema.html";
         } catch (ServletException e) {
