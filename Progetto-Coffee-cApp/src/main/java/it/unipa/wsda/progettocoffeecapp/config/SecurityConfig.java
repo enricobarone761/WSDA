@@ -33,11 +33,18 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/register", "/login-gestore", "/login-manutentore").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/login-gestore", "/login-manutentore").permitAll()
+                        
+                        //pagine di login statiche e icone
+                        .requestMatchers("/Cliente/**","/CSS-e-Icone/**").permitAll()
+                        .requestMatchers("/Cliente/login.html").permitAll()
+                        .requestMatchers("/Gestore_sistema/login_gestore_sistema.html").permitAll()
+                        .requestMatchers("/Addetto_manutenzione/login_addetto_manutenzione.html").permitAll()
 
-                        .requestMatchers("/Cliente/**", "/CSS-e-Icone/**").permitAll()
+                        .requestMatchers("/Interfaccia_distributore/**").permitAll()
 
                         .requestMatchers("/distributore/**", "/erogazione/**", "/sync").permitAll()
+                        .requestMatchers("/interfaccia-distributore").permitAll()
 
                         .requestMatchers("/credito", "/ricarica", "/connetti", "/disconnetti").hasRole("CLIENTE")
                         .requestMatchers("/connessione-distributore").hasRole("CLIENTE")

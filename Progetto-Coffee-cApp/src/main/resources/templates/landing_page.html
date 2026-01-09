@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee cApp - Benvenuto</title>
+    <link rel="stylesheet" href="/Cliente/connessione_distributore_style.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .landing-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .landing-header {
+            margin-bottom: 50px;
+        }
+
+        .landing-header img {
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .landing-header h1 {
+            font-size: 36px;
+            color: #2d2d2d;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .landing-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 20px;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        .landing-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-cliente {
+            background-color: #FFB63D;
+            color: #2d2d2d;
+        }
+
+        .btn-gestore {
+            background-color: #2d2d2d;
+        }
+
+        .btn-manutenzione {
+            background-color: #4a4a4a;
+        }
+
+        .btn-distributore {
+            background-color: #6c757d;
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            .landing-container {
+                padding: 30px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <div class="landing-header">
+            <img th:src="@{/CSS-e-Icone/coffee_bean.png}" alt="Coffee cApp Logo"/>
+            <h1>Coffee cApp</h1>
+            <p style="color: #666; margin-top: 10px; font-size: 18px;">Seleziona il tuo portale di accesso</p>
+        </div>
+
+        <div class="button-grid">
+            <a href="/Cliente/login.html" class="landing-btn btn-cliente">
+                <span class="icon">☕</span>
+                Area Clienti
+            </a>
+
+            <a href="/Gestore_sistema/login_gestore_sistema.html" class="landing-btn btn-gestore">
+                <span class="icon">📊</span>
+                Area Gestori
+            </a>
+
+            <a href="/Addetto_manutenzione/login_addetto_manutenzione.html" class="landing-btn btn-manutenzione">
+                <span class="icon">🔧</span>
+                Area Manutenzione
+            </a>
+
+            <a href="/interfaccia-distributore" class="landing-btn btn-distributore">
+                <span class="icon">🖥️</span>
+                Interfaccia Distributore
+            </a>
+        </div>
+    </div>
+</body>
+</html>
