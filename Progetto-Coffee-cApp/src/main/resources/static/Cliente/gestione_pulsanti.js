@@ -87,3 +87,10 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
         alert('Nessun distributore connesso');
     }
 });
+
+//queste due piccole righe di codice chiudono la connessione se l'utente chiude la tab del browser
+window.addEventListener('beforeunload', function (_) {
+    navigator.sendBeacon(`http://localhost:8080/disconnetti?id_utente=${id_utente}`);
+    sessionStorage.removeItem('id_distributore');
+});
+
