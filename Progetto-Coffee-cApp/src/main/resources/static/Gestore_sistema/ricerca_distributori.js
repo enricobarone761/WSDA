@@ -28,7 +28,16 @@ window.addEventListener('distributoriCaricati', ()=>{
             }
 
             //controllo via
-            if(criteri_di_ricerca['distributore-via'] && criteri_di_ricerca['distributore-via'].toLowerCase() !== e.querySelector('via').textContent.toLowerCase() ){
+            if(criteri_di_ricerca['distributore-via']
+                && !((e.querySelector('via')?.textContent || '')
+                    .toLowerCase()
+                    .includes(
+                        criteri_di_ricerca['distributore-via']
+                        .toLowerCase()
+                    )
+                )
+            )
+            {
                 lista_distributori_validi.delete(e.id)
             }
 
