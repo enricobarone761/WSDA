@@ -25,8 +25,7 @@ public class AddettoLoginController {
     @PostMapping("/login-manutentore")
     public String login(@RequestParam String username, 
                         @RequestParam String password,
-                        HttpServletRequest request,
-                        HttpSession session) {
+                        HttpServletRequest request) {
 
         try {
             Optional<Utente> utenteOpt = utenteService.findByUsername(username);
@@ -34,14 +33,18 @@ public class AddettoLoginController {
                 return "redirect:/Addetto_manutenzione/login_addetto_manutenzione.html?error=UserNotFound";
             }
 
+            //prima di fare il login esegue il logout di eventuali altre sessioni precedenti
+            request.logout();
+            //una nuova sessione viene creata e popolata successivamente coi dati dell'utente (che vengono passati anche alla vista)
+            HttpSession newSession = request.getSession(true);
+
             //request.login() gestisce automaticamente autenticazione + autorizzazione + sessione
             request.login(username, password);
 
-            Utente utente = utenteOpt.get();
             //dall'introduzione di spring security possiamo lavorare meglio con le sessioni
             //in questo caso salviamo quello che ci serve e lo recuperiamo nel GetMapping successivo
             //aiutandoci a resistere anche al refresh
-            session.setAttribute("utente", utente);
+            newSession.setAttribute("utente", utenteOpt.get());
 
             return "redirect:/controllo-distributore";
 

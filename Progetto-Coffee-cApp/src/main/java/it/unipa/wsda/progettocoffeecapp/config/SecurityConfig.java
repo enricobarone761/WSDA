@@ -36,8 +36,6 @@ public class SecurityConfig {
                         .requestMatchers("/login", "/register", "/login-gestore", "/login-manutentore").permitAll()
 
                         .requestMatchers("/Cliente/**", "/CSS-e-Icone/**").permitAll()
-                        .requestMatchers("/Addetto_manutenzione/**").permitAll()
-                        .requestMatchers("/Gestore_sistema/**").permitAll()
 
                         .requestMatchers("/distributore/**", "/erogazione/**", "/sync").permitAll()
 
@@ -46,8 +44,10 @@ public class SecurityConfig {
 
                         .requestMatchers("/info_distributori","/manutenzione/**").hasRole("ADDETTO")
                         .requestMatchers("/controllo-distributore").hasRole("ADDETTO")
+                        .requestMatchers("/Addetto_manutenzione/**").hasRole("ADDETTO")
 
                         .requestMatchers("/elenco-addetti","/gestione-addetti/**","/gestione-distributori/**").hasRole("GESTORE")
+                        .requestMatchers("/Gestore_sistema/**").hasRole("GESTORE")
 
                         .anyRequest().authenticated()
                 )
