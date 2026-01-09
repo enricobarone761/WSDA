@@ -20,14 +20,15 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Utente user = utenteRepository.findByUsername(username)
+        Utente utente = utenteRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Utente non trovato: " + username));
 
         return User
-                .withUsername(user.getUsername())
-                .password(user.getPassword())
-                .roles(user.getRuolo().name())
+                .withUsername(utente.getUsername())
+                .password(utente.getPassword())
+                .roles(utente.getRuolo().name())
                 .build();
     }
 
 }
+
