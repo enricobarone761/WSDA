@@ -41,7 +41,7 @@ public class RegistrazioneController {
             return "redirect:/Cliente/login.html";
 
         } catch (IllegalArgumentException e) {
-            System.out.println("Colpa di .registraNuovoUtente()");
+            System.err.println("Colpa di .registraNuovoUtente()");
             redirectAttributes.addFlashAttribute("error", e.getMessage());
             return "redirect:/Cliente/register.html";
         }
