@@ -1,7 +1,4 @@
-//questa pagina implementa sessioStorage, semplice funzione js che mi permette di "resistere" al refresh della pagina
-//conservando l'id distributore al quale si è connessi. Quando la tab viene chiusa la sessione è cancellata
-
-let input_id = sessionStorage.getItem('id_distributore'); //all'avvio è null
+let input_id = null;
 
 const botton_connessione = document.querySelector('#conn');
 const status_div = document.querySelector('#status-connessione');
@@ -29,11 +26,6 @@ function aggiornaUI(id) {
     }
 }
 
-// al primo avvio è null, quindi UI vuota
-if (input_id) {
-    aggiornaUI(input_id);
-}
-
 // CONNESSIONE
 document.querySelector('#form-connessione').addEventListener('submit', (event) => {
     event.preventDefault();
@@ -51,7 +43,6 @@ document.querySelector('#form-connessione').addEventListener('submit', (event) =
         })
         .then(message => {
             input_id = id_distributore;
-            sessionStorage.setItem('id_distributore', input_id);
             alert(message);
             aggiornaUI(input_id);
         })
@@ -77,7 +68,6 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
         .then(message => {
             alert(message);
             input_id = null;
-            sessionStorage.removeItem('id_distributore');
             aggiornaUI(null);
         })
         .catch(error => {
@@ -91,6 +81,4 @@ document.querySelector('#disconnessione-btn').addEventListener('click', () => {
 //queste due piccole righe di codice chiudono la connessione se l'utente chiude la tab del browser
 window.addEventListener('beforeunload', function (_) {
     navigator.sendBeacon(`/disconnetti?id_utente=${id_utente}`);
-    sessionStorage.removeItem('id_distributore');
 });
-
