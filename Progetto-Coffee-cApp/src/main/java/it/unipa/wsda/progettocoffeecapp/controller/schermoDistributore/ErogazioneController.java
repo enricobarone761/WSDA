@@ -24,7 +24,7 @@ public class ErogazioneController {
     }
 
     @PostMapping("/erogazione/{id_distributore}/eroga/{id_bevanda}")
-    @CrossOrigin(origins = "*") // disabilito temporaneamente la protezione CORS
+    //@CrossOrigin(origins = "*") // disabilito temporaneamente la protezione CORS
     public ResponseEntity<String> erogaBevanda(@PathVariable String id_distributore, @PathVariable Integer id_bevanda) {
         
         //1 controlliamo l'utente connesso
