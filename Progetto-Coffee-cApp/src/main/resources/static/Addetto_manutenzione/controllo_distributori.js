@@ -62,7 +62,7 @@ function aggiornaID(id) { //aggiungi anche lo stato
     document.querySelector('#ID').innerHTML = `Distributore: ${id}<br>Stato: ${stato}`;
 }
 
-function carica_stato(id) {
+function carica_stato() {
     document.querySelector('#controlli-stato').style.display = 'flex';
     document.querySelector('#ripristina_forniture').style.display = 'block';
     document.querySelector('#ripristina_guasti').style.display = 'block';
