@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class RegistrazioneController {
@@ -23,7 +22,6 @@ public class RegistrazioneController {
                                @RequestParam String cognome,
                                @RequestParam String email,
                                @RequestParam String password,
-                               RedirectAttributes redirectAttributes,
                                HttpServletRequest request,
                                HttpSession session) {
         
@@ -42,8 +40,7 @@ public class RegistrazioneController {
 
         } catch (IllegalArgumentException e) {
             System.err.println("Colpa di .registraNuovoUtente()");
-            redirectAttributes.addFlashAttribute("error", e.getMessage());
-            return "redirect:/Cliente/register.html";
+            return "redirect:/Cliente/register.html?error=Errore";
         }
     }
 }
