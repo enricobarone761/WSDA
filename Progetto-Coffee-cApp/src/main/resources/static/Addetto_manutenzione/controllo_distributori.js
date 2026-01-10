@@ -3,7 +3,7 @@ let xmlDoc = null;
 
 async function scaricaDati() {
     try {
-        const response = await fetch('http://localhost:8080/info_distributori');
+        const response = await fetch('/info_distributori');
         const str = await response.text();
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");
     } catch (errore) {

@@ -2,7 +2,7 @@ let xmlDocDist = null;
 let lista_id_distributori = null
 
 function scaricaDatiDistributori() {
-    fetch('http://localhost:8080/info_distributori')
+    fetch('/info_distributori')
         .then(response => response.text())
         .then(str => {
 
@@ -139,7 +139,7 @@ function aggiungi_html_distributore(id) {
 
     //LOGICA PULSANTE RIMUOVI
     div.querySelector('.btn-rimuovi').addEventListener('click', _ => {
-        fetch(`http://localhost:8080/gestione-distributori/rimuovi?id=${id}`, {
+        fetch(`/gestione-distributori/rimuovi?id=${id}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -161,7 +161,7 @@ function aggiungi_html_distributore(id) {
 
         const nuovoStato = statoSpan.textContent === 'ATTIVO' ? 'INATTIVO' : 'ATTIVO';
 
-        fetch(`http://localhost:8080/manutenzione/cambia-stato?idDistributore=${id}&stato=${nuovoStato}`, {
+        fetch(`/manutenzione/cambia-stato?idDistributore=${id}&stato=${nuovoStato}`, {
             method: 'POST'
         })
             .then(response => {
@@ -210,7 +210,7 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
                 piano: posizione.piano
             };
 
-            fetch('http://localhost:8080/gestione-distributori/aggiungi', {
+            fetch('/gestione-distributori/aggiungi', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

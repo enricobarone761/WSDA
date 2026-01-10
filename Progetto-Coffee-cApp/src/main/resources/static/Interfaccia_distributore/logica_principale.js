@@ -29,7 +29,7 @@ document.querySelector('.btn-conferma').addEventListener('click', () => {
     }
 
     // Chiamata al backend per l'erogazione
-    fetch(`http://localhost:8080/erogazione/${DISTRIBUTORE_ID}/eroga/${idBevandaSelezionata}`, {
+    fetch(`/erogazione/${DISTRIBUTORE_ID}/eroga/${idBevandaSelezionata}`, {
         method: 'POST'
     })
     .then(response => {

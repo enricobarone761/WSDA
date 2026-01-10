@@ -1,5 +1,5 @@
 let xmlDoc = null;
-fetch('http://localhost:8080/elenco-addetti')
+fetch('/elenco-addetti')
     .then(response => response.text())
     .then(str => {
         xmlDoc = new DOMParser().parseFromString(str, "application/xml");
@@ -29,7 +29,7 @@ function aggiungi_html_addetto(addetto){
 
     //LOGICA PULSANTE RIMUOVI
     div.querySelector('.rmv-addetto').addEventListener('click', () => {
-        fetch(`http://localhost:8080/gestione-addetti/rimuovi?email=${addetto.email}`, {
+        fetch(`/gestione-addetti/rimuovi?email=${addetto.email}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -63,13 +63,13 @@ document.querySelector('#agg-add').addEventListener('click' , listener=>{
     const email = document.querySelector('#addetto-email').value;
 
     if(document.querySelector('form').reportValidity()){
-        fetch(`http://localhost:8080/gestione-addetti/aggiungi?email=${email}`, {
+        fetch(`/gestione-addetti/aggiungi?email=${email}`, {
             method: 'POST'
         })
         .then(response => {
             if (response.ok) {
                 // ricarichiamo la lista degli addetti per aggiornarla
-                fetch('http://localhost:8080/elenco-addetti')
+                fetch('/elenco-addetti')
                     .then(response => response.text())
                     .then(str => {
                         xmlDoc = new DOMParser().parseFromString(str, "application/xml");

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     let lista_id_distributori = null
 
     function scaricaDatiDistributori() {
-        fetch('http://localhost:8080/info_distributori')
+        fetch('/info_distributori')
             .then(response => response.text())
             .then(str => {
 
