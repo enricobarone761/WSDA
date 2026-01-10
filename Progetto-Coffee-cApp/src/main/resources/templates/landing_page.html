@@ -4,103 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coffee cApp - Benvenuto</title>
-    <link rel="stylesheet" href="/Cliente/connessione_distributore_style.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 20px;
         }
 
         .landing-container {
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
             background-color: #ffffff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15);
             border-radius: 30px;
-            padding: 60px;
-            text-align: center;
+            padding: 80px 60px;
         }
 
         .landing-header {
-            margin-bottom: 50px;
+            text-align: center;
+            margin-bottom: 70px;
+            padding-bottom: 40px;
+            border-bottom: 3px solid #f0f0f0;
         }
 
-        .landing-header img {
-            height: 120px;
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
             margin-bottom: 20px;
         }
 
+        .logo-container img {
+            height: 100px;
+            width: 100px;
+        }
+
         .landing-header h1 {
-            font-size: 36px;
+            font-size: 64px;
             color: #2d2d2d;
-            font-weight: 600;
-            margin: 0;
+            font-weight: 700;
+            display: inline;
+        }
+
+        .landing-header p {
+            color: #666;
+            font-size: 22px;
+            margin-top: 15px;
+            font-weight: 400;
         }
 
         .button-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-top: 40px;
         }
 
         .landing-btn {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
+            gap: 30px;
+            padding: 45px 40px;
             border-radius: 20px;
             text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 20px;
-            height: 100%;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background-color: #f8f9fa;
         }
 
         .landing-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-icon {
+            width: 80px;
+            height: 80px;
+            padding: 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .btn-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .btn-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .btn-content h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .btn-content p {
+            font-size: 16px;
+            opacity: 0.75;
+            line-height: 1.4;
         }
 
         .btn-cliente {
+            border-color: #FFB63D;
+        }
+
+        .btn-cliente .btn-icon {
             background-color: #FFB63D;
+        }
+
+        .btn-cliente .btn-content h3 {
+            color: #FFB63D;
+        }
+
+        .btn-cliente .btn-content p {
             color: #2d2d2d;
         }
 
         .btn-gestore {
+            border-color: #2d2d2d;
+        }
+
+        .btn-gestore .btn-icon {
             background-color: #2d2d2d;
         }
 
+        .btn-gestore .btn-content h3 {
+            color: #2d2d2d;
+        }
+
+        .btn-gestore .btn-content p {
+            color: #2d2d2d;
+        }
+
         .btn-manutenzione {
-            background-color: #4a4a4a;
+            border-color: #e74c3c;
+        }
+
+        .btn-manutenzione .btn-icon {
+            background-color: #e74c3c;
+        }
+
+        .btn-manutenzione .btn-content h3 {
+            color: #e74c3c;
+        }
+
+        .btn-manutenzione .btn-content p {
+            color: #2d2d2d;
         }
 
         .btn-distributore {
-            background-color: #6c757d;
+            border-color: #3498db;
         }
 
-        .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            display: block;
+        .btn-distributore .btn-icon {
+            background-color: #3498db;
         }
 
-        @media (max-width: 600px) {
+        .btn-distributore .btn-content h3 {
+            color: #3498db;
+        }
+
+        .btn-distributore .btn-content p {
+            color: #2d2d2d;
+        }
+
+        @media (max-width: 768px) {
             .button-grid {
                 grid-template-columns: 1fr;
             }
+
             .landing-container {
-                padding: 30px;
-                margin: 20px;
+                padding: 40px 30px;
+            }
+
+            .landing-header h1 {
+                font-size: 42px;
+            }
+
+            .logo-container img {
+                height: 70px;
+                width: 70px;
+            }
+
+            .btn-content h3 {
+                font-size: 24px;
+            }
+
+            .btn-content p {
+                font-size: 14px;
+            }
+
+            .btn-icon {
+                width: 65px;
+                height: 65px;
             }
         }
     </style>
@@ -108,30 +220,48 @@
 <body>
     <div class="landing-container">
         <div class="landing-header">
-            <img th:src="@{/CSS-e-Icone/coffee_bean.png}" alt="Coffee cApp Logo"/>
-            <h1>Coffee cApp</h1>
-            <p style="color: #666; margin-top: 10px; font-size: 18px;">Seleziona il tuo portale di accesso</p>
+            <div class="logo-container">
+                <img th:src="@{/CSS-e-Icone/coffee_bean.png}" alt="Coffee cApp Logo"/>
+                <h1>Coffee cApp</h1>
+            </div>
+            <p>Seleziona il tuo portale di accesso</p>
         </div>
 
         <div class="button-grid">
             <a href="/Cliente/login.html" class="landing-btn btn-cliente">
-                <span class="icon">☕</span>
-                Area Clienti
+                <div class="btn-icon">
+                    <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" alt="Cliente"/>
+                </div>
+                <div class="btn-content">
+                    <h3>Area Clienti</h3>
+                </div>
             </a>
 
             <a href="/Gestore_sistema/login_gestore_sistema.html" class="landing-btn btn-gestore">
-                <span class="icon">📊</span>
-                Area Gestori
+                <div class="btn-icon">
+                    <img th:src="@{/CSS-e-Icone/key-manager-svgrepo-com.svg}" alt="Gestore"/>
+                </div>
+                <div class="btn-content">
+                    <h3>Area Gestori</h3>
+                </div>
             </a>
 
             <a href="/Addetto_manutenzione/login_addetto_manutenzione.html" class="landing-btn btn-manutenzione">
-                <span class="icon">🔧</span>
-                Area Manutenzione
+                <div class="btn-icon">
+                    <img th:src="@{/CSS-e-Icone/wrench-svgrepo-com.svg}" alt="Manutenzione"/>
+                </div>
+                <div class="btn-content">
+                    <h3>Area Manutenzione</h3>
+                </div>
             </a>
 
             <a href="/interfaccia-distributore" class="landing-btn btn-distributore">
-                <span class="icon">🖥️</span>
-                Interfaccia Distributore
+                <div class="btn-icon">
+                    <img th:src="@{/CSS-e-Icone/search-magnifying-glass-svgrepo-com.svg}" alt="Distributore"/>
+                </div>
+                <div class="btn-content">
+                    <h3>Interfaccia Distributore</h3>
+                </div>
             </a>
         </div>
     </div>
