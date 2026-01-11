@@ -9,6 +9,7 @@ public class ConnessioneDistributore {
 //    private static final String USER = "root";
 //    private static final String PASSWORD = "1234567890";
 
+    //credenziali db remoto già popolato, uguali nell'altro progetto
     private static final String URL = "jdbc:mysql://coffee-capp-132184a6-coffee-capp-0176.g.aivencloud.com:15746/distributori_info";
     private static final String USER = "avnadmin";
     private static final String PASSWORD = "AVNS_MZJ4fwGs6Ty0WXxZVR0";

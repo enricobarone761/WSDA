@@ -20,14 +20,14 @@ public class SecurityConfig {
 
     //Il seguente bean implementa la gerarchia dei ruoli
     //la consegna finale prevede però una netta distinzione tra i ruoli
-    //per non andare fuori traccia quindi lo lascio commentato TODO
-    @Bean
+    //per non andare fuori traccia quindi lo lascio commentato
+    /*@Bean
     public RoleHierarchy roleHierarchy() {
         return RoleHierarchyImpl.withDefaultRolePrefix()
                 .role("GESTORE").implies("ADDETTO", "CLIENTE")
                 .role("ADDETTO").implies("CLIENTE")
                 .build();
-    }
+    }*/
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
