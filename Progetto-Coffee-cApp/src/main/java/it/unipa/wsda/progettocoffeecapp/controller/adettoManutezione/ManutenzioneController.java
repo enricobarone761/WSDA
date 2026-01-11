@@ -29,7 +29,11 @@ public class ManutenzioneController {
 
     @PostMapping("/cambia-stato")
     public ResponseEntity<String> cambiaStato(@RequestParam String idDistributore, @RequestParam StatiDistributori stato) {
-        distributoreService.cambiaStato(idDistributore, stato, true);
-        return ResponseEntity.ok("Stato aggiornato con successo");
+        try {
+            distributoreService.cambiaStato(idDistributore, stato, true);
+            return ResponseEntity.ok("Stato aggiornato con successo");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
     }
 }

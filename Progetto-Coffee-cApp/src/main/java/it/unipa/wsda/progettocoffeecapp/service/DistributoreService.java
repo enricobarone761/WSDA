@@ -130,7 +130,7 @@ public class DistributoreService {
 
                 System.out.println("Cambio stato inviato");
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Errore durante la sincronizzazione: " + e.getMessage());
             }
         }
     }
@@ -172,18 +172,22 @@ public class DistributoreService {
 
 
         //sync con db Jakarta
-        record recordDistributore(String id, StatiDistributori stato, Double lat, Double lon, Timestamp lastHeartbeat) {}
-        restClient.post()
-                .uri(URL)
-                .body(new recordDistributore(
-                        distributore.getId_distributore(),
-                        distributore.getStato(),
-                        distributore.getLat(),
-                        distributore.getLon(),
-                        null
-                ))
-                .retrieve()
-                .toBodilessEntity();
+        try {
+            record recordDistributore(String id, StatiDistributori stato, Double lat, Double lon, Timestamp lastHeartbeat) {}
+            restClient.post()
+                    .uri(URL)
+                    .body(new recordDistributore(
+                            distributore.getId_distributore(),
+                            distributore.getStato(),
+                            distributore.getLat(),
+                            distributore.getLon(),
+                            null
+                    ))
+                    .retrieve()
+                    .toBodilessEntity();
+        } catch (Exception e) {
+            throw new RuntimeException("Errore durante la sincronizzazione: " + e.getMessage());
+        }
 
     }
 
@@ -198,7 +202,7 @@ public class DistributoreService {
                     .retrieve()
                     .toBodilessEntity();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Errore durante la sincronizzazione: " + e.getMessage());
         }
     }
 

@@ -139,6 +139,9 @@ async function cambiaStato(nuovo_stato) {
             alert('Stato aggiornato in ' + nuovo_stato + '!');
             // ricarica i dati per mostrare lo stato aggiornato
             document.querySelector('#load_state').click();
+        } else {
+            const errorMessage = await response.text();
+            alert(errorMessage);
         }
     } catch (error) {
         console.error('Errore:', error);

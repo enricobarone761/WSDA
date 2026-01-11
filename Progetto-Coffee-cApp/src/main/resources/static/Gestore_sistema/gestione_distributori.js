@@ -142,12 +142,13 @@ function aggiungi_html_distributore(id) {
         fetch(`/gestione-distributori/rimuovi?id=${id}`, {
             method: 'DELETE'
         })
-        .then(response => {
+        .then(async response => {
             if (response.ok) {
                 alert('Hai rimosso ' + id )
                 div.closest('.distributore-card').remove();
             } else {
-                alert('Errore durante la rimozione del distributore');
+                const errorMessage = await response.text();
+                alert(errorMessage);
             }
         })
         .catch(error => console.error('Errore:', error));
@@ -164,8 +165,11 @@ function aggiungi_html_distributore(id) {
         fetch(`/manutenzione/cambia-stato?idDistributore=${id}&stato=${nuovoStato}`, {
             method: 'POST'
         })
-            .then(response => {
-                if (!response.ok) throw new Error();
+            .then(async response => {
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    throw new Error(errorMessage);
+                }
 
                 statoSpan.className = `distributore-stato ${nuovoStato.toLowerCase()}`;
 
@@ -175,7 +179,7 @@ function aggiungi_html_distributore(id) {
 
                 alert(`Hai ${isDisattivato ? 'disattivato' : 'attivato'} il distributore ${id}`);
             })
-            .catch(() => alert('Errore durante il cambio di stato'));
+            .catch((e) => alert(e.message));
     });
 
     //
@@ -217,11 +221,14 @@ document.querySelector('#add-dist-btn').addEventListener('click', listener => {
                 },
                 body: JSON.stringify(nuovoDistributore)
             })
-            .then(response => {
+            .then(async response => {
                 if (response.ok) {
                     alert("Aggiunto "+ nuovo_id)
                     document.querySelector('#add-dist-form').reset();
                     scaricaDatiDistributori();
+                } else {
+                    const errorMessage = await response.text();
+                    alert(errorMessage);
                 }
             })
             .catch(error => console.error('Errore:', error));

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
-//questa classe svuota la tabella Connessione ad ogni avvio di spring
+//questa classe svuota la tabella Connessione ad ogni avvio di spring TODO
 
 @Configuration
 public class SvuotaTabellaConnessioneAvvio {
