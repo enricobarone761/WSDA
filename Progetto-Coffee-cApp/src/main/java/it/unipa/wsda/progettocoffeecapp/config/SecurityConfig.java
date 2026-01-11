@@ -18,6 +18,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    //Il seguente bean implementa la gerarchia dei ruoli
+    //la consegna finale prevede però una netta distinzione tra i ruoli
+    //per non andare fuori traccia quindi lo lascio commentato TODO
     @Bean
     public RoleHierarchy roleHierarchy() {
         return RoleHierarchyImpl.withDefaultRolePrefix()
