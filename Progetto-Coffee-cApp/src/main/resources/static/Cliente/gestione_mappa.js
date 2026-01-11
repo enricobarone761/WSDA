@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(URLMappa)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error();
                 }
                 return response.json();
             })
