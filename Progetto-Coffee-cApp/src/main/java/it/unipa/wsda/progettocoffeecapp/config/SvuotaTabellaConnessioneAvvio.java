@@ -14,7 +14,7 @@ public class SvuotaTabellaConnessioneAvvio {
 
     @Bean
     CommandLineRunner svuotaTabellaConnessione(ConnessioneRepository connessioneRepository) {
-        return _ -> {
+        return e -> {
             connessioneRepository.deleteAll();
             System.out.println("Tabella Connessione svuotata");
         };
