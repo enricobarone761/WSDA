@@ -1,9 +1,6 @@
 package it.unipa.wsda.progettocoffeecapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -11,6 +8,7 @@ import lombok.Data;
 public class Distributore {
 
     @Id
+    @Column(length = 6)
     private String id_distributore;
 
     @Enumerated(EnumType.STRING)
