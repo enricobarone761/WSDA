@@ -2,7 +2,6 @@ package it.unipa.wsda.progettocoffeecapp.controller.schermoDistributore;
 
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.service.DistributoreService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
