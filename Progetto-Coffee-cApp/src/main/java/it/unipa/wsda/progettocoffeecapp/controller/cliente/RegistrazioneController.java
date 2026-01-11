@@ -31,7 +31,7 @@ public class RegistrazioneController {
             request.login(email, password);
             session.setAttribute("utente", utente);
 
-            //viene reindirizzato direttamente al controller per il login
+            //viene reindirizzato direttamente al controller per la connessione al distributore
             return "redirect:/connessione-distributore";
 
         } catch (ServletException e) {
