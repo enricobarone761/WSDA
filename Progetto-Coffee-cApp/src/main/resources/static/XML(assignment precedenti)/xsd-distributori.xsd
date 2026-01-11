@@ -5,7 +5,7 @@
                 <xs:element name="distributore" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element type="xs:string" name="edificio"/>
+                            <xs:element type="xs:string" name="via"/>
                             <xs:element type="xs:string" name="piano"/>
                             <xs:element name="stato">
                                 <xs:simpleType>
