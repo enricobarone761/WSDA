@@ -2,8 +2,10 @@ package it.unipa.wsda.progettocoffeecapp.controller.schermoDistributore;
 
 import it.unipa.wsda.progettocoffeecapp.model.Utente;
 import it.unipa.wsda.progettocoffeecapp.service.DistributoreService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -18,8 +20,7 @@ public class DistributoreController {
     }
 
     @GetMapping("/distributore/polling-utente")
-    @ResponseBody
-    public ResponseEntity<Utente> getUtenteConnesso(@RequestParam String idDistributore) {
+    public @ResponseBody ResponseEntity<Utente> getUtenteConnesso(@RequestParam String idDistributore) {
         //System.out.println(idDistributore);
         Optional<Utente> utenteOpt = ds.getUtenteConnesso(idDistributore);
         if (utenteOpt.isPresent()) {
@@ -30,7 +31,10 @@ public class DistributoreController {
     }
 
     @GetMapping("/interfaccia-distributore")
-    public String showInterfacciaDistributore() {
-        return "redirect:/Interfaccia_distributore/interfaccia_distributore.html";
+    public String showInterfacciaDistributore(@RequestParam String idDistributore,
+                                              Model model) {
+
+        model.addAttribute("idDistributore", idDistributore);
+        return "interfaccia_distributore";
     }
 }

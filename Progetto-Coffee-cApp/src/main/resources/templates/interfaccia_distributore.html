@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaccia Distributore</title>
+    <link rel="stylesheet" th:href="@{/Interfaccia_distributore/interfaccia_distributore_style.css}">
+    <script th:src="@{/Interfaccia_distributore/polling_periodico_dati_utente.js}" defer></script>
+    <script th:src="@{/Interfaccia_distributore/logica_principale.js}" defer></script>
+    <script th:src="@{/Interfaccia_distributore/heartbeat.js}" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="user-info">
+            <p class="user-label">In attesa di connessione...</p>
+            <p class="username">...</p>
+            <p class="euro_simbolo">€ <span class="credit">0.00</span></p>
+        </div>
+        <div class="dispenser-info">
+            <p class="dispenser-label">Distributore</p>
+            <p class="dispenser-id" th:text="${idDistributore}">___</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <h2 class="section-title">Seleziona Bevanda</h2>
+
+            <div class="bevande-grid">
+                <div class="bevanda-card" data-id="1">
+                    <p class="bevanda-nome">Caffè</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 0,80</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+
+                <div class="bevanda-card" data-id="2">
+                    <p class="bevanda-nome">Cappuccino</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 1,20</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+
+                <div class="bevanda-card" data-id="3">
+                    <p class="bevanda-nome">Thè</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 0,70</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+
+                <div class="bevanda-card" data-id="4">
+                    <p class="bevanda-nome">Cioccolata</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 1,50</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+
+                <div class="bevanda-card" data-id="5">
+                    <p class="bevanda-nome">Latte Macchiato</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 1,00</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+
+                <div class="bevanda-card" data-id="6">
+                    <p class="bevanda-nome">Caffè Macchiato</p>
+                    <div class="coffee-svg">
+                        <img th:src="@{/CSS-e-Icone/coffee-break-svgrepo-com.svg}" class="Caffè-Icona" alt="">
+                    </div>
+                    <p class="bevanda-prezzo">€ 0,90</p>
+                    <button class="btn-bevanda">Seleziona</button>
+                    <img th:src="@{/CSS-e-Icone/blocked-svgrepo-com.svg}" class="icon-blocked" alt="Bloccato" style="display: none;">
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2 class="section-title">Quantità Zucchero</h2>
+
+            <div class="zucchero-controls">
+                <button class="btn-zucchero">0</button>
+                <button class="btn-zucchero">½</button>
+                <button class="btn-zucchero">1</button>
+                <button class="btn-zucchero">1½</button>
+                <button class="btn-zucchero">2</button>
+                <button class="btn-zucchero">2½</button>
+                <button class="btn-zucchero">3</button>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <button class="btn-conferma">Conferma Acquisto</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LandingPageController {
     @GetMapping("/")
-    public String showLandingPage() {
+    public String mostraLandingPage() {
         return "landing_page";
     }
 }
