@@ -1,6 +1,6 @@
 package it.unipa.wsda.progettocoffeecapp.controller.cliente;
 
-import it.unipa.wsda.progettocoffeecapp.service.DistributoreService;
+import it.unipa.wsda.progettocoffeecapp.service.ConnessioneService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GestioneConnessione {
 
-    private final DistributoreService distributoreService;
+    private final ConnessioneService connessioneService;
 
-    public GestioneConnessione(DistributoreService distributoreService) {
-        this.distributoreService = distributoreService;
+    public GestioneConnessione(ConnessioneService connessioneService) {
+        this.connessioneService = connessioneService;
     }
 
     @PostMapping("/connetti")
     public ResponseEntity<String> connetti(@RequestParam("id_distributore") String idDistributore,
                                            @RequestParam("id_utente") Integer idUtente) {
         try {
-            distributoreService.connetti(idUtente, idDistributore);
+            connessioneService.connetti(idUtente, idDistributore);
             return ResponseEntity.ok("Connessione riuscita");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Errore durante la connessione: " + e.getMessage());
@@ -28,7 +28,7 @@ public class GestioneConnessione {
 
     @PostMapping("/disconnetti")
     public ResponseEntity<String> disconnetti(@RequestParam("id_utente") Integer idUtente) {
-        distributoreService.disconnetti(idUtente);
+        connessioneService.disconnetti(idUtente);
         return ResponseEntity.ok("Disconnessione riuscita");
     }
 }
