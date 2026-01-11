@@ -2,7 +2,7 @@
 <distributori>
     <distributore id="CA001">
 
-        <edificio>9</edificio>
+        <via>9</via>
         <piano>2</piano>
 
         <stato>Attivo</stato>
@@ -64,7 +64,7 @@
 
     <distributore id="CA002">
 
-        <edificio>6</edificio>
+        <via>6</via>
         <piano>1</piano>
 
         <stato>Inattivo</stato>
@@ -126,7 +126,7 @@
 
     <distributore id="CA003">
 
-        <edificio>mensa</edificio>
+        <via>mensa</via>
         <piano>0</piano>
 
         <stato>Attivo</stato>
@@ -188,7 +188,7 @@
 
     <distributore id="CA004">
 
-        <edificio>19</edificio>
+        <via>19</via>
         <piano>Laboratorio</piano>
 
         <stato>Attivo</stato>
@@ -251,7 +251,7 @@
 
     <distributore id="CA017">
 
-        <edificio>03</edificio>
+        <via>03</via>
         <piano>Seminterrato</piano>
 
         <stato>Attivo</stato>
@@ -315,7 +315,7 @@
 
     <distributore id="CA059">
 
-        <edificio>12</edificio>
+        <via>12</via>
         <piano>1</piano>
 
         <stato>Inattivo</stato>
@@ -377,7 +377,7 @@
     </distributore>
 
     <distributore id="CA060">
-        <edificio>15</edificio>
+        <via>15</via>
         <piano>3</piano>
         <stato>Attivo</stato>
         <forniture>
@@ -435,7 +435,7 @@
     </distributore>
 
     <distributore id="CA061">
-        <edificio>20</edificio>
+        <via>20</via>
         <piano>0</piano>
         <stato>Inattivo</stato>
         <forniture>
@@ -493,7 +493,7 @@
     </distributore>
 
     <distributore id="CA062">
-        <edificio>atrio</edificio>
+        <via>atrio</via>
         <piano>0</piano>
         <stato>Attivo</stato>
         <forniture>
@@ -551,7 +551,7 @@
     </distributore>
 
     <distributore id="CA063">
-        <edificio>18</edificio>
+        <via>18</via>
         <piano>2</piano>
         <stato>Attivo</stato>
         <forniture>
@@ -609,7 +609,7 @@
     </distributore>
 
     <distributore id="CA064">
-        <edificio>14</edificio>
+        <via>14</via>
         <piano>1</piano>
         <stato>Inattivo</stato>
         <forniture>
@@ -667,7 +667,7 @@
     </distributore>
 
     <distributore id="CA065">
-        <edificio>11</edificio>
+        <via>11</via>
         <piano>0</piano>
         <stato>Attivo</stato>
         <forniture>
@@ -725,7 +725,7 @@
     </distributore>
 
     <distributore id="CA066">
-        <edificio>22</edificio>
+        <via>22</via>
         <piano>0</piano>
         <stato>Inattivo</stato>
         <forniture>
@@ -783,7 +783,7 @@
     </distributore>
 
     <distributore id="CA067">
-        <edificio>5</edificio>
+        <via>5</via>
         <piano>4</piano>
         <stato>Attivo</stato>
         <forniture>
