@@ -50,7 +50,7 @@ public class SecurityConfig {
                         .requestMatchers("/credito", "/ricarica", "/connetti", "/disconnetti").hasRole("CLIENTE")
                         .requestMatchers("/connessione-distributore").hasRole("CLIENTE")
 
-                        .requestMatchers("/info_distributori","/manutenzione/**").hasRole("ADDETTO")
+                        .requestMatchers("/info_distributori", "/manutenzione/**").hasAnyRole("ADDETTO","GESTORE")
                         .requestMatchers("/controllo-distributore").hasRole("ADDETTO")
                         .requestMatchers("/Addetto_manutenzione/**").hasRole("ADDETTO")
 
