@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>403 - Accesso negato | Coffee cApp</title>
+
+    <link rel="icon" type="image/png" href="/CSS-e-Icone/coffee_bean.png" />
+    <link rel="stylesheet" href="/CSS-e-Icone/landing_page.css" />
+
+    <style>
+        .error-wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        .error-card {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 26px;
+            padding: 38px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .error-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+        }
+
+        .error-icon {
+            width: 120px;
+            height: auto;
+            opacity: 0.95;
+        }
+
+        .error-actions {
+            display: grid;
+            gap: 16px;
+        }
+
+        .error-btn {
+            padding: 34px 22px;
+            border-radius: 22px;
+        }
+
+        .hint {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.35;
+        }
+
+        @media (max-width: 980px) {
+            .error-card {
+                padding: 26px;
+            }
+
+            .error-icon {
+                width: 92px;
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="container"  style="max-width: 700px; min-width: 450px">
+    <header class="header" style="justify-content: center">
+        <div class="brand">
+            <h1 class="title">Coffee cApp</h1>
+            <p class="subtitle">Accesso negato</p>
+        </div>
+        <img class="logo" src="/CSS-e-Icone/coffee_bean.png" alt="Coffee" />
+    </header>
+
+    <div class="content">
+        <section class="section error-wrap" aria-labelledby="err-title">
+            <div class="error-card">
+                <div class="error-top">
+                    <div>
+                        <h2 id="err-title" class="section-title">Errore 403</h2>
+                        <p class="section-desc">
+                            Non hai i permessi per accedere a questa pagina.
+                        </p>
+                    </div>
+                    <img class="error-icon" src="/CSS-e-Icone/blocked-svgrepo-com.svg" alt="" />
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+
+                <div class="error-actions">
+                    <a class="btn btn-primario error-btn" href="/" style="padding: 20px">
+                        <span class="btn-text">Torna alla home</span>
+                        <img class="btn-icon" src="/CSS-e-Icone/search-magnifying-glass-svgrepo-com.svg" alt="" />
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>
+

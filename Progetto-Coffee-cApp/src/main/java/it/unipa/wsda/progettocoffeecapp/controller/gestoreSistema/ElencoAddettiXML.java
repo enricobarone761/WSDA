@@ -27,6 +27,6 @@ public class ElencoAddettiXML {
         List<Utente> addetti = utenteService.getAllAddetti();
         Context context = new Context();
         context.setVariable("addetti", addetti);
-        return templateEngine.process("addetto_xml_template", context);
+        return templateEngine.process("templateXML/addetto_xml_template", context);
     }
 }
