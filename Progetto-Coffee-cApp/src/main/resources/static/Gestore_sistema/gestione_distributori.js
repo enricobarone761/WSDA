@@ -63,7 +63,7 @@ function aggiungi_html_distributore(id) {
     div.id = id
     div.innerHTML =
         `<div class="distributore-header">
-            <div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
                 <span class="distributore-id">${id}</span>
                 <span class="distributore-stato ${stato_attuale.toLowerCase()}">${stato_attuale}</span>
             </div>
@@ -133,7 +133,7 @@ function aggiungi_html_distributore(id) {
 
         <div class="distributore-actions">
             <button class="btn-piccolo btn-disattiva">${testo_pulsante}</button>
-            <button class="btn-piccolo btn-rimuovi">Rimuovi</button>
+            <button class="btn-piccolo btn-danger">Rimuovi</button>
         </div>`;
 
 
