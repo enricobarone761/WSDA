@@ -33,7 +33,11 @@ public class DistributoreController {
     public String showInterfacciaDistributore(@RequestParam String idDistributore,
                                               Model model) {
 
-        model.addAttribute("idDistributore", idDistributore);
+        if (ds.getDistributoreById(idDistributore).isPresent()) {
+            model.addAttribute("idDistributore", idDistributore);
+            return "interfaccia_distributore";
+        }
+        model.addAttribute("idDistributore", "NON TROVATO");
         return "interfaccia_distributore";
     }
 }

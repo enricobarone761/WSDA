@@ -34,7 +34,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register", "/login-gestore", "/login-manutentore").permitAll()
+                        .requestMatchers("/error","/", "/login", "/register", "/login-gestore", "/login-manutentore").permitAll()
                         
                         //pagine di login statiche e icone
                         .requestMatchers("/Cliente/**","/CSS-e-Icone/**").permitAll()
