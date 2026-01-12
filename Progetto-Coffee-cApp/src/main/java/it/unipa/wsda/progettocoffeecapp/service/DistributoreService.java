@@ -38,6 +38,10 @@ public class DistributoreService {
                 .map(Connessione::getUtente);
     }
 
+    public Optional<Distributore> getDistributoreById(String idDistributore) {
+        return distributoreRepository.findById(idDistributore);
+    }
+
     public Iterable<Distributore> getAllDistributori(){
         return distributoreRepository.findAll();
     }
