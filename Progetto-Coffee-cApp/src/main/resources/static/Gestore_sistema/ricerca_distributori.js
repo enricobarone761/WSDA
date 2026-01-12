@@ -17,54 +17,52 @@ window.addEventListener('distributoriCaricati', ()=>{
         criteri_di_ricerca.guasto_presente = document.querySelector('#search-dist-fault-btn').classList.contains('active')
         console.log(criteri_di_ricerca)
 
+        
+        const cards = document.querySelectorAll('.distributore-card');
+        let lista_distributori_validi = new Set();
 
-        const lista_distributori =  xmlDocDist.querySelectorAll('distributore');
-        let lista_distributori_validi = new Set(lista_id_distributori)
+        cards.forEach(card => {
+            const id = card.id;
+            const posizioneText = card.querySelector('.distributore-posizione').textContent.toLowerCase();
+            const stato = card.querySelector('.distributore-stato').textContent.toLowerCase();
+            
+            let isValido = true;
 
-        lista_distributori.forEach(e=>{
             //controllo id
-            if(criteri_di_ricerca['distributore-id'] && criteri_di_ricerca['distributore-id'].toUpperCase() !== e.id){
-                lista_distributori_validi.delete(e.id)
+            if(criteri_di_ricerca['distributore-id'] && criteri_di_ricerca['distributore-id'].toUpperCase() !== id){
+                isValido = false;
             }
 
-            //controllo via
-            if(criteri_di_ricerca['distributore-via']
-                && !((e.querySelector('via')?.textContent || '')
-                    .toLowerCase()
-                    .includes(
-                        criteri_di_ricerca['distributore-via']
-                        .toLowerCase()
-                    )
-                )
-            )
-            {
-                lista_distributori_validi.delete(e.id)
+            //controllo via (cerchiamo nel testo della posizione che include via e piano)
+            if(isValido && criteri_di_ricerca['distributore-via'] && !posizioneText.includes(criteri_di_ricerca['distributore-via'].toLowerCase())){
+                isValido = false;
             }
 
             //controllo stato
-            if(criteri_di_ricerca['distributore-stato'] && criteri_di_ricerca['distributore-stato'] !== e.querySelector('stato').textContent.toLowerCase()){
-                lista_distributori_validi.delete(e.id)
+            if(isValido && criteri_di_ricerca['distributore-stato'] && criteri_di_ricerca['distributore-stato'] !== stato){
+                isValido = false;
             }
 
             //controllo forniture
-            let esiste = false
-            e.querySelectorAll('fornitura').forEach(forn=>{
-                if(criteri_di_ricerca['fornitura_bassa'] && forn.querySelector('livello').textContent < 50){
-                    esiste = true
+            if(isValido && criteri_di_ricerca['fornitura_bassa']){
+                const percentuali = Array.from(card.querySelectorAll('.percentuale')).map(p => parseInt(p.textContent));
+                if(!percentuali.some(p => p < 50)){
+                    isValido = false;
                 }
-            })
-            if(!esiste && criteri_di_ricerca['fornitura_bassa']){lista_distributori_validi.delete(e.id)}
+            }
 
             //controllo guasti
-            esiste = false
-            e.querySelectorAll('componente').forEach(comp=>{
-                if(criteri_di_ricerca['guasto_presente'] && comp.querySelector('stato').textContent === 'Guasto'){
-                    esiste = true
+            if(isValido && criteri_di_ricerca['guasto_presente']){
+                const guasti = card.querySelectorAll('.guasto-item.guasto');
+                if(guasti.length === 0){
+                    isValido = false;
                 }
-            })
-            if(!esiste && criteri_di_ricerca['guasto_presente']){lista_distributori_validi.delete(e.id)}
+            }
 
-        })
+            if(isValido) {
+                lista_distributori_validi.add(id);
+            }
+        });
 
         console.log(lista_distributori_validi)
 
@@ -72,6 +70,8 @@ window.addEventListener('distributoriCaricati', ()=>{
         if(lista_distributori_validi.size === 0){
             alert('Nessun distributore trovato con questi criteri di ricerca')
             document.querySelector('#search-dist-form').reset()
+            document.querySelector('#search-dist-low-stock-btn').classList.remove('active');
+            document.querySelector('#search-dist-fault-btn').classList.remove('active');
         }else{
             document.querySelectorAll('.distributore-card').forEach(e=>{
                 if(!lista_distributori_validi.has(e.id)){
@@ -79,8 +79,5 @@ window.addEventListener('distributoriCaricati', ()=>{
                 }
             })
         }
-
-
     })
-
 })
