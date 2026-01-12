@@ -35,7 +35,7 @@ public class ServletDistributore extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //righe necessarie per mitigare il fastidioso CORS
+        //righe necessarie per mitigare la CORS-policy
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
 
