@@ -138,7 +138,7 @@ function aggiungi_html_distributore(id) {
 
 
     //LOGICA PULSANTE RIMUOVI
-    div.querySelector('.btn-rimuovi').addEventListener('click', _ => {
+    div.querySelector('.btn-danger').addEventListener('click', _ => {
         fetch(`/gestione-distributori/rimuovi?id=${id}`, {
             method: 'DELETE'
         })
