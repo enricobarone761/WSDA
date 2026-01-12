@@ -25,6 +25,6 @@ public class InfoDistributoreXML {
         Iterable<Distributore> distributori = distributoreService.getAllDistributori();
         Context context = new Context();
         context.setVariable("distributori", distributori);
-        return templateEngine.process("distributori_xml_template", context);
+        return templateEngine.process("templateXML/distributori_xml_template", context);
     }
 }
