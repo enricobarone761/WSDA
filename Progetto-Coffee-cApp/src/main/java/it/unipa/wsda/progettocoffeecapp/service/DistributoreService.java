@@ -23,10 +23,10 @@ public class DistributoreService {
 
     //RestClient integrato in Spring, serve per effettuare chiamate post (sincrone) direttamente nel backend
     //ho deciso volontariamente di utilizzare chiamate sincrone in quanto, per la mia interpretazione della consegna
-    //i due servizi devono essere sempre attivi e l'impossibilità di sincronizzazione tra i due deve risultare in una impossibilità
-    //di aggiornare il db in prima istanza. @Transactional mi garantisce che in caso di errore (anche fallimento della chiamata post)
+    //i due servizi devono essere sempre disponibili e l'impossibilità di sincronizzazione tra i due deve risultare in una impossibilità
+    //di aggiornare il db principale. @Transactional mi garantisce che in caso di errore (anche fallimento della chiamata post)
     //venga fatto rollback completo delle modifiche che si volevano tentare. Per questo motivo ho inoltre strutturato gli errori/exception
-    //in modo che vangano propagati fino al frontend e notificati all'utente
+    //in modo che vengano propagati fino al frontend e notificati
     private final RestClient restClient = RestClient.create();
     private final String URL = "http://localhost:8081/heartbeat_service_war_exploded/distributori"; //progetto Jakarta
 
