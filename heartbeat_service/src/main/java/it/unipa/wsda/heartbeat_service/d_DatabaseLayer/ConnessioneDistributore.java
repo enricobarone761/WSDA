@@ -12,7 +12,7 @@ public class ConnessioneDistributore {
     //credenziali db remoto già popolato, uguali nell'altro progetto
     private static final String URL = "jdbc:mysql://coffee-capp-132184a6-coffee-capp-0176.g.aivencloud.com:15746/distributori_info";
     private static final String USER = "avnadmin";
-    private static final String PASSWORD = "AVNS_MZJ4fwGs6Ty0WXxZVR0";
+    private static final String PASSWORD = "AVNS_NRxkqZgmcN29A8Wg-gb";
 
     //il blocco che segue è necessario per iniettare correttamente la dipendenza del driver di connessione al db
     //senza questo non riesco a connettermi a mySql
